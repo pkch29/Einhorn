@@ -3,51 +3,25 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_9Da90BohEeai0YTWcwqWWw">
     <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Ulp5EBoiEeai0YTWcwqWWw" name="Schloss">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_cEsdgBoiEeai0YTWcwqWWw" name="Verlies">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Ulp5EBoiEeai0YTWcwqWWw" name="main"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_KGxC4BojEeai0YTWcwqWWw" name="enemy">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DNksgBreEeai0YTWcwqWWw" name="Name">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="__J0NIBoiEeai0YTWcwqWWw" name="Hoehle">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DyFu0BreEeai0YTWcwqWWw" name="EP">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_BeC5kBojEeai0YTWcwqWWw" name="getVerlies"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_1moVsBrdEeai0YTWcwqWWw" name="getHoehle"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_WaJG8Dx7Eeav7q06NSypBA" name="MP">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_KGxC4BojEeai0YTWcwqWWw" name="Wuerfel 02">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_DNksgBreEeai0YTWcwqWWw" name="kuh">
+  <packagedElement xmi:type="uml:Class" xmi:id="_LaWxsBojEeai0YTWcwqWWw" name="dice">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ZD5fkBreEeai0YTWcwqWWw" name="eyes figure">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_DyFu0BreEeai0YTWcwqWWw" name="schaf">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ISBVsDx7Eeav7q06NSypBA" name="Seitenzahl">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_EGss4BreEeai0YTWcwqWWw" name="ziege">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FkWWoBreEeai0YTWcwqWWw" name="getKuh"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_GIVNcBreEeai0YTWcwqWWw" name="setKuh"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_GmyEABreEeai0YTWcwqWWw" name="getSchaf"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_G6CXMBreEeai0YTWcwqWWw" name="setSchaf"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_HPUqsBreEeai0YTWcwqWWw" name="getZiege"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_HkZi0BreEeai0YTWcwqWWw" name="setZiege"/>
-    <nestedClassifier xmi:type="uml:DataType" xmi:id="_9WqjgBrdEeai0YTWcwqWWw" name="int"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_LaWxsBojEeai0YTWcwqWWw" name="Wuefel 01">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_ZD5fkBreEeai0YTWcwqWWw" name="heu">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_ZYAHUBreEeai0YTWcwqWWw" name="schnecken">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_ZraykBreEeai0YTWcwqWWw" name="milch">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_aDuk4BreEeai0YTWcwqWWw" name="wolle">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_ajMvIBreEeai0YTWcwqWWw" name="getHeu"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_a0TGMBreEeai0YTWcwqWWw" name="getSchnecken"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_bDjDIBreEeai0YTWcwqWWw" name="getMilch"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_bO5XgBreEeai0YTWcwqWWw" name="getWolle"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_M3VtEBojEeai0YTWcwqWWw" name="Player">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_gmjYsBreEeai0YTWcwqWWw" name="Name">
@@ -65,37 +39,10 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_NYNH8DqwEeaiB8l9TzqF8Q" name="Weapon">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_hgQn4BreEeai0YTWcwqWWw" name="getGold"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_hxF5MBreEeai0YTWcwqWWw" name="maxAnzahlSchneckendrache"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_h_RfIBreEeai0YTWcwqWWw" name="getSchneckendrache"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_iLjnoBreEeai0YTWcwqWWw" name="setSchneckendrache"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IOKT8Dx8Eeav7q06NSypBA" name="rollDice"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_KSCQMDx8Eeav7q06NSypBA" name="move"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_O8BhoBojEeai0YTWcwqWWw" name="Schaf">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_qX7hQBrgEeai0YTWcwqWWw" name="name">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_qtuLEBrgEeai0YTWcwqWWw" name="hungerLevel">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_rGiTsBrgEeai0YTWcwqWWw" name="milchLevel">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_4xK3sBrgEeai0YTWcwqWWw" name="wollLevel">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_TQtp8BojEeai0YTWcwqWWw" name="Kuh">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_lU66YBrgEeai0YTWcwqWWw" name="name">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_l0UMIBrgEeai0YTWcwqWWw" name="hungerLevel">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_mHY5IBrgEeai0YTWcwqWWw" name="milchLevel">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_UCazsBojEeai0YTWcwqWWw" name="Snowdragon">
+  <packagedElement xmi:type="uml:Class" xmi:id="_UCazsBojEeai0YTWcwqWWw" name="treasure">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_r6dD8BrgEeai0YTWcwqWWw" name="EP">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
@@ -106,57 +53,30 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_Xl79wBojEeai0YTWcwqWWw" name="Remedy">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_D018YBokEeai0YTWcwqWWw" name="melken"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FLrzgBokEeai0YTWcwqWWw" name="milchmenge"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_Y8xN0BojEeai0YTWcwqWWw" name="Weapon">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_-EcrEBojEeai0YTWcwqWWw" name="scheren"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_AVybkBokEeai0YTWcwqWWw" name="wollmenge"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_aDbT4BojEeai0YTWcwqWWw" name="Caste">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_GwXSUBokEeai0YTWcwqWWw" name="fuettern"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_HtAgwBokEeai0YTWcwqWWw" name="name"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_GlimgBrhEeai0YTWcwqWWw" name="Ziege">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_IcPpcBrhEeai0YTWcwqWWw" name="name">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_I0FhsBrhEeai0YTWcwqWWw" name="hungerLevel">
+  <packagedElement xmi:type="uml:Class" xmi:id="_koigEBrhEeai0YTWcwqWWw" name="weapon">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_2pxQ4BrhEeai0YTWcwqWWw" name="AttackPoint">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_JIRB8BrhEeai0YTWcwqWWw" name="milchLevel">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_qtco0BrhEeai0YTWcwqWWw" name="getAP"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_koigEBrhEeai0YTWcwqWWw" name="Verlies">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_oJW7cBrhEeai0YTWcwqWWw" name="Zimmer">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_2pxQ4BrhEeai0YTWcwqWWw" name="Korridor">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_pnoQQBrhEeai0YTWcwqWWw" name="getXXX"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_p-DzQBrhEeai0YTWcwqWWw" name="setXXX"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_qtco0BrhEeai0YTWcwqWWw" name="getYYY"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_udOGMBrhEeai0YTWcwqWWw" name="setYYY"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_wDeSUBrhEeai0YTWcwqWWw" name="doZZZ"/>
-    <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_7NAXEDqUEeaGgahpx43AUA" name="Enumeration1"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_0sAtQDqqEeaiB8l9TzqF8Q" name="DandD"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_0sAtQDqqEeaiB8l9TzqF8Q" name="rooms"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_n5W9UDquEeaiB8l9TzqF8Q" name="bag">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_qNuXMDqvEeaiB8l9TzqF8Q" name="Food">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_qNuXMDqvEeaiB8l9TzqF8Q" name="Remedy">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_u0vloDqvEeaiB8l9TzqF8Q" name="Weapon">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_1uJGYDqvEeaiB8l9TzqF8Q" name="Gold">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_gGw9QDx7Eeav7q06NSypBA" name="scrolls">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_cx2ygDqwEeaiB8l9TzqF8Q" name="Enemy"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_eTF7wDqwEeaiB8l9TzqF8Q" name="ally"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_L_ZGsDx4Eeav7q06NSypBA" name="board"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Qc-FQDx4Eeav7q06NSypBA" name="help"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_SLVrkDx4Eeav7q06NSypBA" name="remedy"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_UF6h4Dx4Eeav7q06NSypBA" name="magic"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_V76aMDx4Eeav7q06NSypBA" name="reader"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_n-3XYDx6Eeav7q06NSypBA" name="map"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_DtxC8DqwEeaiB8l9TzqF8Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Dt0tUDqwEeaiB8l9TzqF8Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
