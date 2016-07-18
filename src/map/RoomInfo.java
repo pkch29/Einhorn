@@ -70,4 +70,13 @@ public class RoomInfo {
         int dir = direction % 4;
         return dir < 0 ? 4 + dir : dir;
     }
+
+    /**
+     * Check whether the room has a door in the given direction
+     * @param direction the direction to check for a door
+     * @return whether the room has a door in the given direction
+     */
+    public boolean hasDoor(int direction) {
+        return getConnectedRoomId(direction) != null;
+    }
 }
