@@ -3,6 +3,7 @@ package map;
 /**
  * This class holds information about how a room is connected to other rooms.
  */
+@SuppressWarnings("WeakerAccess")
 public class RoomInfo {
     private Room room = null;
     private Integer[] connections = new Integer[4];

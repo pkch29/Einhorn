@@ -8,14 +8,15 @@ import static org.junit.Assert.*;
 /**
  * Test for class Room
  */
+@SuppressWarnings("ConstantConditions")
 public class RoomTest {
 
-    Room room;
-    Creature creature;
-    Item item;
+    private Room room;
+    private Creature creature;
+    private Item item;
 
-    String imageFileName = "imagefile.jpg";
-    String description = "Description";
+    private String imageFileName = "imagefile.jpg";
+    private String description = "Description";
 
     @org.junit.Before
     public void setUp() throws Exception {

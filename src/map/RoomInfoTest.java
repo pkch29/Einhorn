@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 
 public class RoomInfoTest {
 
-    Room room;
-    RoomInfo info;
+    private Room room;
+    private RoomInfo info;
 
     @Before
     public void setUp() throws Exception {
@@ -21,10 +21,10 @@ public class RoomInfoTest {
 
     }
 
-    @Test
     /**
      * Test if on creation the correct data is stored
      */
+    @Test
     public void creation() throws Exception {
         info = new RoomInfo(room);
         assertEquals(info.getRoom(), room);
@@ -41,11 +41,11 @@ public class RoomInfoTest {
         assertEquals(info.getConnectedRoomId(3).intValue(), 4);
     }
 
-    @Test
     /**
      * Test if the normalization works correctly
      * i.e.: room in direction -1 should be same as room in direction 3
      */
+    @Test
     public void normalization() throws Exception {
         info = new RoomInfo(room, 1,2,3,4);
         assertEquals(info.getConnectedRoomId(-4), info.getConnectedRoomId(0));
@@ -59,10 +59,10 @@ public class RoomInfoTest {
         assertEquals(info.getConnectedRoomId(7), info.getConnectedRoomId(3));
     }
 
-    @Test
     /**
      * Test if the new connection is correct
      */
+    @Test
     public void connecting() throws Exception {
         info = new RoomInfo(room);
         info.connect(0, 1);

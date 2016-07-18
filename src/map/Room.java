@@ -7,6 +7,7 @@ import item.Item;
  * A room in the dangeon.
  * The room can house a creature and can have an item to be looted.
  */
+@SuppressWarnings("WeakerAccess")
 public class Room {
 
     private Creature creature = null;
@@ -63,10 +64,7 @@ public class Room {
      * @return whether the room can be looted.
      */
     public boolean canBeLooted() {
-        if (hasCreature() && creature.isAlive() || !hasItem()) {
-            return false;
-        }
-        return true;
+        return !(hasCreature() && creature.isAlive() || !hasItem());
     }
 
     /**
