@@ -64,6 +64,18 @@ public interface GuiConnect {
     public String getRoom();
 
     /**
+     * Returns the file name of the image for the current room.
+     * @return the file name of the image for the current room
+     */
+    public String getRoomImageFileName();
+
+    /**
+     * Returns the description of the current room.
+     * @return the description of the current room
+     */
+    public String getRoomDescription();
+
+    /**
      * @TODO was macht das nochmal?
      */
     public List<String> showAndWait();
