@@ -1,5 +1,6 @@
 package map;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -8,8 +9,9 @@ import java.util.List;
  */
 public class Map implements gui.GuiConnect {
 
-    List<Room> rooms;
-    //List<int[4]> connections;
+    private List<RoomInfo> rooms;
+    int currentRoomId;
+    //private Player player;
 
 
     @Override
@@ -49,7 +51,7 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public void newGame() {
-
+        initGame();
     }
 
     @Override
@@ -76,4 +78,11 @@ public class Map implements gui.GuiConnect {
     public void setName(String name) {
 
     }
+
+
+    private void initGame() {
+        rooms = new ArrayList<>();
+        currentRoomId = 0;
+    }
+
 }
