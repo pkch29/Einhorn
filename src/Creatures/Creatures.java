@@ -25,9 +25,12 @@ public interface Creatures {
 
     /**
      * Gets the attack damage of the creature.
+     * @param damage needs the attackdamage of the weapon of the creature
+     * @param level is the actual level of the creature
+     * @param dice is a random number of a D20-dice
      * @return the attackdamage of the creature.
      */
-    int attack();
+    int attack(int damage, int level, int dice);
 
     /**
      * Gets the name of the creature.
