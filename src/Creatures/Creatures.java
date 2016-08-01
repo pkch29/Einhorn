@@ -1,5 +1,6 @@
 package Creatures;
 
+import item.Item;
 /**
  * Created by Anna on 11.07.2016.
  */
@@ -16,6 +17,12 @@ public interface Creatures {
      * @return the actual health points from the creature
      */
     int getHP();
+
+    /**
+     * Gets the Item of the creature.
+     * @return the item of the creature
+     */
+    Item getItem();
 
     /**
      * Gets the level of the creatures.
@@ -39,20 +46,26 @@ public interface Creatures {
     String getName();
 
     /**
-     *
-     * @param name
+     * Sets the name of the creature.
+     * @param name of the creature
      */
     void setName(String name);
 
     /**
-     *
-     * @param hp
+     * Sets the Health points of the creature.
+     * @param hp health points of the creature
      */
     void setHp(int hp);
 
     /**
-     *
-     * @param level
+     * Sets the creatures (new) Item.
+     * @param item of the creature
+     */
+    void setItem(Item item);
+
+    /**
+     * Sets the level of the creature.
+     * @param level of the creature
      */
     void setLevel(int level);
 

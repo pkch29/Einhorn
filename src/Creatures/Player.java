@@ -1,5 +1,7 @@
 package Creatures;
 
+import item.Item;
+
 /**
  * Created by Anna on 11.07.2016.
  */
@@ -8,6 +10,7 @@ public class Player implements Creatures{
     int HP;
     int level;
     String name;
+    Item item;
 
 
     public Player(String name, int level, int Hp){
@@ -21,9 +24,15 @@ public class Player implements Creatures{
 
         return "You are called:  "+ name ;
     }
+
     @Override
     public int getHP() {
         return HP;
+    }
+
+    @Override
+    public Item getItem() {
+        return item;
     }
 
     @Override
@@ -55,6 +64,11 @@ public class Player implements Creatures{
     @Override
     public void setHp(int hp) {
         this.HP = hp;
+    }
+
+    @Override
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     @Override
