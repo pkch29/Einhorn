@@ -14,8 +14,11 @@ import javafx.util.Duration;
 import map.Map;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Created by Lisa on 06.07.2016.
@@ -55,7 +58,7 @@ public class GUIController implements Initializable {
     }
 
     public void getName(){
-        TextInputDialog dialog = new TextInputDialog("Trixie");
+        TextInputDialog dialog = new TextInputDialog("Pink Fluffy Unicorn");
         dialog.setTitle("Wie lautet dein Name?");
         dialog.setHeaderText(null);
         dialog.setContentText("Bitte gib deinen Namen ein:");
@@ -95,17 +98,19 @@ public class GUIController implements Initializable {
 
     public void straightPressed(){
         map.goStraight();
-
+        showMessage();
     }
     public void backPressed(){
         map.goBack();
-
+        showMessage();
     }
     public void leftPressed(){
         map.goLeft();
+        showMessage();
     }
     public void rightPressed(){
         map.goRight();
+        showMessage();
     }
     public void showStats(){
         map.getStats();
@@ -139,7 +144,19 @@ public class GUIController implements Initializable {
     }
 
     public void showMessage(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Neuer Raum");
+        alert.setHeaderText("Da ist ein MOOONSTER!!!");
+        //List<String> t = map.showAndWait();
+        List<String> t = new ArrayList<String>();
+        t.add("bla");
+        t.add("blub");
+        String s = t.stream()
+                .map(i-> i.toString())
+                .collect(Collectors.joining("\n"));
+        alert.setContentText(s);
 
+        alert.showAndWait();
     }
 
 }
