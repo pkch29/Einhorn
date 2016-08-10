@@ -76,7 +76,9 @@ public interface GuiConnect {
     public String getRoomDescription();
 
     /**
-     * @TODO was macht das nochmal?
+     * Returns the messages the GUI needs to display during a fight with a creature,
+     * or finding of treasures.
+     * @return A list of Strings which will be displayed
      */
     public List<String> showAndWait();
 
