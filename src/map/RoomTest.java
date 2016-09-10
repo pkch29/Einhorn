@@ -34,7 +34,8 @@ public class RoomTest {
                 creatureHp, creatureLevel, creatureItem);
 
         // create item
-        item = new Item();
+        // @// TODO: 10.09.16 Item test still missing.
+        //item = new Item();
     }
 
     @org.junit.After
