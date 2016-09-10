@@ -5,6 +5,7 @@ import item.Item;
 import reader.Reader;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,8 @@ import java.util.Map;
  */
 public class Storage {
 
-    public Map<String, Creature> creature_Map;
-    public Map<String, Item> item_Map;
+    private Map<String, Creature> creature_Map = new HashMap<>();
+    private Map<String, Item> item_Map = new HashMap<>();
 
     public Storage() throws IOException {
         fill_item_map();
