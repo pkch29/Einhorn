@@ -20,8 +20,11 @@ public class Dice {
 
     /**
      * method creates a random number
+     * @return number
      */
-    private void rollDice (){
+    public int rollDice (){
         number = (rand.nextInt(20)+1);
+
+        return number;
     }
 }
