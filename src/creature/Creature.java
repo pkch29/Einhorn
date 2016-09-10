@@ -33,6 +33,10 @@ public class Creature implements Creatures {
         return " the " + species + " " + name;
     }
 
+    /**
+     * Gets the health points of the creature
+     * @return health points
+     */
     @Override
     public int getHP() {
         return hp;
@@ -70,7 +74,13 @@ public class Creature implements Creatures {
         return level;
     }
 
-    @Override
+    /**
+     * method that attacks
+     * @param attackdamage
+     * @param level is the actual level of the creature
+     * @param dice is a random number of a D20-dice
+     * @return damage
+     */
     public int attack(int attackdamage, int level, int dice) {
         int damage;
         damage = (attackdamage*level)+ dice;
@@ -143,8 +153,5 @@ public class Creature implements Creatures {
         return hp > 0;
     }
 
-    public int attack(Item item){
-        int force = item.getForce();
-        return force;
-    }
+    
 }
