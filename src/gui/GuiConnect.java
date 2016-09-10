@@ -48,7 +48,7 @@ public interface GuiConnect {
     public void newGame();
 
     /**
-     * Get player stats
+     * Get player stats, String[] mit Name an 0, KP an 1, Level an 2 und Name von Weapon an 3
      */
     public int[] getStats();
 
@@ -56,12 +56,6 @@ public interface GuiConnect {
      * Get help for current room
      */
     public String getHelp();
-
-    /**
-     * Return the current room object
-     * //@TODO wer brauch das?
-     */
-    public String getRoom();
 
     /**
      * Returns the file name of the image for the current room.
