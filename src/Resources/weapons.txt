@@ -1,0 +1,27 @@
+Name: Sword
+Force: 6
+Description: Big two-handed sword, with a length of 120cm and a weight of 10kg.
+
+Name: Knife
+Force: 2
+Description: Small dagger.
+
+Name: Lance
+Force: 10
+Description: 5 meter long lance.
+
+Name: Fire
+Force: 15
+Description: The deadly fire of a dragon.
+
+Name: Teeth
+Force: 1
+Description: The teeth of a beast of prey.
+
+Name: Axe
+Force: 5
+Description: Big battle axe.
+
+Name: Hand
+Force: 1
+Description: You have only your hands ...

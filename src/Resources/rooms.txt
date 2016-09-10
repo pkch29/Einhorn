@@ -1,0 +1,168 @@
+Name: Entry
+N: 1-3
+O: none
+S: none
+W: none
+Description: You see the entry to a dark dungeon. Just go ahead to enter!
+Content: none
+
+Name: 1-1
+N: 2-1
+O: 1-2
+S: none
+W: none
+Description: A long dark hallway.
+Content: none
+
+Name: 1-2
+N: none
+O: 1-3
+S: none
+W: 1-1
+Description: A small room, sparsely lighted by a torch.
+Content: none
+
+Name: 1-3
+N: 2-3
+O: none
+S: Eingang
+W: 1-2
+Description: A high hall - the high ceiling is lost in the darkness.
+Content: none
+
+Name: 2-1
+N: 3-1
+O: 2-2
+S: 1-1
+W: none
+Description: Hallway with a tight branch-off.
+Content: none
+
+Name: 2-2
+N: none
+O: none
+S: none
+W: 2-1
+Description: An old chamber thomb with lots of cobweb.
+Content: Sword
+
+Name: 2-3
+N: 3-3
+O: 2-4
+S: 1-3
+W: none
+Description: Small dimly lit room.
+Content: Knife
+
+Name: 3-1
+N: 4-1
+O: 3-3
+S: 2-1
+W: none
+Description: Chamber lighted by bright torches.
+Content: Grodagrim
+
+Name: 3-3
+N: none
+O: none
+S: 2-3
+W: 3-1
+Description: Gloomy chamber with many old carcases.
+Content: Gothofiedus
+
+Name: 4-1
+N: none
+O: none
+S: 3-1
+W: none
+Description: This seems to be the armory of the dwarf. The most mighty weapon seems to be the lance.
+Content: Lance
+
+Name: 2-4
+N: none
+O: 2-5
+S: none
+W: 2-3
+Description: Gloomy room with many bones.
+Content: Lothofiedus
+
+Name: 2-5
+N: none
+O: 2-6
+S: none
+W: 2-4
+Description: Gloomy room with many bones
+Content: Rothofiedus
+
+Name: 2-6
+N: 3-6
+O: none
+S: none
+W: 2-5
+Description: Dark room with no light.
+Content: none
+
+Name: 3-6
+N: none
+O: 3-7
+S: 2-6
+W: 3-5
+Description: Big hall with an offensive smell of burned meat.
+Content: Excursius
+
+Name: 3-7
+N: 4-7
+O: none
+S: none
+W: 3-6
+Description: Narrow hallway
+Content: none
+
+Name: 4-7
+N: none
+O: none
+S: 3-7
+W: none
+Description: Big dark cave arch.
+Content: none
+
+Name: 3-5
+N: 4-5
+O: 3-6
+S: none
+W: none
+Description: Narrow hall.
+Content: none
+
+Name: 4-5
+N: none
+O: 4-6
+S: 3-5
+W: 4-4
+Description: Narrow hallway.
+Content: none
+
+Name: 4-4
+N: none
+O: 4-5
+S: none
+W: none
+Description: Hallway with thousands of spiders.
+Content: none
+
+Name: 4-6
+N: 5-6
+O: none
+S: none
+W: 4-5
+Description: Narrow hallway with thousands of spiders.
+Content: none
+
+Name: 5-6
+N: none
+O: none
+S: 4-6
+W: none
+Description: Small room with an old wooden box.
+Content: Treasure
+

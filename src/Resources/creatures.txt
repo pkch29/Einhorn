@@ -1,0 +1,42 @@
+Name: You 
+Species: Human
+Description: This is you.
+Experience: 1
+HealthStatus: 25 
+Weapon: Hand
+
+Name: Excursius 
+Species: Dragon
+Description: A big green dragon, 5m tall with a 8m long tail.
+Experience: 3
+HealthStatus: 25 
+Weapon: Fire
+
+Name: Grodagrim 
+Species: Dwarf
+Description: A small dwarf with a long battle axe.
+Experience: 2
+HealthStatus: 35 
+Weapon: Axe
+
+Name: Gothofiedus 
+Species: Rat
+Description: A 50cm sized rat; gray with intelligent eyes.
+Experience: 1
+HealthStatus: 10 
+Weapon: Teeth
+
+Name: Lothofiedus 
+Species: Rat
+Description: A 50cm sized rat; gray with intelligent eyes.
+Experience: 5
+HealthStatus: 10 
+Weapon: Teeth
+
+Name: Rothofiedus 
+Species: Rat
+Description: A 50cm sized rat; gray with intelligent eyes.
+Experience: 10
+HealthStatus: 10 
+Weapon: Teeth
+
