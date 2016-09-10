@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Anna on 10.09.2016.
+ * Created by Anna on 10.09.2016..
  */
 public class Storage {
 
