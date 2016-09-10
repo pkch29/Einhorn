@@ -1,11 +1,12 @@
-package Creatures;
+package creature;
 
+import creature.Creatures;
 import item.Item;
 
 /**
  * Created by Anna on 11.07.2016.
  */
-public class Player implements Creatures{
+public class Player implements Creatures {
 
     int HP;
     int level;

@@ -136,4 +136,21 @@ public class Creature {
     public boolean isAlive(){
         return hp > 0;
     }
+
+    public int attack(Item item){
+        int force = item.getForce();
+        return force;
+    }
+
+   /* public void defend(Player player){
+        int force = player.attack;
+        System.out.printf("HP: %s for %d\n %b attack strength: %a\n", hp, toString(), player.getName(), force);
+        hp = (hp > force) ? hp - force : 0;
+        System.out.printf("HP: %s for %d after damage!\n", hp, name);
+            if (hp == 0){
+                System.out.println("..." + player.getName() + "crushes the head of " + toString() + "with bare hands...!");
+
+    }
+
+    }*/
 }

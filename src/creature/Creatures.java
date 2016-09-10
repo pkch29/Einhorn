@@ -1,4 +1,4 @@
-package Creatures;
+package creature;
 
 import item.Item;
 /**
