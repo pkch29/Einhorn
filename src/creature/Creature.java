@@ -7,7 +7,7 @@ import item.Item;
  *
  */
 
-public class Creature {
+public class Creature implements Creatures {
 
     private String name;
     private String species;
@@ -31,6 +31,11 @@ public class Creature {
      */
     public String toString(){
         return " the " + species + " " + name;
+    }
+
+    @Override
+    public int getHP() {
+        return hp;
     }
 
     /**
@@ -58,19 +63,20 @@ public class Creature {
     }
 
     /**
-     * Gets the health points of the creature
-     * @return the creatures health points
-     */
-    public int getHp(){
-        return hp;
-    }
-
-    /**
      * Gets the experience level of the creature
      * @return the creatures level
      */
     public int getLevel(){
         return level;
+    }
+
+    @Override
+    public int attack(int attackdamage, int level, int dice) {
+        int damage;
+        damage = (attackdamage*level)+ dice;
+        //Schlagstärke = Angriffskraft der Waffe * eigenes Level + Wurf eines D20 Würfels
+
+        return damage;
     }
 
     /**
@@ -141,16 +147,4 @@ public class Creature {
         int force = item.getForce();
         return force;
     }
-
-   /* public void defend(Player player){
-        int force = player.attack;
-        System.out.printf("HP: %s for %d\n %b attack strength: %a\n", hp, toString(), player.getName(), force);
-        hp = (hp > force) ? hp - force : 0;
-        System.out.printf("HP: %s for %d after damage!\n", hp, name);
-            if (hp == 0){
-                System.out.println("..." + player.getName() + "crushes the head of " + toString() + "with bare hands...!");
-
-    }
-
-    }*/
 }
