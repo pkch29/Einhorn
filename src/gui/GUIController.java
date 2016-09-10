@@ -67,7 +67,7 @@ public class GUIController implements Initializable {
         if (result.isPresent()){
              name = result.get();
         }
-        map.setName(name);
+        map.setPlayerName(name);
     }
 
     public void newGame(){

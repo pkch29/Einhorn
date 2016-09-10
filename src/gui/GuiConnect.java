@@ -50,7 +50,7 @@ public interface GuiConnect {
     /**
      * Get player stats, String[] mit Name an 0, KP an 1, Level an 2 und Name von Weapon an 3
      */
-    public int[] getStats();
+    public String[] getStats();
 
     /**
      * Get help for current room
@@ -79,6 +79,6 @@ public interface GuiConnect {
     /**
      * Set player name
      */
-    public void setName(String name);
+    public void setPlayerName(String name);
 
 }
