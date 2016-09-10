@@ -1,5 +1,9 @@
 package map;
 
+import creature.Player;
+import storage.Storage;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +13,21 @@ import java.util.List;
  */
 public class Map implements gui.GuiConnect {
 
+    private Storage storage;
     private ArrayList<RoomInfo> rooms;
     private int currentRoomId;
-    //private Player player;
+    private Player player;
+
+
+    public Map() {
+        player = new Player("John Doe", 0, 100);
+//        try {
+//            storage = new Storage();
+//        } catch (IOException e) {
+//            // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
+//            e.printStackTrace();
+//        }
+    }
 
 
     @Override
@@ -36,6 +52,18 @@ public class Map implements gui.GuiConnect {
     public void goRight() {
         int playerOrientation = 0; //player.getOrientation();
         go(playerOrientation+1);
+    }
+
+    @Override
+    public String[] getStats() {
+        //@TODO: 10.09.16 player needs to implement getStats according to GuiConnect interface
+        //return player.getStats();
+        String[] stats = new String[4];
+        stats[0] = player.getName();
+        stats[1] = Integer.toString(player.getHP());
+        stats[2] = Integer.toString(player.getLevel());
+        stats[3] = "no item yet"; //player.getItem().getName();
+        return stats;
     }
 
     private void go(int direction) {
@@ -76,19 +104,8 @@ public class Map implements gui.GuiConnect {
     }
 
     @Override
-    public int[] getStats() {
-        return new int[0];
-    }
-
-    @Override
     public String getHelp() {
         return "This is probably a general help text.";
-    }
-
-    @Override
-    public String getRoom()
-    {
-        return null;
     }
 
     @Override
@@ -108,8 +125,8 @@ public class Map implements gui.GuiConnect {
     }
 
     @Override
-    public void setName(String name) {
-        // player.setName(name);
+    public void setPlayerName(String name) {
+         player.setName(name);
     }
 
     private void initGame() {
@@ -120,7 +137,7 @@ public class Map implements gui.GuiConnect {
 
 
     private void generateTorus() {
-        Room room = new Room("room.jpg", "Der sich wiederholende Standard-Raum");
+        Room room = new Room("Lothofiedus.jpg", "Der sich wiederholende Standard-Raum");
         RoomInfo info = new RoomInfo(room, 0, 0, 0, 0);
         rooms.add(info);
     }
