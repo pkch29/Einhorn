@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class Reader {
 
-    public List<String> read(String filename) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/Resources/"+filename)));
+    public static List<String> read(String filename) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(Reader.class.getResourceAsStream("/Resources/"+filename)));
         List<String> valueList = new ArrayList<>();
         String line;
         String[] values;
