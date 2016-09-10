@@ -11,12 +11,12 @@ import java.util.Map;
 /**
  * Created by Anna on 10.09.2016.
  */
-public class storage {
+public class Storage {
 
     public Map<String, Creature> creature_Map;
     public Map<String, Item> item_Map;
 
-    public storage() throws IOException {
+    public Storage() throws IOException {
         fill_item_map();
         fill_creature_map();
     }
