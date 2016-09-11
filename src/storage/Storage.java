@@ -110,6 +110,7 @@ public class Storage {
             throw new IOException("rooms.text has wrong number of entries.");
         }
 
+        Room room;
         int index = 0;
         for (int i=0; i<numRecords; i++) {
             String name = data.get(index++);
@@ -120,7 +121,7 @@ public class Storage {
             String description = data.get(index++);
             String content = data.get(index++);
 
-            Room room = new Room(name, roomN, roomE, roomS, roomW, description);
+            room = new Room(name, roomN, roomE, roomS, roomW, description);
 
             if (! content.contentEquals("none")) {
                 if ((item = item_Map.get(content)) != null) {
@@ -135,6 +136,10 @@ public class Storage {
             room_Map.put(name, room);
         }
 
+        room = room_Map.get("Entry");
+        if (room == null) {
+            throw new IOException("Unable to find entry to dungeon.");
+        }
     }
 
 
