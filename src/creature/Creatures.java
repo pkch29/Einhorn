@@ -8,7 +8,7 @@ public interface Creatures {
 
     /**
      * Turns the name into a String.
-     * @return the name of the crature as a String.
+     * @return the name of the creature as a String.
      */
     String toString();
 
