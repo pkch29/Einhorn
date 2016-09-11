@@ -10,19 +10,51 @@ import item.Item;
 @SuppressWarnings("WeakerAccess")
 public class Room {
 
+    private final String name;
+    private final String description;
+    private final String roomN;
+    private final String roomE;
+    private final String roomS;
+    private final String roomW;
+
     private Creature creature = null;
     private Item item = null;
-	private final String imageName;
-	private final String description;
+	private String imageName;
+
+    /**
+     * Constructor of a room.
+     * @param name name of the room
+     * @param roomN name of the room in the north
+     * @param roomE name of the room in the east
+     * @param roomS name of the room in the south
+     * @param roomW name of the room in the west
+     * @param description description of the room
+     */
+    public Room(String name, String roomN, String roomE, String roomS, String roomW, String description) {
+        this.name = name;
+        this.description = description;
+        this.roomN = roomN;
+        this.roomE = roomE;
+        this.roomS = roomS;
+        this.roomW = roomW;
+    }
+
 
     /**
      * Constructor for a room with image and description.
      * @param imageName the name of the image file for this room
      * @param description a string describing the room
+     * @warning opsolete! should not be used, will be removed soon.
      */
 	public Room(String imageName, String description) {
 	    this.imageName = imageName;
         this.description = description;
+
+        this.name = "";
+        this.roomN = "";
+        this.roomE = "";
+        this.roomS = "";
+        this.roomW = "";
     }
 
     /**
