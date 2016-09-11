@@ -13,51 +13,49 @@ import java.util.List;
  */
 public class Map implements gui.GuiConnect {
 
-    private Storage storage;
-    private ArrayList<RoomInfo> rooms;
-    private int currentRoomId;
-    private Player player;
-
+    private Storage storage = null;
+    private Player player = null;
+    private Room room = null;
 
     public Map() {
         player = new Player("John Doe", 0, 100);
-//        try {
-//            storage = new Storage();
-//        } catch (IOException e) {
-//            // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
-//            e.printStackTrace();
-//        }
+        try {
+            storage = new Storage();
+        } catch (IOException e) {
+            // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
+            e.printStackTrace();
+        }
     }
-
 
     @Override
     public void goBack() {
-        int playerOrientation = 0; //player.getOrientation();
-        go(playerOrientation+2);
+        // TODO: 11.09.16 player needs to implement getRoomInDirection
+//        room = storage.getRoom(room.getRoomNameInDirection(player.goBack()));
+        room = storage.getRoom(room.getRoomNameInDirection(2));
     }
 
     @Override
     public void goStraight() {
-        int playerOrientation = 0; //player.getOrientation();
-        go(playerOrientation);
+//        room = storage.getRoom(room.getRoomNameInDirection(player.goStraight()));
+        room = storage.getRoom(room.getRoomNameInDirection(0));
     }
 
     @Override
     public void goLeft() {
-        int playerOrientation = 0; //player.getOrientation();
-        go(playerOrientation-1);
+//        room = storage.getRoom(room.getRoomNameInDirection(player.goLeft()));
+        room = storage.getRoom(room.getRoomNameInDirection(3));
     }
 
     @Override
     public void goRight() {
-        int playerOrientation = 0; //player.getOrientation();
-        go(playerOrientation+1);
+//        room = storage.getRoom(room.getRoomNameInDirection(player.goRight()));
+        room = storage.getRoom(room.getRoomNameInDirection(1));
     }
 
     @Override
     public String[] getStats() {
-        //@TODO: 10.09.16 player needs to implement getStats according to GuiConnect interface
-        //return player.getStats();
+//        //@TODO: 10.09.16 player needs to implement getStats according to GuiConnect interface
+//        return player.getStats();
         String[] stats = new String[4];
         stats[0] = player.getName();
         stats[1] = Integer.toString(player.getHP());
@@ -66,36 +64,25 @@ public class Map implements gui.GuiConnect {
         return stats;
     }
 
-    private void go(int direction) {
-        //@TODO user always has to make sure that the direction exists!
-        // currently here is an additional check, but as there is no feedback given,
-        // its quite useless.
-        if (!rooms.get(currentRoomId).hasDoor(direction)) {
-            return;
-        }
-
-        //@TODO maybe some checks if we can leave?
-        // maybe we can only go backwards if there is still a creature in the room
-
-        currentRoomId = rooms.get(currentRoomId).getConnectedRoomId(direction);
-    }
-
     @Override
     public boolean hasStraight() {
-        int playerOrientation = 0; //player.getOrientation();
-        return rooms.get(currentRoomId).hasDoor(playerOrientation);
+        // TODO: 11.09.16 player needs to implement getStraightDirection()
+//        return room.hasRoomInDirection(player.getStraightDirection());
+        return room.hasRoomInDirection(0);
     }
 
     @Override
     public boolean hasLeft() {
-        int playerOrientation = 0; //player.getOrientation();
-        return rooms.get(currentRoomId).hasDoor(playerOrientation - 1);
+        // TODO: 11.09.16 player needs to implement getLeftDirection()
+//        return room.hasRoomInDirection(player.getLeftDirection());
+        return room.hasRoomInDirection(3);
     }
 
     @Override
     public boolean hasRight() {
-        int playerOrientation = 0; //player.getOrientation();
-        return rooms.get(currentRoomId).hasDoor(playerOrientation + 1);
+        // TODO: 11.09.16 player needs to implement getRightDirection()
+//        return room.hasRoomInDirection(player.getRightDirection());
+        return room.hasRoomInDirection(1);
     }
 
     @Override
@@ -110,14 +97,13 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public String getRoomImageFileName() {
-        return rooms.get(currentRoomId).getRoom().getImageName();
+        return room.getImageName();
     }
 
     @Override
     public String getRoomDescription() {
-        return rooms.get(currentRoomId).getRoom().getDescription();
+        return room.getDescription();
     }
-
 
     @Override
     public List<String> showAndWait() {
@@ -130,17 +116,9 @@ public class Map implements gui.GuiConnect {
     }
 
     private void initGame() {
-        rooms = new ArrayList<>();
-        currentRoomId = 0;
-        generateTorus();
+        room = storage.getRoom("Entry");
     }
 
-
-    private void generateTorus() {
-        Room room = new Room("Lothofiedus.jpg", "Der sich wiederholende Standard-Raum");
-        RoomInfo info = new RoomInfo(room, 0, 0, 0, 0);
-        rooms.add(info);
-    }
 
 
 }

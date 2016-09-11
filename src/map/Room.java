@@ -5,7 +5,7 @@ import item.Item;
 
 /**
  * A room in the dangeon.
- * The room can house a creature and can have an item to be looted.
+ * The room can house a creature, contain an item to be looted or hold some gold.
  */
 @SuppressWarnings("WeakerAccess")
 public class Room {
@@ -39,23 +39,31 @@ public class Room {
         this.roomW = roomW;
     }
 
+    /**
+     * Gets the name of the room in the given direction.
+     * Direction is defined as integer, starting with 0 in the north, clockwise.
+     * @param direction the direction to find the name of the room for.
+     * @return name of the room in the given direction.
+     */
+    public String getRoomNameInDirection(int direction) {
+        switch (direction) {
+            case 0: return roomN;
+            case 1: return roomE;
+            case 2: return roomS;
+            default: return roomW;
+        }
+    }
+
 
     /**
-     * Constructor for a room with image and description.
-     * @param imageName the name of the image file for this room
-     * @param description a string describing the room
-     * @warning opsolete! should not be used, will be removed soon.
+     * Tests if a room exists in the given direction.
+     * @param direction the direction to find a room for.
+     * @return if a room exists in the given direction.
      */
-	public Room(String imageName, String description) {
-	    this.imageName = imageName;
-        this.description = description;
-
-        this.name = "";
-        this.roomN = "";
-        this.roomE = "";
-        this.roomS = "";
-        this.roomW = "";
+    public boolean hasRoomInDirection(int direction) {
+        return ! getRoomNameInDirection(direction).contentEquals("none");
     }
+
 
     /**
      * Gets the name of the room's image file
@@ -90,37 +98,15 @@ public class Room {
     }
 
     /**
-     * Checks if the room can be looted.
-     * A room can only be looted if there is an item and if
-     * there is no living creature in the room.
-     * @return whether the room can be looted.
-     */
-    public boolean canBeLooted() {
-        return !(hasCreature() && creature.isAlive() || !hasItem());
-    }
-
-    /**
-     * Loot the room.
-     * If the room can be looted, return the room's item
-     * and remove item from the room.
-     * @return the item that was in the room.
-     */
-    public Item lootRoom() {
-        Item loot = null;
-        if (canBeLooted()) {
-            loot = item;
-            item = null;
-        }
-        return loot;
-    }
-
-    /**
      * Spawns a given creature in the room.
+     * The room image will show this creature.
      * This will replace a currently existing creature,
      * @param creature the creature to spawn in the room.
      */
     public void spawnCreature(Creature creature) {
+        this.imageName = creature.getName() + ".jpg";
         this.creature = creature;
+        this.item = null;
     }
 
     /**
@@ -129,7 +115,10 @@ public class Room {
      * @param item the item to store in the room.
      */
     public void storeItem(Item item) {
+        // TODO: 11.09.16 korrekte Datei für Raum ohne Kreatur verwenden!
+        this.imageName = "Raum.jpg";
         this.item = item;
+        this.creature = null;
     }
 
 }
