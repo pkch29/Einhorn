@@ -5,9 +5,9 @@ Experience: 1
 HealthStatus: 25 
 Weapon: Hand
 
-Name: Excursius 
-Species: Dragon
-Description: A big green dragon, 5m tall with a 8m long tail.
+Name: Dandelion 
+Species: Unicorn
+Description: A sleepy unicorn, 3m tall with a long horn on his forehead. If you dare to disturb him, be aware of his fire-spewing nostrils!
 Experience: 3
 HealthStatus: 25 
 Weapon: Fire
