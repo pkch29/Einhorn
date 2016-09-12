@@ -29,6 +29,7 @@ public class Creature implements Creatures {
      * Turns the object name into a String
      * @return the creatures species and name
      */
+    @Override
     public String toString(){
         return " the " + species + " " + name;
     }
@@ -79,14 +80,33 @@ public class Creature implements Creatures {
      * @param attackdamage
      * @param level is the actual level of the creature
      * @param dice is a random number of a D20-dice
-     * @return damage
+     * @return damage of the creature
      */
     public int attack(int attackdamage, int level, int dice) {
-        int damage;
-        damage = (attackdamage*level)+ dice;
+        int damage = (attackdamage*level)+ dice;
         //Schlagstärke = Angriffskraft der Waffe * eigenes Level + Wurf eines D20 Würfels
 
         return damage;
+    }
+
+    /**
+     * Gets the attack damage of the creature
+     *
+     * @param dice is a random number of a D20-dice
+     * @return the attackdamage of the creature
+     */
+    public int attack(int dice) {
+        int damage = (item.getForce()*level) + dice;
+        return damage;
+    }
+
+    /**
+     * Defend against the damage, and reduce live accordingly
+     *
+     * @param damage damage taken by an attack
+     */
+    public void defend(int damage) {
+        hp = hp - damage;
     }
 
     /**
