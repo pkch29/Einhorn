@@ -1,6 +1,8 @@
 package map;
 
 import creature.Creature;
+import creature.Player;
+import dice.Dice;
 import item.Item;
 
 /**
@@ -48,6 +50,21 @@ public class Room {
     }
 
     /**
+     * Room will fight vs the player using the given dice
+     * @param player the player who will handle the fight
+     * @param dice a dice the player and creature have to use
+     */
+    public void fightPlayer(Player player, Dice dice) {
+        // TODO: 12.09.16 Needs implementations in player and creature
+//        while (player.isAlive() && creature.isAlive()) {
+//            player.defend(creature.attack(dice.rollDice()));
+//            if (player.isAlive()) {
+//                creature.defend(player.attack(dice.rollDice()));
+//            }
+//        }
+    }
+
+    /**
      * Gets a string describing the room.
      * @return the room's description
      */
@@ -84,6 +101,14 @@ public class Room {
             case 2: return roomNameSouth;
             default: return roomNameWest;
         }
+    }
+
+    /**
+     * Gives the weapon (the current item in the room) to the player.
+     * @param player the player that will receive the weapon.
+     */
+    public void giveWeaponToPlayer(Player player) {
+        player.setItem(this.item);
     }
 
     /**
