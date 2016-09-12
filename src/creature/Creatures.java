@@ -13,6 +13,12 @@ public interface Creatures {
     boolean isAlive();
 
     /**
+     * Defend against the damage, and reduce live accordingly
+     * @param damage damage taken by an attack
+     */
+    void defend(int damage);
+
+    /**
      * Turns the name into a String.
      * @return the name of the creature as a String.
      */
