@@ -9,21 +9,25 @@ public interface GuiConnect {
 
     /**
      * Tell player to move forward
+     * Test with hasStraight() before using this method.
      */
     public void goStraight();
 
     /**
      * Tell player to move left
+     * Test with hasLeft() before using this method.
      */
     public void goLeft();
 
     /**
      * Tell player to move right
+     * Test with hasRight() before using this method.
      */
     public void goRight();
 
     /**
      * Tell player to move backwards
+     * Test with hasBack() before using this method.
      */
     public void goBack();
 
@@ -41,6 +45,11 @@ public interface GuiConnect {
      * Test if player can move right
      */
     public boolean hasRight();
+
+    /**
+     * Test if player can move backwards
+     */
+    public boolean hasBack();
 
     /**
      * Start a new game

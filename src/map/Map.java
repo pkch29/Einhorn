@@ -65,10 +65,10 @@ public class Map implements gui.GuiConnect {
     }
 
     @Override
-    public boolean hasStraight() {
-        // TODO: 11.09.16 player needs to implement getStraightDirection()
-//        return room.hasRoomInDirection(player.getStraightDirection());
-        return room.hasRoomInDirection(0);
+    public boolean hasBack() {
+        // TODO: 12.09.16 player needs to implement getBackDirection()
+//        return room.hasRoomInDirection(player.getBackDirection());
+        return room.hasRoomInDirection(2);
     }
 
     @Override
@@ -83,6 +83,13 @@ public class Map implements gui.GuiConnect {
         // TODO: 11.09.16 player needs to implement getRightDirection()
 //        return room.hasRoomInDirection(player.getRightDirection());
         return room.hasRoomInDirection(1);
+    }
+
+    @Override
+    public boolean hasStraight() {
+        // TODO: 11.09.16 player needs to implement getStraightDirection()
+//        return room.hasRoomInDirection(player.getStraightDirection());
+        return room.hasRoomInDirection(0);
     }
 
     @Override
