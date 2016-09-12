@@ -7,6 +7,12 @@ import item.Item;
 public interface Creatures {
 
     /**
+     * Checks if the creature is alive or not.
+     * @return whether the creature is alive or not
+     */
+    boolean isAlive();
+
+    /**
      * Turns the name into a String.
      * @return the name of the creature as a String.
      */
@@ -38,6 +44,13 @@ public interface Creatures {
      * @return the attackdamage of the creature.
      */
     int attack(int damage, int level, int dice);
+
+    /**
+     * Gets the attack damage of the creature
+     * @param dice is a random number of a D20-dice
+     * @return the attackdamage of the creature
+     */
+    int attack(int dice);
 
     /**
      * Gets the name of the creature.
