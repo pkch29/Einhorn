@@ -6,16 +6,23 @@ import item.Item;
 /**
  * A room in the dangeon.
  * The room can house a creature, contain an item to be looted or hold some gold.
+ * Connected rooms have to be called according to their coordinates "x-y". The first room the player enters,
+ * has to be called "Entry". Use "none" if there is no room in this direction.
  */
+
 @SuppressWarnings("WeakerAccess")
+
 public class Room {
+
+    public static final String ENTRY = "Entry";  // the name of the first room where the player starts
+    public static final String NONE = "none";    // marker for connections that are dead ends
 
     private final String name;
     private final String description;
-    private final String roomN;
-    private final String roomE;
-    private final String roomS;
-    private final String roomW;
+    private final String roomNameNorth;
+    private final String roomNameEast;
+    private final String roomNameSouth;
+    private final String roomNameWest;
 
     private Creature creature = null;
     private Item item = null;
@@ -24,19 +31,44 @@ public class Room {
     /**
      * Constructor of a room.
      * @param name name of the room
-     * @param roomN name of the room in the north
-     * @param roomE name of the room in the east
-     * @param roomS name of the room in the south
-     * @param roomW name of the room in the west
+     * @param roomNameNorth name of the room in the north
+     * @param roomNameEast name of the room in the east
+     * @param roomNameSouth name of the room in the south
+     * @param roomNameWest name of the room in the west
      * @param description description of the room
      */
-    public Room(String name, String roomN, String roomE, String roomS, String roomW, String description) {
+    public Room(String name, String roomNameNorth, String roomNameEast, String roomNameSouth, String roomNameWest,
+                String description) {
         this.name = name;
         this.description = description;
-        this.roomN = roomN;
-        this.roomE = roomE;
-        this.roomS = roomS;
-        this.roomW = roomW;
+        this.roomNameNorth = roomNameNorth;
+        this.roomNameEast = roomNameEast;
+        this.roomNameSouth = roomNameSouth;
+        this.roomNameWest = roomNameWest;
+    }
+
+    /**
+     * Gets a string describing the room.
+     * @return the room's description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Gets the name of the room's image file
+     * @return the name of the room's image file
+     */
+    public String getImageName() {
+        return imageName;
+    }
+
+    /**
+     * Gets the name of the room.
+     * @return the name of the room
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -47,46 +79,19 @@ public class Room {
      */
     public String getRoomNameInDirection(int direction) {
         switch (direction) {
-            case 0: return roomN;
-            case 1: return roomE;
-            case 2: return roomS;
-            default: return roomW;
+            case 0: return roomNameNorth;
+            case 1: return roomNameEast;
+            case 2: return roomNameSouth;
+            default: return roomNameWest;
         }
     }
-
-
-    /**
-     * Tests if a room exists in the given direction.
-     * @param direction the direction to find a room for.
-     * @return if a room exists in the given direction.
-     */
-    public boolean hasRoomInDirection(int direction) {
-        return ! getRoomNameInDirection(direction).contentEquals("none");
-    }
-
-
-    /**
-     * Gets the name of the room's image file
-     * @return the name of the room's image file
-     */
-	public String getImageName() {
-		return imageName;
-	}
-
-    /**
-     * Gets a string describing the room.
-     * @return the room's description
-     */
-	public String getDescription() {
-		return description;
-	}
 
     /**
      * Checks if the room has a creature in it.
      * @return whether the room has a creature in it
      */
-	public boolean hasCreature() {
-	    return creature != null;
+    public boolean hasCreature() {
+        return creature != null;
     }
 
     /**
@@ -95,6 +100,15 @@ public class Room {
      */
     public boolean hasItem() {
         return item != null;
+    }
+
+    /**
+     * Tests if a room exists in the given direction.
+     * @param direction the direction to find a room for.
+     * @return if a room exists in the given direction.
+     */
+    public boolean hasRoomInDirection(int direction) {
+        return ! getRoomNameInDirection(direction).contentEquals(NONE);
     }
 
     /**

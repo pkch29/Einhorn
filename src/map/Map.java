@@ -116,7 +116,7 @@ public class Map implements gui.GuiConnect {
     }
 
     private void initGame() {
-        room = storage.getRoom("Entry");
+        room = storage.getRoom(Room.ENTRY);
     }
 
 
