@@ -12,7 +12,6 @@ public class Player implements Creatures {
     int level;
     String name;
     Item item;
-    boolean alive;
 
     // 0-Norden, 1-Osten, 2-Süden, 3-Westen
     int direction;
@@ -39,8 +38,10 @@ public class Player implements Creatures {
      */
     public int goLeft(){
         direction --;
-        if(direction<0 || direction>3){
+        if(direction>3){
             direction = direction%4;
+        } else if(direction<0){
+            direction =3;
         }
         return direction;
     }
@@ -51,7 +52,7 @@ public class Player implements Creatures {
      */
     public int goRight(){
         direction ++;
-        if(direction<0 || direction>3){
+        if(direction>3){
             direction = direction%4;
         }
         return direction;
@@ -64,8 +65,12 @@ public class Player implements Creatures {
     public int goBack(){
         direction =- 2;
 
-        if(direction<0 || direction>3){
+        if(direction>3){
             direction = direction%4;
+        }else if(direction==-1){
+            direction= 3;
+        } else if(direction==-2){
+            direction = 2;
         }
 
         return direction;
@@ -82,12 +87,16 @@ public class Player implements Creatures {
 
     @Override
     public boolean isAlive() {
-        return alive;
+        if(HP>0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void defend(int damage) {
-        HP =- damage;
+        HP -= damage;
 
     }
 
@@ -124,9 +133,9 @@ public class Player implements Creatures {
 
     @Override
     public int attack(int dice) {
-        return 0;
+        int damage = (item.getForce()*level) + dice;
+        return damage;
     }
-
     @Override
     public String getName() {
         return name;
