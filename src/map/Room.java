@@ -5,6 +5,9 @@ import creature.Player;
 import dice.Dice;
 import item.Item;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A room in the dangeon.
  * The room can house a creature, contain an item to be looted or hold some gold.
@@ -57,21 +60,26 @@ public class Room {
      * @param player the player who will handle the fight
      * @param dice a dice the player and creature have to use
      */
-    public void fightPlayer(Player player, Dice dice) {
-        // TODO: 12.09.16 Needs implementations in player and creature
+    public List<String> fightPlayer(Player player, Dice dice) {
+
+        List<String> messages = new ArrayList<>();
+
         while (player.isAlive() && creature.isAlive()) {
             player.defend(creature.attack(dice.rollDice()));
             if (player.isAlive()) {
                 creature.defend(player.attack(dice.rollDice()));
             }
         }
-        // TODO: 13.09.16 this is just for debug reasons!
-        System.out.println("Player was attacked by " + creature.getName() + " (" + creature.getSpecies() + ")");
-        System.out.println("Player:   " + player.getHP());
-        System.out.println("Creature: " + creature.getHP());
+
+        messages.add("You were attacked by " + creature.getName() + " (" + creature.getSpecies() + ")");
+        messages.add(creature.getDescription());
         if (player.isAlive()) {
-            System.out.println("player killed " + creature.getName() + " using " + player.getItem().getName());
+            messages.add("You survived using your " + player.getItem().getName() + ".");
+        } else {
+            messages.add("You were killed!");
         }
+
+        return messages;
     }
 
     /**
@@ -88,6 +96,17 @@ public class Room {
      */
     public String getImageName() {
         return imageName;
+    }
+
+    /**
+     * Gets a descriptive string of the found weapon
+     * @return information about the weapon
+     */
+    public List<String> getFullItemDescription() {
+        List<String> data = new ArrayList<>();
+        data.add("You found a " + item.getName() + " (" + item.getForce() + ")");
+        data.add(item.getDescription());
+        return data;
     }
 
     /**
@@ -118,7 +137,9 @@ public class Room {
      * @param player the player that will receive the weapon.
      */
     public void giveWeaponToPlayer(Player player) {
-        player.setItem(this.item);
+        // TODO: 13.09.16 player needs to decide if he wants the weapon
+//        player.takeWeapon(this,item);
+        player.setItem(this.takeItem());
     }
 
     /**
@@ -147,6 +168,15 @@ public class Room {
     }
 
     /**
+     * Test if the weapon in the room is stronger than player's weapon
+     * @param playerWeapon the weapon used by the player
+     * @return whether the weapon in the room is stronger
+     */
+    public boolean hasStrongerWeapon(Item playerWeapon) {
+        return (item.getForce() > playerWeapon.getForce());
+    }
+
+    /**
      * Spawns a given creature in the room.
      * The room image will show this creature.
      * This will replace a currently existing creature,
@@ -170,6 +200,16 @@ public class Room {
         this.imageName = "Lothofiedus.jpg";
         this.item = item;
         this.creature = null;
+    }
+
+    /**
+     * Take the item from the room
+     * @return the item that was in the room
+     */
+    public Item takeItem() {
+        Item item = this.item;
+        this.item = null;
+        return item;
     }
 
 }

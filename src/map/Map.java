@@ -28,10 +28,9 @@ public class Map implements gui.GuiConnect {
             // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
             e.printStackTrace();
         }
-        player = new Player("John Doe", 1, 100);
+        player = new Player("Player", 1, 100);
         player.setItem(storage.getItem("Hand"));
         messages = new ArrayList<>();
-        messages.add("OMFG a creature! RUUUUUNNNNNNNN.....");
     }
 
     /**
@@ -40,6 +39,7 @@ public class Map implements gui.GuiConnect {
      */
     private void enterRoom(Room room) {
         this.room = room;
+        messages.clear();
         if (room.hasItem()) {
             lootWeapon();
         } else if (room.hasCreature()) {
@@ -57,7 +57,8 @@ public class Map implements gui.GuiConnect {
      * Fight the creature in the room
      */
     private void fightCreature() {
-        room.fightPlayer(player, dice);
+        messages.addAll(room.fightPlayer(player, dice));
+
     }
 
     @Override
@@ -144,9 +145,8 @@ public class Map implements gui.GuiConnect {
      * Player can loot the weapon in the room.
      */
     private void lootWeapon() {
-        boolean doLoot = true;
-        // TODO: 12.09.16 Interact with the player and set doLoot accordingly
-        if (doLoot) {
+        if (room.hasStrongerWeapon(player.getItem())) {
+            messages.addAll(room.getFullItemDescription());
             room.giveWeaponToPlayer(player);
         }
     }
