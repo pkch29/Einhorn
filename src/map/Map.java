@@ -21,7 +21,6 @@ public class Map implements gui.GuiConnect {
     private List<String> messages;
 
     public Map() {
-        player = new Player("John Doe", 0, 100);
         dice = new Dice();
         try {
             storage = new Storage();
@@ -29,6 +28,8 @@ public class Map implements gui.GuiConnect {
             // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
             e.printStackTrace();
         }
+        player = new Player("John Doe", 1, 100);
+        player.setItem(storage.getItem("Hand"));
         messages = new ArrayList<>();
         messages.add("OMFG a creature! RUUUUUNNNNNNNN.....");
     }
@@ -76,15 +77,7 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public String[] getStats() {
-//        //@TODO: 10.09.16 player needs to implement getStats according to GuiConnect interface
-//        return player.getStats();
-        // TODO: 13.09.16 player has no item in the beginning! -> player.getStats() crashes
-        String[] stats = new String[4];
-        stats[0] = player.getName();
-        stats[1] = Integer.toString(player.getHP());
-        stats[2] = Integer.toString(player.getLevel());
-        stats[3] = "no item yet"; //player.getItem().getName();
-        return stats;
+        return player.getStats();
     }
 
     @Override
