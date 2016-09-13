@@ -113,9 +113,7 @@ public class GUIController implements Initializable {
         showMessage();
     }
     public void showStats(){
-        map.getStats();
-        //Gefaket zum testen
-        String[] stats = {"Name", "100", "1", "Hand"};
+        String[] stats = map.getStats();
         name.setText("Name: "+stats[0]);
         health.setText("KP: "+stats[1]);
         level.setText("Level: "+stats[2]);
@@ -135,8 +133,8 @@ public class GUIController implements Initializable {
     }
 
     public void showRoom(){
-        //Ändern zu map.getRoomImageFileName wenn implementiert
-        Image roomPic = new Image(GUIController.class.getResourceAsStream("/Resources/Lothofiedus.jpg"));
+        String file = map.getRoomImageFileName();
+        Image roomPic = new Image(GUIController.class.getResourceAsStream("/Resources/"+file));
         image.setFitWidth(300);
         image.setPreserveRatio(true);
         image.setImage(roomPic);
