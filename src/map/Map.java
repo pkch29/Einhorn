@@ -74,7 +74,7 @@ public class Map implements gui.GuiConnect {
     public String[] getStats() {
 //        //@TODO: 10.09.16 player needs to implement getStats according to GuiConnect interface
 //        return player.getStats();
-        // TODO: 13.09.16 player has no item in the beginning! -> player.getStats() crashes 
+        // TODO: 13.09.16 player has no item in the beginning! -> player.getStats() crashes
         String[] stats = new String[4];
         stats[0] = player.getName();
         stats[1] = Integer.toString(player.getHP());
