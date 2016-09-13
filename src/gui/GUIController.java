@@ -14,7 +14,6 @@ import javafx.util.Duration;
 import map.Map;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -145,10 +144,10 @@ public class GUIController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Neuer Raum");
         alert.setHeaderText("Da ist ein MOOONSTER!!!");
-        //List<String> t = map.showAndWait();
-        List<String> t = new ArrayList<String>();
-        t.add("bla");
-        t.add("blub");
+        List<String> t = map.showAndWait();
+        //List<String> t = new ArrayList<String>();
+        //t.add("bla");
+        //t.add("blub");
         String s = t.stream()
                 .map(i-> i.toString())
                 .collect(Collectors.joining("\n"));
