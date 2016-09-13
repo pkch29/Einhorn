@@ -48,7 +48,7 @@ public class Room {
         this.roomNameSouth = roomNameSouth;
         this.roomNameWest = roomNameWest;
         // TODO: 13.09.16 default für leeren Gang
-        this.imageName = "Lothfiedus.jpg";
+        this.imageName = "Lothofiedus.jpg";
 
     }
 
@@ -155,7 +155,7 @@ public class Room {
     public void spawnCreature(Creature creature) {
         // TODO: 13.09.16 brauchen noch die echten Bilder hierfür. 
 //        this.imageName = creature.getName() + ".jpg";
-        this.imageName = "Lothfiedus.jpg";
+        this.imageName = "Lothofiedus.jpg";
         this.creature = creature;
         this.item = null;
     }
@@ -167,7 +167,7 @@ public class Room {
      */
     public void storeItem(Item item) {
         // TODO: 11.09.16 korrekte Datei für Raum ohne Kreatur verwenden!
-        this.imageName = "Lothfiedus.jpg";
+        this.imageName = "Lothofiedus.jpg";
         this.item = item;
         this.creature = null;
     }
