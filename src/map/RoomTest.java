@@ -48,7 +48,7 @@ public class RoomTest {
         assertEquals(room.getImageName(), imageFileName);
         assertEquals(room.getDescription(), description);
         assertEquals(room.hasCreature(), false);
-        assertEquals(room.hasItem(), false);
+        assertEquals(room.hasWeapon(), false);
         // room can not be looted, as there is no item in it.
 //        assertEquals(room.canBeLooted(), false);
 //        assertEquals(room.lootRoom(), null);
@@ -65,7 +65,7 @@ public class RoomTest {
     @Test
     public void item() throws Exception {
         room.storeItem(item);
-        assertEquals(room.hasItem(), true);
+        assertEquals(room.hasWeapon(), true);
     }
 
     @Test

@@ -14,9 +14,7 @@ import java.util.List;
  * Connected rooms have to be called according to their coordinates "x-y". The first room the player enters,
  * has to be called "Entry". Use "none" if there is no room in this direction.
  */
-
 @SuppressWarnings("WeakerAccess")
-
 public class Room {
 
     public static final String ENTRY = "Entry";  // the name of the first room where the player starts
@@ -59,7 +57,7 @@ public class Room {
      * Room will fight vs the player using the given dice
      * @param player the player who will handle the fight
      * @param dice a dice the player and creature have to use
-     * @return list of messages to be shown to teh player
+     * @return list of messages to be shown to the player
      */
     public List<String> fightPlayer(Player player, Dice dice) {
 
@@ -105,17 +103,6 @@ public class Room {
     }
 
     /**
-     * Gets a descriptive string of the found weapon
-     * @return information about the weapon
-     */
-    public List<String> getFullItemDescription() {
-        List<String> data = new ArrayList<>();
-        data.add("You found a " + item.getName() + " (" + item.getForce() + ")");
-        data.add(item.getDescription());
-        return data;
-    }
-
-    /**
      * Gets the name of the room.
      * @return the name of the room
      */
@@ -141,11 +128,16 @@ public class Room {
     /**
      * Gives the weapon (the current item in the room) to the player.
      * @param player the player that will receive the weapon.
+     * @return list of messages to be shown to the player
      */
-    public void giveWeaponToPlayer(Player player) {
+    public List<String> giveWeaponToPlayer(Player player) {
+        List<String> messages = new ArrayList<>();
+        messages.add("You found a " + item.getName() + " (" + item.getForce() + ")");
+        messages.add(item.getDescription());
         // TODO: 13.09.16 player needs to decide if he wants the weapon
 //        player.takeWeapon(this,item);
         player.setItem(this.takeItem());
+        return messages;
     }
 
     /**
@@ -157,10 +149,11 @@ public class Room {
     }
 
     /**
-     * Checks if the room has an item in it.
-     * @return whether the room has an item in it
+     * Checks if the room has a weapon in it.
+     * Currently every item is a weapon.
+     * @return whether the room has a weapon in it
      */
-    public boolean hasItem() {
+    public boolean hasWeapon() {
         return item != null;
     }
 

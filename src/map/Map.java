@@ -8,17 +8,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Main class that implements the GuiConnect to communicate with the fx components.
+ * Map class that implements the GuiConnect to communicate with the fx components.
+ * It is responsible to coordinate Player, Storage and Rooms.
  */
+@SuppressWarnings("WeakerAccess")
 public class Map implements gui.GuiConnect {
 
-    private Storage storage = null;
+    private Dice dice = null;
+    private List<String> messages = null;
     private Player player = null;
     private Room room = null;
-    private Dice dice = null;
-    private List<String> messages;
+    private Storage storage = null;
 
     public Map() {
         dice = new Dice();
@@ -28,28 +29,26 @@ public class Map implements gui.GuiConnect {
             // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
             e.printStackTrace();
         }
-        player = new Player("Player", 1, 100);
+        player = new Player("Player", 1, 18);
         player.setItem(storage.getItem("Hand"));
         messages = new ArrayList<>();
     }
 
     /**
-     * Enters a room and handles action (loot, attack)
+     * Enters a room and handles action (loot, attack).
+     * This is the main method which is called after a direction was choosen.
      * @param room the room the player is going to enter.
      */
     private void enterRoom(Room room) {
         this.room = room;
         messages.clear();
-        if (room.hasItem()) {
+        if (room.hasWeapon()) {
             lootWeapon();
         } else if (room.hasCreature()) {
             fightCreature();
-            // TODO: 12.09.16 Needs isAlive in player class.
-//            if (player.isAlive()) {
-//                // TODO: 12.09.16 give some feedback to the player, that he won and can proceed.
-//            } else {
-//                // TODO: 12.09.16 Game is lost!
-//            }
+            if (! isPlayerAlive()) {
+                messages.add("GAME OVER!");
+            }
         }
     }
 
@@ -58,12 +57,11 @@ public class Map implements gui.GuiConnect {
      */
     private void fightCreature() {
         messages.addAll(room.fightPlayer(player, dice));
-
     }
 
     @Override
     public String getHelp() {
-        return "This is probably a general help text.";
+        return "This is a general help text.";
     }
 
     @Override
@@ -83,27 +81,22 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public void goBack() {
-        // TODO: 11.09.16 player needs to implement getRoomInDirection
         enterRoom(storage.getRoom(room.getRoomNameInDirection(player.goBack())));
-//        enterRoom(storage.getRoom(room.getRoomNameInDirection(2)));
     }
 
     @Override
     public void goLeft() {
         enterRoom(storage.getRoom(room.getRoomNameInDirection(player.goLeft())));
-//        enterRoom(storage.getRoom(room.getRoomNameInDirection(3)));
     }
 
     @Override
     public void goRight() {
         enterRoom(storage.getRoom(room.getRoomNameInDirection(player.goRight())));
-//        enterRoom(storage.getRoom(room.getRoomNameInDirection(1)));
     }
 
     @Override
     public void goStraight() {
         enterRoom(storage.getRoom(room.getRoomNameInDirection(player.goStraight())));
-//        enterRoom(storage.getRoom(room.getRoomNameInDirection(0)));
     }
 
     @Override
@@ -142,12 +135,19 @@ public class Map implements gui.GuiConnect {
     }
 
     /**
+     * Checks if player is still alive
+     * @return if player is alive
+     */
+    public boolean isPlayerAlive() {
+        return player.isAlive();
+    }
+
+    /**
      * Player can loot the weapon in the room.
      */
     private void lootWeapon() {
         if (room.hasStrongerWeapon(player.getItem())) {
-            messages.addAll(room.getFullItemDescription());
-            room.giveWeaponToPlayer(player);
+            messages.addAll(room.giveWeaponToPlayer(player));
         }
     }
 
