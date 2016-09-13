@@ -56,12 +56,19 @@ public class Room {
      */
     public void fightPlayer(Player player, Dice dice) {
         // TODO: 12.09.16 Needs implementations in player and creature
-//        while (player.isAlive() && creature.isAlive()) {
-//            player.defend(creature.attack(dice.rollDice()));
-//            if (player.isAlive()) {
-//                creature.defend(player.attack(dice.rollDice()));
-//            }
-//        }
+        while (player.isAlive() && creature.isAlive()) {
+            player.defend(creature.attack(dice.rollDice()));
+            if (player.isAlive()) {
+                creature.defend(player.attack(dice.rollDice()));
+            }
+        }
+        // TODO: 13.09.16 this is just for debug reasons!
+        System.out.println("Player was attacked by " + creature.getName() + " (" + creature.getSpecies() + ")");
+        System.out.println("Player:   " + player.getHP());
+        System.out.println("Creature: " + creature.getHP());
+        if (player.isAlive()) {
+            System.out.println("player killed " + creature.getName() + " using " + player.getItem().getName());
+        }
     }
 
     /**
