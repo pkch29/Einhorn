@@ -59,20 +59,26 @@ public class Room {
      * Room will fight vs the player using the given dice
      * @param player the player who will handle the fight
      * @param dice a dice the player and creature have to use
+     * @return list of messages to be shown to teh player
      */
     public List<String> fightPlayer(Player player, Dice dice) {
 
         List<String> messages = new ArrayList<>();
 
+        messages.add("You were attacked by " + creature.getName() + " (" + creature.getSpecies() + ")");
+        messages.add(creature.getDescription());
+        messages.add("");
+
         while (player.isAlive() && creature.isAlive()) {
             player.defend(creature.attack(dice.rollDice()));
+            messages.add(creature.getName() + " rolled a " + dice.getNumber() + ". Your health is now " + player.getHP());
             if (player.isAlive()) {
                 creature.defend(player.attack(dice.rollDice()));
+                messages.add("You rolled a " + dice.getNumber() + ". " + creature.getName() + "'s health is now " + creature.getHP());
             }
         }
 
-        messages.add("You were attacked by " + creature.getName() + " (" + creature.getSpecies() + ")");
-        messages.add(creature.getDescription());
+        messages.add("");
         if (player.isAlive()) {
             messages.add("You survived using your " + player.getItem().getName() + ".");
         } else {
