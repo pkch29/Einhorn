@@ -19,6 +19,8 @@ public class Room {
 
     public static final String ENTRY = "Entry";  // the name of the first room where the player starts
     public static final String NONE = "none";    // marker for connections that are dead ends
+    // TODO: 13.09.16 default für leeren Gang
+    public static final String DEFAULT_IMAGE = "Lothofiedus.jpg"; // default background image
 
     private final String name;
     private final String description;
@@ -48,8 +50,7 @@ public class Room {
         this.roomNameEast = roomNameEast;
         this.roomNameSouth = roomNameSouth;
         this.roomNameWest = roomNameWest;
-        // TODO: 13.09.16 default für leeren Gang
-        this.imageName = "Lothofiedus.jpg";
+        this.imageName = DEFAULT_IMAGE;
 
     }
 
@@ -184,7 +185,7 @@ public class Room {
     public void spawnCreature(Creature creature) {
         // TODO: 13.09.16 brauchen noch die echten Bilder hierfür. 
 //        this.imageName = creature.getName() + ".jpg";
-        this.imageName = "Lothofiedus.jpg";
+        this.imageName = DEFAULT_IMAGE;
         this.creature = creature;
         this.item = null;
     }
@@ -195,8 +196,7 @@ public class Room {
      * @param item the item to store in the room.
      */
     public void storeItem(Item item) {
-        // TODO: 11.09.16 korrekte Datei für Raum ohne Kreatur verwenden!
-        this.imageName = "Lothofiedus.jpg";
+        this.imageName = DEFAULT_IMAGE;
         this.item = item;
         this.creature = null;
     }

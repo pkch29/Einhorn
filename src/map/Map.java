@@ -29,6 +29,7 @@ public class Map implements gui.GuiConnect {
             // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
             e.printStackTrace();
         }
+        // TODO: 13.09.16 default HP for player! 
         player = new Player("Player", 1, 18);
         player.setItem(storage.getItem("Hand"));
         messages = new ArrayList<>();
