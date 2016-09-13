@@ -51,7 +51,6 @@ public class Room {
         this.roomNameSouth = roomNameSouth;
         this.roomNameWest = roomNameWest;
         this.imageName = DEFAULT_IMAGE;
-
     }
 
     /**
@@ -64,7 +63,7 @@ public class Room {
 
         List<String> messages = new ArrayList<>();
 
-        messages.add("You were attacked by " + creature.getName() + " (" + creature.getSpecies() + ")");
+        messages.add("You were attacked by the " + creature.getSpecies() + " " + creature.getName() + ".");
         messages.add(creature.getDescription());
         messages.add("");
 
