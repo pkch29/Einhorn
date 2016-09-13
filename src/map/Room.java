@@ -47,7 +47,7 @@ public class Room {
         this.roomNameEast = roomNameEast;
         this.roomNameSouth = roomNameSouth;
         this.roomNameWest = roomNameWest;
-        // TODO: 13.09.16 default für leeren Gang 
+        // TODO: 13.09.16 default für leeren Gang
         this.imageName = "Lothfiedus.jpg";
 
     }

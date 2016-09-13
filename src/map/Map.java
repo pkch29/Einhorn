@@ -5,6 +5,7 @@ import dice.Dice;
 import storage.Storage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,6 +18,7 @@ public class Map implements gui.GuiConnect {
     private Player player = null;
     private Room room = null;
     private Dice dice = null;
+    private List<String> messages;
 
     public Map() {
         player = new Player("John Doe", 0, 100);
@@ -27,6 +29,8 @@ public class Map implements gui.GuiConnect {
             // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
             e.printStackTrace();
         }
+        messages = new ArrayList<>();
+        messages.add("OMFG a creature! RUUUUUNNNNNNNN.....");
     }
 
     /**
@@ -167,8 +171,7 @@ public class Map implements gui.GuiConnect {
     @Override
     public List<String> showAndWait()
     {
-        // TODO: 12.09.16 Is this method needed?
-        return null;
+        return messages;
     }
 
 }
