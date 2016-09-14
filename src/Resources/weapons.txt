@@ -1,27 +1,27 @@
 Name: Sword
 Force: 6
-Description: Big two-handed sword, with a length of 120cm and a weight of 10kg.
+Description: Großes Zweihandschwert, mit einer Länge von 120cm und einem Gewicht von 10kg.
 
 Name: Knife
 Force: 2
-Description: Small dagger.
+Description: Kleiner Dolch.
 
 Name: Lance
 Force: 10
-Description: 5 meter long lance.
+Description: 5 m lange Lanze.
 
 Name: Fire
 Force: 15
-Description: The deadly fire of a dragon.
+Description: Das tödliche Feuer des Einhorns.
 
 Name: Teeth
 Force: 1
-Description: The teeth of a beast of prey.
+Description: Der Zahn eines Biestes.
 
 Name: Axe
 Force: 5
-Description: Big battle axe.
+Description: Große Streitaxt.
 
 Name: Hand
 Force: 1
-Description: You have only your hands ...
+Description: Du hast nur deine Hände ...
