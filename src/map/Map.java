@@ -23,7 +23,6 @@ public class Map implements gui.GuiConnect {
 
     public Map() {
         messages = new ArrayList<>();
-        initGame();
     }
 
     /**
