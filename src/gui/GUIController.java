@@ -161,9 +161,9 @@ public class GUIController implements Initializable {
         alert.setTitle("Neuer Raum");
         alert.setHeaderText("Da ist ein MOOONSTER!!!");
         List<String> t = map.showAndWait();
-        //List<String> t = new ArrayList<String>();
-        //t.add("bla");
-        //t.add("blub");
+        if (t.size() == 0){
+            t.add("Hier gibt's nichts... nur Staub");
+        }
         String s = t.stream()
                 .map(i-> i.toString())
                 .collect(Collectors.joining("\n"));
