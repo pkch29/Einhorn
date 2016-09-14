@@ -140,10 +140,11 @@ public class Map implements gui.GuiConnect {
             // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
             e.printStackTrace();
         }
-        // TODO: 13.09.16 default HP for player!
-//        player = new Player("Player", 1, 18);
+        Player prevPlayer = player;
         player = new Player(storage.getCreature("You"));
-//        player.setItem(storage.getItem("Hand"));
+        if (prevPlayer != null) {
+            player.setName(prevPlayer.getName());
+        }
         room = storage.getRoom(Room.ENTRY);
     }
 
