@@ -14,6 +14,8 @@ public class Player implements Creatures {
     int dir;
     int maxHP;
 
+    private boolean flagHasTreasure = false;
+
     // 0-Norden, 1-Osten, 2-Süden, 3-Westen
     int direction;
 
@@ -202,6 +204,20 @@ public class Player implements Creatures {
     public void killedCreature(){
         level += 1;
         HP = maxHP;
+    }
+
+    public void setTreasure (){
+        flagHasTreasure = true;
+    }
+
+    public boolean hasTreasure(){
+        if (flagHasTreasure == true){
+            return true;
+        }else return false;
+    }
+
+    public void healing(){
+        HP += 5;
     }
 
     @Override
