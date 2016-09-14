@@ -160,7 +160,7 @@ public class Map implements gui.GuiConnect {
      * Player can loot the weapon in the room.
      */
     private void lootWeapon() {
-        if (room.hasStrongerWeapon(player.getItem())) {
+        if (room.hasStrongerWeapon(player.getWeapon())) {
             messages.addAll(room.giveWeaponToPlayer(player));
         }
     }

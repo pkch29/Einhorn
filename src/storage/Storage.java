@@ -2,6 +2,7 @@ package storage;
 
 import creature.Creature;
 import item.Item;
+import item.Weapon;
 import map.Room;
 import reader.Reader;
 
@@ -16,16 +17,16 @@ import java.util.Map;
 public class Storage {
 
     private Map<String, Creature> creature_Map = new HashMap<>();
-    private Map<String, Item> item_Map = new HashMap<>();
+    private Map<String, Weapon> weapon_Map = new HashMap<>();
     private Map<String, Room> room_Map = new HashMap<>();
 
     public Storage() throws IOException {
-        fill_item_map();
+        fill_weapon_map();
         fill_creature_map();
         fill_room_map();
     }
 
-    private void fill_item_map() throws IOException {
+    private void fill_weapon_map() throws IOException {
 
         List<String> items = Reader.read("weapons.txt");
         int counter = 1;
@@ -46,8 +47,8 @@ public class Storage {
             }
 
             if (counter == 3) {
-                Item i = new Item(name, description, force);
-                item_Map.put(name, i);
+                Weapon w = new Weapon(name, description, force);
+                weapon_Map.put(name, w);
                 counter = 0;
             }
             counter++;
@@ -89,7 +90,7 @@ public class Storage {
                     break;
             }
             if (counter == 6) {
-                Creature c = new Creature(name, species, description, experience, hp, item_Map.get(weapon));
+                Creature c = new Creature(name, species, description, experience, hp, weapon_Map.get(weapon));
                 creature_Map.put(name,c);
                 counter =0;
             }
@@ -104,7 +105,7 @@ public class Storage {
 
         final int recordSize = 7;
         final int numRecords = data.size() / recordSize;
-        Item item;
+        Weapon weapon;
         Creature creature;
         if (data.size() != numRecords * recordSize) {
             throw new IOException("rooms.text has wrong number of entries.");
@@ -124,8 +125,8 @@ public class Storage {
             room = new Room(name, roomN, roomE, roomS, roomW, description);
 
             if (! content.contentEquals("none")) {
-                if ((item = item_Map.get(content)) != null) {
-                    room.storeItem(item);
+                if ((weapon = weapon_Map.get(content)) != null) {
+                    room.storeWeapon(weapon);
                 } else if ((creature = creature_Map.get(content)) != null) {
                     room.spawnCreature(creature);
                 } else {
@@ -148,9 +149,9 @@ public class Storage {
 
         return creature_Map.get(name);
     }
-    public Item getItem(String name){
+    public Item getWeapon(String name){
 
-        return item_Map.get(name);
+        return weapon_Map.get(name);
     }
     public Room getRoom(String name) {
         return room_Map.get(name);

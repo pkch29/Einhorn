@@ -3,7 +3,7 @@ package map;
 import creature.Creature;
 import creature.Player;
 import dice.Dice;
-import item.Item;
+import item.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class Room {
     private final String roomNameWest;
 
     private Creature creature = null;
-    private Item item = null;
+    private Weapon weapon = null;
 	private String imageName;
 
     /**
@@ -80,7 +80,7 @@ public class Room {
         if (player.isAlive()) {
             // TODO: 14.09.16 tell player that he just killed a creature of a certain level
 //            player.killedCreature(creature.getLevel());
-            messages.add("You survived using your " + player.getItem().getName() + ".");
+            messages.add("You survived using your " + player.getWeapon().getName() + ".");
         } else {
             messages.add("You were killed!");
         }
@@ -134,11 +134,11 @@ public class Room {
      */
     public List<String> giveWeaponToPlayer(Player player) {
         List<String> messages = new ArrayList<>();
-        messages.add("You found a " + item.getName() + " (" + item.getForce() + ")");
-        messages.add(item.getDescription());
+        messages.add("You found a " + weapon.getName() + " (" + weapon.getForce() + ")");
+        messages.add(weapon.getDescription());
         // TODO: 13.09.16 player needs to decide if he wants the weapon
 //        player.takeWeapon(this,item);
-        player.setItem(this.takeItem());
+        player.setWeapon(this.takeWeapon());
         return messages;
     }
 
@@ -162,11 +162,10 @@ public class Room {
 
     /**
      * Checks if the room has a weapon in it.
-     * Currently every item is a weapon.
      * @return whether the room has a weapon in it
      */
     public boolean hasWeapon() {
-        return item != null;
+        return weapon != null;
     }
 
     /**
@@ -183,8 +182,8 @@ public class Room {
      * @param playerWeapon the weapon used by the player
      * @return whether the weapon in the room is stronger
      */
-    public boolean hasStrongerWeapon(Item playerWeapon) {
-        return (item.getForce() > playerWeapon.getForce());
+    public boolean hasStrongerWeapon(Weapon playerWeapon) {
+        return (weapon.getForce() > playerWeapon.getForce());
     }
 
     /**
@@ -198,28 +197,29 @@ public class Room {
 //        this.imageName = creature.getName() + ".jpg";
         this.imageName = DEFAULT_IMAGE;
         this.creature = creature;
-        this.item = null;
+        this.weapon = null;
     }
 
     /**
-     * Stores a given item in the room.
+     * Stores a given weapon in the room.
      * This will replace a currently stored item.
-     * @param item the item to store in the room.
+     * @param weapon the weapon to store in the room.
      */
-    public void storeItem(Item item) {
+    public void storeWeapon(Weapon weapon) {
+        System.out.println("Storing weapon " + weapon.getName());
         this.imageName = DEFAULT_IMAGE;
-        this.item = item;
+        this.weapon = weapon;
         this.creature = null;
     }
 
     /**
-     * Take the item from the room
+     * Take the weapon from the room
      * @return the item that was in the room
      */
-    public Item takeItem() {
-        Item item = this.item;
-        this.item = null;
-        return item;
+    public Weapon takeWeapon() {
+        Weapon weapon = this.weapon;
+        this.weapon = null;
+        return weapon;
     }
 
 }

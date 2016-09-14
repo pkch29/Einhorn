@@ -1,6 +1,7 @@
 package creature;
 
 import item.Item;
+import item.Weapon;
 
 /**
  * Creates a creature with the attributes that have been set
@@ -14,15 +15,15 @@ public class Creature implements Creatures {
     private String description;
     private int hp;
     private int level;
-    private Item item;
+    private Weapon weapon;
 
-    public Creature(String name, String species, String description, int level, int hp, Item item) {
+    public Creature(String name, String species, String description, int level, int hp, Weapon weapon) {
         this.name = name;
         this.species = species;
         this.description = description;
         this.hp = hp;
         this.level = level;
-        this.item = item;
+        this.weapon = weapon;
     }
 
     @Override
@@ -69,7 +70,7 @@ public class Creature implements Creatures {
 
     @Override
     public int attack(int dice) {
-        int damage = (item.getForce()*level) + dice;
+        int damage = (weapon.getForce()*level) + dice;
         return damage;
     }
 
@@ -82,8 +83,8 @@ public class Creature implements Creatures {
     }
 
     @Override
-    public Item getItem(){
-        return item;
+    public Weapon getWeapon(){
+        return weapon;
     }
 
     @Override
@@ -118,8 +119,8 @@ public class Creature implements Creatures {
     }
 
     @Override
-    public void setItem(Item item) {
-        this.item = item;
+    public void setWeapon(Weapon wepaon) {
+        this.weapon = weapon;
     }
 
     @Override

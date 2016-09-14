@@ -1,6 +1,6 @@
 package creature;
 
-import item.Item;
+import item.Weapon;
 
 /**
  * Created by Anna on 11.07.2016.
@@ -10,7 +10,7 @@ public class Player implements Creatures {
     int HP;
     int level;
     String name;
-    Item item;
+    Weapon weapon;
     int dir;
 
     // 0-Norden, 1-Osten, 2-Süden, 3-Westen
@@ -32,7 +32,7 @@ public class Player implements Creatures {
     public Player(Creature creature) {
         this.HP = creature.getHP();
         this.level = creature.getLevel();
-        this.item = creature.getItem();
+        this.weapon = creature.getWeapon();
         this.dir = 0;
     }
 
@@ -181,8 +181,8 @@ public class Player implements Creatures {
     }
 
     @Override
-    public Item getItem() {
-        return item;
+    public Weapon getWeapon() {
+        return weapon;
     }
 
     @Override
@@ -202,7 +202,7 @@ public class Player implements Creatures {
 
     @Override
     public int attack(int dice) {
-        int damage = (item.getForce()*level) + dice;
+        int damage = (weapon.getForce()*level) + dice;
         return damage;
     }
     @Override
@@ -222,8 +222,8 @@ public class Player implements Creatures {
     }
 
     @Override
-    public void setItem(Item item) {
-        this.item = item;
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
     @Override
@@ -236,7 +236,7 @@ public class Player implements Creatures {
         stats[0] = getName();
         stats[1] = Integer.toString(getHP());
         stats[2] = Integer.toString(getLevel());
-        stats[3] = getItem().getName();
+        stats[3] = getWeapon().getName();
         return stats;
     }
 }

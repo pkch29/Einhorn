@@ -1,6 +1,7 @@
 package creature;
 
-import item.Item;
+import item.Weapon;
+
 /**
  * Created by Anna on 11.07.2016.
  */
@@ -35,7 +36,7 @@ public interface Creatures {
      * Gets the Item of the creature.
      * @return the item of the creature
      */
-    Item getItem();
+    Weapon getWeapon();
 
     /**
      * Gets the level of the creatures.
@@ -79,9 +80,9 @@ public interface Creatures {
 
     /**
      * Sets the creatures (new) Item.
-     * @param item of the creature
+     * @param weapon of the creature
      */
-    void setItem(Item item);
+    void setWeapon(Weapon weapon);
 
     /**
      * Sets the level of the creature.

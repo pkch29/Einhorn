@@ -4,6 +4,7 @@ import creature.Creature;
 import creature.Player;
 import dice.Dice;
 import item.Item;
+import item.Weapon;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -37,15 +38,15 @@ public class RoomTest {
 
     private Room room;
     private Creature creature;
-    private Item weapon;
-    private Item strongWeapon;
+    private Weapon weapon;
+    private Weapon strongWeapon;
     private Player player;
     private Dice dice;
 
     @org.junit.Before
     public void setUp() throws Exception {
-        weapon = new Item(weaponName, weaponDescription, weaponForce);
-        strongWeapon = new Item(weaponName, weaponDescription, weaponForce+1);
+        weapon = new Weapon(weaponName, weaponDescription, weaponForce);
+        strongWeapon = new Weapon(weaponName, weaponDescription, weaponForce+1);
         creature = new Creature(creatureName, creatureSpecies, creatureDescription, creatureHp, creatureLevel, weapon);
         room = new Room(roomName, roomNorth, roomEast, roomSouth, roomWest, roomDescription);
         player = new Player(creature);
@@ -70,7 +71,7 @@ public class RoomTest {
 
     @Test
     public void creature() throws Exception {
-        room.storeItem(weapon);
+        room.storeWeapon(weapon);
         assertEquals(room.hasCreature(), false);
         room.spawnCreature(creature);
         assertEquals(room.hasCreature(), true);
@@ -80,16 +81,16 @@ public class RoomTest {
     public void weapon() throws Exception {
         room.spawnCreature(creature);
         assertEquals(room.hasWeapon(), false);
-        room.storeItem(weapon);
+        room.storeWeapon(weapon);
         assertEquals(room.hasWeapon(), true);
         assertEquals(room.hasStrongerWeapon(strongWeapon), false);
-        room.takeItem();
+        room.takeWeapon();
         assertEquals(room.hasWeapon(), false);
-        room.storeItem(strongWeapon);
+        room.storeWeapon(strongWeapon);
         assertEquals(room.hasStrongerWeapon(weapon), true);
         room.giveWeaponToPlayer(player);
         assertEquals(room.hasWeapon(), false);
-        assertEquals(player.getItem(), strongWeapon);
+        assertEquals(player.getWeapon(), strongWeapon);
     }
 
     @Test
@@ -102,7 +103,7 @@ public class RoomTest {
 
     @Test
     public void fighting() throws Exception {
-        room.storeItem(strongWeapon);
+        room.storeWeapon(strongWeapon);
         room.giveWeaponToPlayer(player);
         room.spawnCreature(creature);
 
