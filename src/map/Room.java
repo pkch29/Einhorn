@@ -78,6 +78,8 @@ public class Room {
 
         messages.add("");
         if (player.isAlive()) {
+            // TODO: 14.09.16 tell player that he just killed a creature of a certain level
+//            player.killedCreature(creature.getLevel());
             messages.add("You survived using your " + player.getItem().getName() + ".");
         } else {
             messages.add("You were killed!");
