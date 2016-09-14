@@ -69,6 +69,10 @@ public interface GuiConnect {
      */
     boolean hasGold();
 
+    boolean isCreatureKilled();
+    boolean isWeaponTaken();
+    boolean isGoldTaken();
+
     /**
      * Start a new game
      */

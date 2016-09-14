@@ -160,7 +160,7 @@ public class GUIController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Neuer Raum");
         String header = "Hmm... Wohin denn jetzt?";
-        if (map.isCreaturekilled()){
+        if (map.isCreatureKilled()){
             header = "Da ist ein MOOONSTER!!!";
         }
         else {

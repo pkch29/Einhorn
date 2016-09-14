@@ -33,6 +33,10 @@ public class Room {
     private Weapon weapon = null;
 	private String imageName;
 
+    private boolean flagKilledCreature;
+    private boolean flagTookGold;
+    private boolean flagTookWeapon;
+
     /**
      * Constructor of a room.
      * @param name name of the room
@@ -80,6 +84,7 @@ public class Room {
         if (player.isAlive()) {
             // TODO: 14.09.16 tell player that he just killed a creature of a certain level
 //            player.killedCreature(creature.getLevel());
+            flagKilledCreature = true;
             messages.add("Du hast überlebt!");
         } else {
             messages.add("Du wurdest getötet!");
@@ -186,6 +191,29 @@ public class Room {
         return (weapon.getForce() > playerWeapon.getForce());
     }
 
+
+    public boolean isCreatureKilled() {
+        return flagKilledCreature;
+    }
+
+    public boolean isWeaponTaken() {
+        return flagTookWeapon;
+    }
+
+    public boolean isGoldTaken() {
+        return false;
+    }
+
+
+    /**
+     * Reset the status flags
+     */
+    public void resetFlags() {
+        flagKilledCreature = false;
+        flagTookGold = false;
+        flagTookWeapon = false;
+    }
+
     /**
      * Spawns a given creature in the room.
      * The room image will show this creature.
@@ -218,6 +246,7 @@ public class Room {
     public Weapon takeWeapon() {
         Weapon weapon = this.weapon;
         this.weapon = null;
+        flagTookWeapon = true;
         return weapon;
     }
 

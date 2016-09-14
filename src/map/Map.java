@@ -31,6 +31,7 @@ public class Map implements gui.GuiConnect {
      * @param room the room the player is going to enter.
      */
     private void enterRoom(Room room) {
+        room.resetFlags();
         this.room = room;
         messages.clear();
         if (room.hasWeapon()) {
@@ -145,6 +146,18 @@ public class Map implements gui.GuiConnect {
             player.setName(prevPlayer.getName());
         }
         room = storage.getRoom(Room.ENTRY);
+    }
+
+    public boolean isCreatureKilled() {
+        return room.isCreatureKilled();
+    }
+
+    public boolean isGoldTaken() {
+        return room.isGoldTaken();
+    }
+
+    public boolean isWeaponTaken() {
+        return room.isWeaponTaken();
     }
 
     /**
