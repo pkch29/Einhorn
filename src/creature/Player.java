@@ -151,8 +151,10 @@ public class Player implements Creatures {
 
     @Override
     public void defend(int damage) {
-        HP -= damage;
-
+            int newHp = HP - damage;
+            if (newHp < 0){
+                HP = 0;
+            }else HP = newHp;
     }
 
     @Override
