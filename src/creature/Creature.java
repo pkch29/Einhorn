@@ -25,28 +25,15 @@ public class Creature implements Creatures {
         this.item = item;
     }
 
-    /**
-     * Turns the object name into a String
-     * @return the creatures species and name
-     */
     @Override
     public String toString(){
         return " the " + species + " " + name;
     }
 
-    /**
-     * Gets the health points of the creature
-     * @return health points
-     */
     @Override
-    public int getHP() {
-        return hp;
-    }
+    public int getHP() {return hp;}
 
-    /**
-     * Gets the name of the creature
-     * @return the creatures name
-     */
+    @Override
     public String getName(){
         return name;
     }
@@ -67,21 +54,12 @@ public class Creature implements Creatures {
         return description;
     }
 
-    /**
-     * Gets the experience level of the creature
-     * @return the creatures level
-     */
+    @Override
     public int getLevel(){
         return level;
     }
 
-    /**
-     * method that attacks
-     * @param attackdamage
-     * @param level is the actual level of the creature
-     * @param dice is a random number of a D20-dice
-     * @return damage of the creature
-     */
+    @Override
     public int attack(int attackdamage, int level, int dice) {
         int damage = (attackdamage*level)+ dice;
         //Schlagstärke = Angriffskraft der Waffe * eigenes Level + Wurf eines D20 Würfels
@@ -89,38 +67,26 @@ public class Creature implements Creatures {
         return damage;
     }
 
-    /**
-     * Gets the attack damage of the creature
-     *
-     * @param dice is a random number of a D20-dice
-     * @return the attackdamage of the creature
-     */
+    @Override
     public int attack(int dice) {
         int damage = (item.getForce()*level) + dice;
         return damage;
     }
 
-    /**
-     * Defend against the damage, and reduce live accordingly
-     *
-     * @param damage damage taken by an attack
-     */
+    @Override
     public void defend(int damage) {
-        hp = hp - damage;
+        int newHp = hp - damage;
+        if (newHp < 0){
+            hp = 0;
+        }else hp = newHp;
     }
 
-    /**
-     * Gets the item of creature
-     * @return the creatures item
-     */
+    @Override
     public Item getItem(){
         return item;
     }
 
-    /**
-     * Sets the name of the creature
-     * @param name of the creature
-     */
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -141,34 +107,22 @@ public class Creature implements Creatures {
         this.description = description;
     }
 
-    /**
-     * Sets creatures health points
-     * @param hp, health points of the creature
-     */
+    @Override
     public void setHp(int hp) {
         this.hp = hp;
     }
 
-    /**
-     * Sets the experience level of the creature
-     * @param level of the creature
-     */
+    @Override
     public void setLevel(int level) {
         this.level = level;
     }
 
-    /**
-     * Sets creatures item
-     * @param item of the creature
-     */
+    @Override
     public void setItem(Item item) {
         this.item = item;
     }
 
-    /**
-     * Checks if the health points of the creature greater than 0
-     * @return true if health points greater than 0, otherwise return false
-     */
+    @Override
     public boolean isAlive(){
         return hp > 0;
     }
