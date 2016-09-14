@@ -63,7 +63,7 @@ public class Player implements Creatures {
      * @return
      */
     public int goBack(){
-        direction =- 2;
+        direction -= 2;
 
         if(direction>3){
             direction = direction%4;
