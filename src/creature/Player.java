@@ -12,18 +12,10 @@ public class Player implements Creatures {
     String name;
     Weapon weapon;
     int dir;
+    int maxHP;
 
     // 0-Norden, 1-Osten, 2-Süden, 3-Westen
     int direction;
-
-
-
-//    public Player(String name, int level, int Hp){
-//        this.name = name;
-//        this.level = level;
-//        this.HP = Hp;
-//        this.dir = 0;
-//    }
 
     /**
      * Create a player from a given creature
@@ -31,6 +23,7 @@ public class Player implements Creatures {
      */
     public Player(Creature creature) {
         this.HP = creature.getHP();
+        this.maxHP = creature.getHP();
         this.level = creature.getLevel();
         this.weapon = creature.getWeapon();
         this.dir = 0;
@@ -207,7 +200,8 @@ public class Player implements Creatures {
     }
 
     public void killedCreature(){
-        level +=1;
+        level += 1;
+        HP = maxHP;
     }
 
     @Override
