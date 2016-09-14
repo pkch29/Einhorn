@@ -57,7 +57,8 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public String getHelp() {
-        return "Das ist die allgemeine Hilfe.\nDrücke Knöpfe und überlebe einfach!";
+        return "Finde das Schwert und töte Gothofiedus,\ntöte dann Grodagrim und hole die Lanze.\n"
+                + "Jetzt suche den Schatz ...\nund verlasse das Verlies.";
     }
 
     @Override

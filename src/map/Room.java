@@ -155,8 +155,6 @@ public class Room {
         List<String> messages = new ArrayList<>();
         messages.add("Du hast eine bessere Waffe gefunden: " + weapon.getName() + " (" + weapon.getForce() + ")");
         messages.add(weapon.getDescription());
-        // TODO: 13.09.16 player needs to decide if he wants the weapon
-//        player.takeWeapon(this,item);
         player.setWeapon(this.takeWeapon());
         return messages;
     }
