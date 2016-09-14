@@ -14,6 +14,7 @@ public interface Creatures {
 
     /**
      * Defend against the damage, and reduce live accordingly
+     * health points shouldn't be smaller than 0
      * @param damage damage taken by an attack
      */
     void defend(int damage);
