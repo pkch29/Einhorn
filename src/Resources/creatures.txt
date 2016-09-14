@@ -7,35 +7,35 @@ Weapon: Hand
 
 Name: Dandelion 
 Species: Unicorn
-Description: A sleepy unicorn, 3m tall with a long horn on his forehead. If you dare to disturb him, be aware of his fire-spewing nostrils!
+Description: Ein verschlafenes Einhorn, 3 m groß mit einem langen Horn auf der Stirn. Wenn du es störtst, nehm dich vor seinem Feueratem in Acht!
 Experience: 3
 HealthStatus: 25 
 Weapon: Fire
 
 Name: Grodagrim 
 Species: Dwarf
-Description: A small dwarf with a long battle axe.
+Description: Ein kleiner Zwerg mit einer großen Streitaxt.
 Experience: 2
 HealthStatus: 35 
 Weapon: Axe
 
 Name: Gothofiedus 
 Species: Rat
-Description: A 50cm sized rat; gray with intelligent eyes.
+Description: Eine 50 cm große Ratte, grau mit intelligenten Augen.
 Experience: 1
 HealthStatus: 10 
 Weapon: Teeth
 
 Name: Lothofiedus 
 Species: Rat
-Description: A 50cm sized rat; gray with intelligent eyes.
+Description: Eine 50 cm große Ratte, grau mit intelligenten Augen.
 Experience: 5
 HealthStatus: 10 
 Weapon: Teeth
 
 Name: Rothofiedus 
 Species: Rat
-Description: A 50cm sized rat; gray with intelligent eyes.
+Description: Eine 50 cm große Ratte, grau mit intelligenten Augen.
 Experience: 10
 HealthStatus: 10 
 Weapon: Teeth
