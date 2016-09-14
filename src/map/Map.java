@@ -34,6 +34,15 @@ public class Map implements gui.GuiConnect {
         room.resetFlags();
         this.room = room;
         messages.clear();
+        player.healing();
+        if (room.isEntry() && player.hasTreasure()) {
+            messages.add("GAME OVER - Du hast gewonnen!");
+            messages.add("");
+            messages.add("Du kannst es gleich nochmal versuchen.");
+            messages.add("Du befindest Dich wieder am Eingang - aber ohne Schatz.");
+            newGame();
+            return;
+        }
         if (room.hasWeapon()) {
             lootWeapon();
         } else if (room.hasCreature()) {

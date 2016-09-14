@@ -203,7 +203,8 @@ public class Player implements Creatures {
 
     public void killedCreature(){
         level += 1;
-        HP = maxHP;
+        // TODO: 14.09.16 healing() when leaving room or maxHP after kill. 
+//        HP = maxHP;
     }
 
     public void setTreasure (){
