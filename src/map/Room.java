@@ -65,6 +65,11 @@ public class Room {
      */
     public List<String> fightPlayer(Player player, Dice dice) {
 
+        // TODO: 14.09.16 Debug output for fights
+        System.out.printf("\n\nPlayer vs " + creature.getName() + "\n");
+        System.out.printf("Player %2d          Creature %2d\n",
+                player.getHP(), creature.getHP());
+
         List<String> messages = new ArrayList<>();
 
         messages.add("Du wurdest von " + creature.getName() + " angegriffen.");
@@ -72,12 +77,22 @@ public class Room {
         messages.add("");
 
         while (player.isAlive() && creature.isAlive()) {
-            player.defend(creature.attack(dice.rollDice()));
-            messages.add(creature.getName() + " würfelt " + dice.getNumber() + ". Deine Gesundheit sinkt auf " + player.getHP());
-            if (player.isAlive()) {
-                creature.defend(player.attack(dice.rollDice()));
-                messages.add("Du würfelst " + dice.getNumber() + ". " + creature.getName() + "s Gesundheit sinkt auf " + creature.getHP());
+            int creatureAttack = creature.attack(dice.rollDice());
+            int playerAttack = player.attack(dice.rollDice());
+            int damage = Math.abs(creatureAttack - playerAttack);
+
+            if (playerAttack == creatureAttack) {
+                System.out.println("A draw ...");
+                continue;
             }
+
+            if (playerAttack < creatureAttack) {
+                player.defend(damage);
+            } else {
+                creature.defend(damage);
+            }
+            System.out.printf("Player %2d : %2d     Creature %2d : %2d      %2d\n",
+                    player.getHP(), playerAttack, creature.getHP(), creatureAttack,  damage);
         }
 
         messages.add("");

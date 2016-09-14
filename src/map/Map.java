@@ -39,9 +39,10 @@ public class Map implements gui.GuiConnect {
         } else if (room.hasCreature()) {
             fightCreature();
             if (! isPlayerAlive()) {
-                messages.add("GAME OVER!");
+                messages.add("GAME OVER - Du hast verloren!");
                 messages.add("");
-                messages.add("Try again. You are back at the entry!");
+                messages.add("Versuch es nochmal.");
+                messages.add("Du befindest Dich wieder frisch und munter am Eingang.");
                 newGame();
             }
         }
@@ -56,7 +57,7 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public String getHelp() {
-        return "This is a general help text.";
+        return "Das ist die allgemeine Hilfe.\nDrücke Knöpfe und überlebe einfach!";
     }
 
     @Override
