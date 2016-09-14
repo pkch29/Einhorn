@@ -16,7 +16,7 @@ public class Creature implements Creatures {
     private int level;
     private Item item;
 
-    public Creature(String name, String species, String description, int hp, int level, Item item) {
+    public Creature(String name, String species, String description, int level, int hp, Item item) {
         this.name = name;
         this.species = species;
         this.description = description;
