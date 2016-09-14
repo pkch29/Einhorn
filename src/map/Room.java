@@ -206,7 +206,6 @@ public class Room {
      * @param weapon the weapon to store in the room.
      */
     public void storeWeapon(Weapon weapon) {
-        System.out.println("Storing weapon " + weapon.getName());
         this.imageName = DEFAULT_IMAGE;
         this.weapon = weapon;
         this.creature = null;
