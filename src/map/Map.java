@@ -100,8 +100,18 @@ public class Map implements gui.GuiConnect {
     }
 
     @Override
+    public boolean hasCreature() {
+        return room.hasCreature();
+    }
+
+    @Override
     public boolean hasLeft() {
         return room.hasRoomInDirection(player.getLeftDirection());
+    }
+
+    @Override
+    public boolean hasGold() {
+        return room.hasGold();
     }
 
     @Override
@@ -112,6 +122,11 @@ public class Map implements gui.GuiConnect {
     @Override
     public boolean hasStraight() {
         return room.hasRoomInDirection(player.getStraightDirection());
+    }
+
+    @Override
+    public boolean hasWeapon() {
+        return room.hasWeapon();
     }
 
     /**
