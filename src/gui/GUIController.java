@@ -120,14 +120,30 @@ public class GUIController implements Initializable {
 
     }
     public void checkDirections(){
+
         if (!map.hasLeft()){
             left.setDisable(true);
+        }
+        else {
+            left.setDisable(false);
         }
         if (!map.hasRight()){
             right.setDisable(true);
         }
+        else {
+            right.setDisable(false);
+        }
         if (!map.hasStraight()){
             straight.setDisable(true);
+        }
+        else {
+            straight.setDisable(false);
+        }
+        if(!map.hasBack()){
+            back.setDisable(true);
+        }
+        else {
+            back.setDisable(false);
         }
     }
 
