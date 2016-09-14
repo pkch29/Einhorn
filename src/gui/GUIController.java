@@ -159,7 +159,21 @@ public class GUIController implements Initializable {
     public void showMessage(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Neuer Raum");
-        alert.setHeaderText("Da ist ein MOOONSTER!!!");
+        String header = "Hmm... Wohin denn jetzt?";
+        if (map.hasCreature()){
+            header = "Da ist ein MOOONSTER!!!";
+        }
+        else {
+            if(map.hasWeapon()){
+                header = "Ui, da liegt was rum.";
+            }
+            else {
+                if(map.hasGold()){
+                    header = "Es ist nicht alles Gold was glänzt, aber in diesem Fall schon!";
+                }
+            }
+        }
+        alert.setHeaderText(header);
         List<String> t = map.showAndWait();
         if (t.size() == 0){
             t.add("Hier gibt's nichts... nur Staub");
