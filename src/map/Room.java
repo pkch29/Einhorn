@@ -215,7 +215,15 @@ public class Room {
     }
 
     /**
-     * Test if weapon was recently taken
+     * Test if this room is the entrance.
+     * @return whether this room is the entrance
+     */
+    public boolean isEntry() {
+        return name.contentEquals(Room.ENTRY);
+    }
+
+    /**
+     * Test if weapon was recently taken.
      * @return whether weapon was recently taken
      */
     public boolean isWeaponTaken() {
