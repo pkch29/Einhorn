@@ -97,10 +97,9 @@ public class Room {
 
         messages.add("");
         if (player.isAlive()) {
-            // TODO: 14.09.16 tell player that he just killed a creature of a certain level
-//            player.killedCreature(creature.getLevel());
+            player.killedCreature();
             flagKilledCreature = true;
-            messages.add("Du hast überlebt!");
+            messages.add("Du hast überlebt und steigst einen Level auf!");
         } else {
             messages.add("Du wurdest getötet!");
         }
