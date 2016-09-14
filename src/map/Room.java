@@ -191,15 +191,26 @@ public class Room {
         return (weapon.getForce() > playerWeapon.getForce());
     }
 
-
+    /**
+     * Test if creature was recently killed
+     * @return whether creature was recently killed
+     */
     public boolean isCreatureKilled() {
         return flagKilledCreature;
     }
 
+    /**
+     * Test if weapon was recently taken
+     * @return whether weapon was recently taken
+     */
     public boolean isWeaponTaken() {
         return flagTookWeapon;
     }
 
+    /**
+     * Test if gold was recently taken
+     * @return whether gold was recently taken
+     */
     public boolean isGoldTaken() {
         return false;
     }

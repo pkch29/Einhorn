@@ -69,8 +69,22 @@ public interface GuiConnect {
      */
     boolean hasGold();
 
+    /**
+     * Test whether creature was recently killed.
+     * @return whether creature was recently killed
+     */
     boolean isCreatureKilled();
+
+    /**
+     * Test whether weapon was taken
+     * @return whether weapon was taken
+     */
     boolean isWeaponTaken();
+
+    /**
+     * Test whether gold was taken
+     * @return whether gold was taken
+     */
     boolean isGoldTaken();
 
     /**

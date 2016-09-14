@@ -148,14 +148,17 @@ public class Map implements gui.GuiConnect {
         room = storage.getRoom(Room.ENTRY);
     }
 
+    @Override
     public boolean isCreatureKilled() {
         return room.isCreatureKilled();
     }
 
+    @Override
     public boolean isGoldTaken() {
         return room.isGoldTaken();
     }
 
+    @Override
     public boolean isWeaponTaken() {
         return room.isWeaponTaken();
     }
