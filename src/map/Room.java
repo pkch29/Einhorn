@@ -63,16 +63,16 @@ public class Room {
 
         List<String> messages = new ArrayList<>();
 
-        messages.add("You were attacked by the " + creature.getSpecies() + " " + creature.getName() + ".");
+        messages.add("Du wurdest von " + creature.getName() + " angegriffen.");
         messages.add(creature.getDescription());
         messages.add("");
 
         while (player.isAlive() && creature.isAlive()) {
             player.defend(creature.attack(dice.rollDice()));
-            messages.add(creature.getName() + " rolled a " + dice.getNumber() + ". Your health is now " + player.getHP());
+            messages.add(creature.getName() + " würfelt " + dice.getNumber() + ". Deine Gesundheit sinkt auf " + player.getHP());
             if (player.isAlive()) {
                 creature.defend(player.attack(dice.rollDice()));
-                messages.add("You rolled a " + dice.getNumber() + ". " + creature.getName() + "'s health is now " + creature.getHP());
+                messages.add("Du würfelst " + dice.getNumber() + ". " + creature.getName() + "s Gesundheit sinkt auf " + creature.getHP());
             }
         }
 
@@ -80,9 +80,9 @@ public class Room {
         if (player.isAlive()) {
             // TODO: 14.09.16 tell player that he just killed a creature of a certain level
 //            player.killedCreature(creature.getLevel());
-            messages.add("You survived using your " + player.getWeapon().getName() + ".");
+            messages.add("Du hast überlebt!");
         } else {
-            messages.add("You were killed!");
+            messages.add("Du wurdest getötet!");
         }
 
         return messages;
@@ -134,7 +134,7 @@ public class Room {
      */
     public List<String> giveWeaponToPlayer(Player player) {
         List<String> messages = new ArrayList<>();
-        messages.add("You found a " + weapon.getName() + " (" + weapon.getForce() + ")");
+        messages.add("Du hast eine bessere Waffe gefunden: " + weapon.getName() + " (" + weapon.getForce() + ")");
         messages.add(weapon.getDescription());
         // TODO: 13.09.16 player needs to decide if he wants the weapon
 //        player.takeWeapon(this,item);
