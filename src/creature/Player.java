@@ -1,6 +1,5 @@
 package creature;
 
-import creature.Creatures;
 import item.Item;
 
 /**
@@ -12,6 +11,7 @@ public class Player implements Creatures {
     int level;
     String name;
     Item item;
+    int dir;
 
     // 0-Norden, 1-Osten, 2-Süden, 3-Westen
     int direction;
@@ -84,6 +84,61 @@ public class Player implements Creatures {
         return direction;
     }
 
+
+    /**
+     *
+     * @return
+     */
+    public int getLeftDirection(){
+
+        if(direction==0){
+            dir = 3;
+        } else {
+            dir = direction - 1;
+        }
+        return dir;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getBackDirection(){
+
+        if(direction==1){
+            dir = 3;
+        }else if (direction==0){
+            dir = 2;
+        }else {
+            dir = direction -2;
+        }
+
+        return dir;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getRightDirection(){
+
+        if(direction==3){
+            dir = 0;
+        }else{
+            dir = direction+1;
+        }
+
+        return dir;
+
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getStraightDirection(){
+        return direction;
+    }
 
     @Override
     public boolean isAlive() {
