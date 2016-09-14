@@ -52,6 +52,24 @@ public interface GuiConnect {
     boolean hasBack();
 
     /**
+     * Test if room has a weapon
+     * @return whether room has a weapon
+     */
+    boolean hasWeapon();
+
+    /**
+     * Test if room has a creature
+     * @return whether room has a creature
+     */
+    boolean hasCreature();
+
+    /**
+     * Test if room has gold
+     * @return whether room has gold
+     */
+    boolean hasGold();
+
+    /**
      * Start a new game
      */
     void newGame();

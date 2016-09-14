@@ -48,7 +48,7 @@ public class RoomTest {
         strongWeapon = new Item(weaponName, weaponDescription, weaponForce+1);
         creature = new Creature(creatureName, creatureSpecies, creatureDescription, creatureHp, creatureLevel, weapon);
         room = new Room(roomName, roomNorth, roomEast, roomSouth, roomWest, roomDescription);
-        player = new Player(playerName, playerLevel, playerHp);
+        player = new Player(creature);
         dice = new Dice();
     }
 

@@ -18,10 +18,23 @@ public class Player implements Creatures {
 
 
 
-    public Player(String name, int level, int Hp){
-        this.name = name;
-        this.level = level;
-        this.HP = Hp;
+//    public Player(String name, int level, int Hp){
+//        this.name = name;
+//        this.level = level;
+//        this.HP = Hp;
+//        this.dir = 0;
+//    }
+
+    /**
+     * Create a player from a given creature
+     * @param creature
+     */
+    public Player(Creature creature) {
+        this.name = creature.getName();
+        this.HP = creature.getHP();
+        this.level = creature.getLevel();
+        this.item = creature.getItem();
+        this.dir = 0;
     }
 
     /**

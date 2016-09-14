@@ -100,8 +100,18 @@ public class Map implements gui.GuiConnect {
     }
 
     @Override
+    public boolean hasCreature() {
+        return room.hasCreature();
+    }
+
+    @Override
     public boolean hasLeft() {
         return room.hasRoomInDirection(player.getLeftDirection());
+    }
+
+    @Override
+    public boolean hasGold() {
+        return room.hasGold();
     }
 
     @Override
@@ -112,6 +122,11 @@ public class Map implements gui.GuiConnect {
     @Override
     public boolean hasStraight() {
         return room.hasRoomInDirection(player.getStraightDirection());
+    }
+
+    @Override
+    public boolean hasWeapon() {
+        return room.hasWeapon();
     }
 
     /**
@@ -126,8 +141,9 @@ public class Map implements gui.GuiConnect {
             e.printStackTrace();
         }
         // TODO: 13.09.16 default HP for player!
-        player = new Player("Player", 1, 18);
-        player.setItem(storage.getItem("Hand"));
+//        player = new Player("Player", 1, 18);
+        player = new Player(storage.getCreature("You"));
+//        player.setItem(storage.getItem("Hand"));
         room = storage.getRoom(Room.ENTRY);
     }
 

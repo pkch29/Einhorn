@@ -150,6 +150,16 @@ public class Room {
         return creature != null;
     }
 
+
+    /**
+     * Test if the room has gold in it
+     * @return whether the room has gold in it
+     */
+    public boolean hasGold() {
+        // TODO: 14.09.16 not yet implemented!
+        return false;
+    }
+
     /**
      * Checks if the room has a weapon in it.
      * Currently every item is a weapon.
