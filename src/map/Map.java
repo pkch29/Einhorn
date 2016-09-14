@@ -22,17 +22,8 @@ public class Map implements gui.GuiConnect {
     private Storage storage = null;
 
     public Map() {
-        dice = new Dice();
-        try {
-            storage = new Storage();
-        } catch (IOException e) {
-            // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
-            e.printStackTrace();
-        }
-        // TODO: 13.09.16 default HP for player! 
-        player = new Player("Player", 1, 18);
-        player.setItem(storage.getItem("Hand"));
         messages = new ArrayList<>();
+        initGame();
     }
 
     /**
@@ -49,6 +40,9 @@ public class Map implements gui.GuiConnect {
             fightCreature();
             if (! isPlayerAlive()) {
                 messages.add("GAME OVER!");
+                messages.add("");
+                messages.add("Try again. You are back at the entry!");
+                newGame();
             }
         }
     }
@@ -124,6 +118,16 @@ public class Map implements gui.GuiConnect {
      * Initializes the game parameters
      */
     private void initGame() {
+        dice = new Dice();
+        try {
+            storage = new Storage();
+        } catch (IOException e) {
+            // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
+            e.printStackTrace();
+        }
+        // TODO: 13.09.16 default HP for player!
+        player = new Player("Player", 1, 18);
+        player.setItem(storage.getItem("Hand"));
         room = storage.getRoom(Room.ENTRY);
     }
 
