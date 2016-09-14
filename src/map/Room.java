@@ -147,7 +147,7 @@ public class Room {
      * @return whether the room has a creature in it
      */
     public boolean hasCreature() {
-        return creature != null;
+        return (creature != null) && creature.isAlive();
     }
 
 
