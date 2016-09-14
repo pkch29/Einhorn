@@ -30,7 +30,6 @@ public class Player implements Creatures {
      * @param creature
      */
     public Player(Creature creature) {
-        this.name = creature.getName();
         this.HP = creature.getHP();
         this.level = creature.getLevel();
         this.item = creature.getItem();
