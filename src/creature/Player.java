@@ -211,13 +211,14 @@ public class Player implements Creatures {
     }
 
     public boolean hasTreasure(){
-        if (flagHasTreasure == true){
-            return true;
-        }else return false;
+        return flagHasTreasure;
     }
 
     public void healing(){
         HP += 5;
+        if (HP > maxHP){
+            HP = maxHP;
+        }
     }
 
     @Override
