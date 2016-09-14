@@ -164,7 +164,7 @@ public class Player implements Creatures {
     @Override
     public void defend(int damage) {
             int newHp = HP - damage;
-            if (newHp < 0){
+            if (newHp <= 0){
                 HP = 0;
             }else HP = newHp;
     }
@@ -205,6 +205,11 @@ public class Player implements Creatures {
         int damage = (weapon.getForce()*level) + dice;
         return damage;
     }
+
+    public void killedCreature(){
+        level +=1;
+    }
+
     @Override
     public String getName() {
         return name;
