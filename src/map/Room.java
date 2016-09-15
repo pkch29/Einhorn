@@ -5,6 +5,7 @@ import creature.Player;
 import dice.Dice;
 import item.Weapon;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,10 +82,10 @@ public class Room {
             int playerAttack = player.attack(dice.rollDice());
             int damage = Math.abs(creatureAttack - playerAttack);
 
-            if (playerAttack == creatureAttack) {
-                System.out.println("A draw ...");
-                continue;
-            }
+//            if (playerAttack == creatureAttack) {
+//                System.out.println("A draw ...");
+//                continue;
+//            }
 
             if (playerAttack < creatureAttack) {
                 player.defend(damage);
@@ -105,6 +106,22 @@ public class Room {
         }
 
         return messages;
+    }
+
+    /**
+     * Find name of a valid image file
+     * @return name of a valid image file
+     */
+    private String getImageFilename() {
+        String fileName;
+        if (hasCreature()) {
+            // TODO: 13.09.16 brauchen noch die echten Bilder hierfür.
+//            fileName = creature.getName() + ".jpg";
+            fileName = DEFAULT_IMAGE;
+        } else {
+            fileName = DEFAULT_IMAGE;
+        }
+        return fileName;
     }
 
     /**
@@ -252,10 +269,8 @@ public class Room {
      * @param creature the creature to spawn in the room.
      */
     public void spawnCreature(Creature creature) {
-        // TODO: 13.09.16 brauchen noch die echten Bilder hierfür. 
-//        this.imageName = creature.getName() + ".jpg";
-        this.imageName = DEFAULT_IMAGE;
         this.creature = creature;
+        this.imageName = getImageFilename();
         this.weapon = null;
     }
 
@@ -265,9 +280,9 @@ public class Room {
      * @param weapon the weapon to store in the room.
      */
     public void storeWeapon(Weapon weapon) {
-        this.imageName = DEFAULT_IMAGE;
-        this.weapon = weapon;
         this.creature = null;
+        this.imageName = getImageFilename();
+        this.weapon = weapon;
     }
 
     /**
