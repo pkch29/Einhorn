@@ -21,6 +21,12 @@ public class Map implements gui.GuiConnect {
     private Room room = null;
     private Storage storage = null;
 
+    private boolean flagGameIsWon = false;
+
+    /**
+     * Constructor
+     * Most variables get instantiated by a call to newGame from the GUI
+     */
     public Map() {
         messages = new ArrayList<>();
     }
@@ -40,21 +46,21 @@ public class Map implements gui.GuiConnect {
             messages.add("");
             messages.add("Du kannst es gleich nochmal versuchen.");
             messages.add("Du befindest Dich wieder am Eingang - aber ohne Schatz.");
-            newGame();
+            flagGameIsWon = true;
             return;
         }
-        if (room.hasWeapon()) {
-            lootWeapon();
-        } else if (room.hasCreature()) {
-            fightCreature();
-            if (! isPlayerAlive()) {
-                messages.add("GAME OVER - Du hast verloren!");
-                messages.add("");
-                messages.add("Versuch es nochmal.");
-                messages.add("Du befindest Dich wieder frisch und munter am Eingang.");
-                newGame();
-            }
-        }
+//        if (room.hasWeapon()) {
+//            lootWeapon();
+//        } else if (room.hasCreature()) {
+//            fightCreature();
+//            if (! isPlayerAlive()) {
+//                messages.add("GAME OVER - Du hast verloren!");
+//                messages.add("");
+//                messages.add("Versuch es nochmal.");
+//                messages.add("Du befindest Dich wieder frisch und munter am Eingang.");
+//                newGame();
+//            }
+//        }
     }
 
     @Override
@@ -156,6 +162,7 @@ public class Map implements gui.GuiConnect {
      * Initializes the game parameters
      */
     private void initGame() {
+        flagGameIsWon = false;
         dice = new Dice();
         try {
             storage = new Storage();
@@ -174,6 +181,11 @@ public class Map implements gui.GuiConnect {
     @Override
     public boolean isCreatureKilled() {
         return room.isCreatureKilled();
+    }
+
+    @Override
+    public boolean isGameWon()  {
+        return flagGameIsWon;
     }
 
     @Override
@@ -217,6 +229,11 @@ public class Map implements gui.GuiConnect {
     public List<String> showAndWait()
     {
         return messages;
+    }
+
+    @Override
+    public void takeWeapon() {
+        lootWeapon();
     }
 
 }
