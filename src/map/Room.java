@@ -164,6 +164,19 @@ public class Room {
     }
 
     /**
+     * Gets the name of the weapon in the room
+     * has to be called after hasWeapon();
+     * @return name of the weapon in the room
+     */
+    public String getWeaponName() {
+        if (hasWeapon()) {
+            return weapon.getName();
+        } else {
+            return new String();
+        }
+    }
+
+    /**
      * Gives the weapon (the current item in the room) to the player.
      * @param player the player that will receive the weapon.
      * @return list of messages to be shown to the player

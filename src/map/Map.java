@@ -57,6 +57,13 @@ public class Map implements gui.GuiConnect {
         }
     }
 
+    @Override
+    public List<String> fight() {
+        messages.clear();
+        fightCreature();
+        return messages;
+    };
+
     /**
      * Fight the creature in the room
      */
@@ -103,6 +110,11 @@ public class Map implements gui.GuiConnect {
     @Override
     public void goStraight() {
         enterRoom(storage.getRoom(room.getRoomNameInDirection(player.goStraight())));
+    }
+
+    @Override
+    public String getWeaponName() {
+        return room.getWeaponName();
     }
 
     @Override
