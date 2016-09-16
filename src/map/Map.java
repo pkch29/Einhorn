@@ -2,6 +2,7 @@ package map;
 
 import creature.Player;
 import dice.Dice;
+import messenger.Messenger;
 import storage.Storage;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class Map implements gui.GuiConnect {
     private Player player = null;
     private Room room = null;
     private Storage storage = null;
+    private Messenger messenger = new Messenger();
 
     private boolean flagGameIsWon = false;
 
@@ -42,10 +44,8 @@ public class Map implements gui.GuiConnect {
         messages.clear();
         player.healing();
         if (room.isEntry() && player.hasTreasure()) {
-            messages.add("GAME OVER - Du hast gewonnen!");
-            messages.add("");
-            messages.add("Du kannst es gleich nochmal versuchen.");
-            messages.add("Du befindest Dich wieder am Eingang - aber ohne Schatz.");
+            messenger.playerWon(messages);
+
             flagGameIsWon = true;
             return;
         }
@@ -208,6 +208,7 @@ public class Map implements gui.GuiConnect {
 
     /**
      * Player can loot the weapon in the room.
+     * @deprecated
      */
     private void lootWeapon() {
         if (room.hasStrongerWeapon(player.getWeapon())) {
@@ -233,7 +234,7 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public void takeWeapon() {
-        lootWeapon();
+        room.giveWeaponToPlayer(player);
     }
 
 }
