@@ -103,4 +103,21 @@
          </children>
       </VBox>
    </center>
+   <right>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="fightButton" mnemonicParsing="false" onAction="#fightPressed" text="Kämpfen">
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="takeButton" mnemonicParsing="false" onAction="#takePressed" text="Nehmen" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mögliches Item" />
+            <Text fx:id="itemInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="blabla" />
+         </children>
+      </VBox>
+   </right>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>

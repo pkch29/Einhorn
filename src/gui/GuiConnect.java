@@ -64,6 +64,12 @@ public interface GuiConnect {
     boolean hasCreature();
 
     /**
+     * Player wants to fight the monster.
+     * @return Result of the fight is returned.
+     */
+    List<String> fight();
+
+    /**
      * Test if room has gold
      * @return whether room has gold
      */
@@ -115,8 +121,7 @@ public interface GuiConnect {
     String getRoomDescription();
 
     /**
-     * Returns the messages the GUI needs to display during a fight with a creature,
-     * or finding of treasures.
+     * Returns the messages the GUI needs to display about what creatures and items are in the room.
      * @return A list of Strings which will be displayed
      */
     List<String> showAndWait();
@@ -125,6 +130,12 @@ public interface GuiConnect {
      * Set player name
      */
     void setPlayerName(String name);
+
+    /**
+     * Tells the GUI which weapon is in the room, also possible to show if treasure is there
+     * @return Name and force of weapon <NameOfWeapon(Force)>
+     */
+    String getWeaponName();
 }
 
 

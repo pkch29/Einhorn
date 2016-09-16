@@ -25,6 +25,10 @@ import java.util.stream.Collectors;
 public class GUIController implements Initializable {
     GuiConnect map = new Map();
     @FXML
+    private Button fightButton;
+    @FXML
+    private Button takeButton;
+    @FXML
     private Button newButton;
     @FXML
     private Button helpButton;
@@ -45,6 +49,8 @@ public class GUIController implements Initializable {
     @FXML
     private Text weapon;
 
+    @FXML
+    private Text itemInfo;
     @FXML
     private Text text;
     @FXML
@@ -95,21 +101,29 @@ public class GUIController implements Initializable {
 
     }
 
+    public void fightPressed(){
+        showMessage(map.fight());
+    }
+
+    public void takePressed(){
+        showMessage(map.showAndWait());
+    }
+
     public void straightPressed(){
         map.goStraight();
-        showMessage();
+        showMessage(map.showAndWait());
     }
     public void backPressed(){
         map.goBack();
-        showMessage();
+        showMessage(map.showAndWait());
     }
     public void leftPressed(){
         map.goLeft();
-        showMessage();
+        showMessage(map.showAndWait());
     }
     public void rightPressed(){
         map.goRight();
-        showMessage();
+        showMessage(map.showAndWait());
     }
     public void showStats(){
         String[] stats = map.getStats();
@@ -120,31 +134,48 @@ public class GUIController implements Initializable {
 
     }
     public void checkDirections(){
-
-        if (!map.hasLeft()){
+        if(map.hasCreature()){
+            fightButton.setDisable(false);
+            back.setDisable(false);
             left.setDisable(true);
-        }
-        else {
-            left.setDisable(false);
-        }
-        if (!map.hasRight()){
             right.setDisable(true);
-        }
-        else {
-            right.setDisable(false);
-        }
-        if (!map.hasStraight()){
             straight.setDisable(true);
         }
         else {
-            straight.setDisable(false);
+            fightButton.setDisable(true);
+            if(map.hasWeapon()){
+                takeButton.setDisable(false);
+            }
+            else {
+                takeButton.setDisable(true);
+            }
+            if (!map.hasLeft()){
+                left.setDisable(true);
+            }
+            else {
+                left.setDisable(false);
+            }
+            if (!map.hasRight()){
+                right.setDisable(true);
+            }
+            else {
+                right.setDisable(false);
+            }
+            if (!map.hasStraight()){
+                straight.setDisable(true);
+            }
+            else {
+                straight.setDisable(false);
+            }
+            if(!map.hasBack()){
+                back.setDisable(true);
+            }
+            else {
+                back.setDisable(false);
+            }
         }
-        if(!map.hasBack()){
-            back.setDisable(true);
-        }
-        else {
-            back.setDisable(false);
-        }
+
+
     }
 
     public void showRoom(){
@@ -154,9 +185,14 @@ public class GUIController implements Initializable {
         image.setPreserveRatio(true);
         image.setImage(roomPic);
         text.setText(map.getRoomDescription());
+        String item = map.getWeaponName();
+        if (item.length() == 0){
+            item = "-";
+        }
+        itemInfo.setText(item);
     }
 
-    public void showMessage(){
+    public void showMessage(List<String> strings){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Neuer Raum");
         String header = "Hmm... Wohin denn jetzt?";
@@ -174,11 +210,10 @@ public class GUIController implements Initializable {
             }
         }
         alert.setHeaderText(header);
-        List<String> t = map.showAndWait();
-        if (t.size() == 0){
-            t.add("Hier gibt's nichts... nur Staub");
+        if (strings.size() == 0){
+            strings.add("Hier gibt's nichts... nur Staub");
         }
-        String s = t.stream()
+        String s = strings.stream()
                 .map(i-> i.toString())
                 .collect(Collectors.joining("\n"));
         alert.setContentText(s);
