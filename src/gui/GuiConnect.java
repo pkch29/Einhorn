@@ -141,6 +141,11 @@ public interface GuiConnect {
      * Tells the map to take the item into the inventory of the player.
      */
     void takeWeapon();
+
+    /**
+     * Tells the gui if the player finished the game.
+     */
+    boolean isGameWon();
 }
 
 
