@@ -106,7 +106,7 @@ public class GUIController implements Initializable {
     }
 
     public void takePressed(){
-        showMessage(map.showAndWait());
+        map.takeWeapon();
     }
 
     public void straightPressed(){
@@ -200,6 +200,9 @@ public class GUIController implements Initializable {
             header = "Da ist ein MOOONSTER!!!";
         }
         else {
+            if(map.isCreatureKilled()){
+                header = "#$!!#! (Kampfgeräusche)";
+            }
             if(map.hasWeapon()){
                 header = "Ui, da liegt was rum.";
             }

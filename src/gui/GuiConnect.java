@@ -136,6 +136,11 @@ public interface GuiConnect {
      * @return Name and force of weapon <NameOfWeapon(Force)>
      */
     String getWeaponName();
+
+    /**
+     * Tells the map to take the item into the inventory of the player.
+     */
+    void takeWeapon();
 }
 
 
