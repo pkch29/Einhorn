@@ -196,15 +196,15 @@ public class GUIController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Neuer Raum");
         String header = "Hmm... Wohin denn jetzt?";
-        if (map.isCreatureKilled()){
+        if (map.hasCreature()){
             header = "Da ist ein MOOONSTER!!!";
         }
         else {
-            if(map.isWeaponTaken()){
+            if(map.hasWeapon()){
                 header = "Ui, da liegt was rum.";
             }
             else {
-                if(map.isGoldTaken()){
+                if(map.hasGold()){
                     header = "Es ist nicht alles Gold was glänzt, aber in diesem Fall schon!";
                 }
             }
