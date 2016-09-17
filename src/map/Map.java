@@ -2,6 +2,7 @@ package map;
 
 import creature.Player;
 import dice.Dice;
+import messenger.GermanMessenger;
 import messenger.Messenger;
 import storage.Storage;
 
@@ -21,7 +22,7 @@ public class Map implements gui.GuiConnect {
     private Player player = null;
     private Room room = null;
     private Storage storage = null;
-    private Messenger messenger = new Messenger();
+    private Messenger messenger = null;
 
     private boolean flagGameIsWon = false;
 
@@ -30,7 +31,8 @@ public class Map implements gui.GuiConnect {
      * Most variables get instantiated by a call to newGame from the GUI
      */
     public Map() {
-        messages = new ArrayList<>();
+        messenger = new GermanMessenger();
+        messages = messenger.getMessages();
     }
 
     /**
@@ -41,10 +43,9 @@ public class Map implements gui.GuiConnect {
     private void enterRoom(Room room) {
         room.resetFlags();
         this.room = room;
-        messages.clear();
         player.healing();
         if (room.isEntry() && player.hasTreasure()) {
-            messenger.playerWon(messages);
+            messenger.playerWon();
 
             flagGameIsWon = true;
             return;
@@ -158,26 +159,6 @@ public class Map implements gui.GuiConnect {
         return room.hasWeapon();
     }
 
-    /**
-     * Initializes the game parameters
-     */
-    private void initGame() {
-        flagGameIsWon = false;
-        dice = new Dice();
-        try {
-            storage = new Storage();
-        } catch (IOException e) {
-            // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
-            e.printStackTrace();
-        }
-        Player prevPlayer = player;
-        player = new Player(storage.getCreature("You"));
-        if (prevPlayer != null) {
-            player.setName(prevPlayer.getName());
-        }
-        room = storage.getRoom(Room.ENTRY);
-    }
-
     @Override
     public boolean isCreatureKilled() {
         return room.isCreatureKilled();
@@ -218,7 +199,20 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public void newGame() {
-        initGame();
+        flagGameIsWon = false;
+        dice = new Dice();
+        try {
+            storage = new Storage();
+        } catch (IOException e) {
+            // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
+            e.printStackTrace();
+        }
+        Player prevPlayer = player;
+        player = new Player(storage.getCreature("You"));
+        if (prevPlayer != null) {
+            player.setName(prevPlayer.getName());
+        }
+        room = storage.getRoom(Room.ENTRY);
     }
 
     @Override
