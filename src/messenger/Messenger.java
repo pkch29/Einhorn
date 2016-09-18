@@ -25,30 +25,31 @@ public interface Messenger {
     /**
      * Player lost the fight and died
      * @param creatureName
-     * @param weaponName
+     * @param weaponNameCreature
      */
-    public void gameLost(String creatureName, String weaponName);
+    void gameLost(String creatureName, String weaponNameCreature);
 
     /**
      * Creature lost the fight and died
      * @param creatureName
-     * @param weaponName
+     * @param weaponNamePlayer
      * @param hpPlayer
      * @param damage
      */
-    void creatureDied(String creatureName, String weaponName, int hpPlayer, int damage);
+    void creatureDied(String creatureName, String weaponNamePlayer, int hpPlayer, int damage);
 
     /**
      * Message after fight, both are still alive
-     * @param weaponName
+     * @param weaponNamePlayer
+     * @param weaponNameCreature
      * @param creatureName
      * @param hasPlayerWon
      * @param hpPlayer
      * @param hpCreature
      * @param damage
      */
-    void playerAttacked(String weaponName, String creatureName, boolean hasPlayerWon, int hpPlayer, int hpCreature,
-                        int damage);
+    void playerAttacked(String weaponNamePlayer, String weaponNameCreature, String creatureName, boolean hasPlayerWon,
+                        int hpPlayer, int hpCreature, int damage);
 
 
 }
