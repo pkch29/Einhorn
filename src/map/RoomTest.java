@@ -5,6 +5,8 @@ import creature.Player;
 import dice.Dice;
 import item.Item;
 import item.Weapon;
+import messenger.GermanMessenger;
+import messenger.Messenger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -38,19 +40,23 @@ public class RoomTest {
 
     private Room room;
     private Creature creature;
+    private Creature beast;
     private Weapon weapon;
     private Weapon strongWeapon;
     private Player player;
     private Dice dice;
+    private Messenger messenger;
 
     @org.junit.Before
     public void setUp() throws Exception {
         weapon = new Weapon(weaponName, weaponDescription, weaponForce);
         strongWeapon = new Weapon(weaponName, weaponDescription, weaponForce+1);
         creature = new Creature(creatureName, creatureSpecies, creatureDescription, creatureHp, creatureLevel, weapon);
+        beast = new Creature(creatureName, creatureSpecies, creatureDescription, creatureHp, creatureLevel+10, strongWeapon);
         room = new Room(roomName, roomNorth, roomEast, roomSouth, roomWest, roomDescription);
         player = new Player(creature);
         dice = new Dice();
+        messenger = new GermanMessenger();
     }
 
     @org.junit.After
@@ -106,18 +112,24 @@ public class RoomTest {
         room.storeWeapon(strongWeapon);
         room.giveWeaponToPlayer(player);
         room.spawnCreature(creature);
-
         creature.setHp(1);
         player.setHp(Integer.MAX_VALUE);
-        room.fightPlayer(player, dice);
+        while(player.isAlive() && creature.isAlive()) {
+            room.attackCreature(messenger, player, dice);
+        }
         assertEquals(player.isAlive(), true);
         assertEquals(creature.isAlive(), false);
 
-        creature.setHp(Integer.MAX_VALUE);
+        room.storeWeapon(weapon);
+        room.giveWeaponToPlayer(player);
+        room.spawnCreature(beast);
+        beast.setHp(Integer.MAX_VALUE);
         player.setHp(1);
-        room.fightPlayer(player, dice);
+        while(player.isAlive() && beast.isAlive()) {
+            room.attackCreature(messenger, player, dice);
+        }
         assertEquals(player.isAlive(), false);
-        assertEquals(creature.isAlive(), true);
+        assertEquals(beast.isAlive(), true);
     }
 
 

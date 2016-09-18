@@ -4,6 +4,7 @@ import creature.Creature;
 import creature.Player;
 import dice.Dice;
 import item.Weapon;
+import messenger.Messenger;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -58,55 +59,83 @@ public class Room {
         this.imageName = DEFAULT_IMAGE;
     }
 
-    /**
-     * Room will fight vs the player using the given dice
-     * @param player the player who will handle the fight
-     * @param dice a dice the player and creature have to use
-     * @return list of messages to be shown to the player
-     */
-    public List<String> fightPlayer(Player player, Dice dice) {
+    public void attackCreature(Messenger messenger, Player player, Dice dice) {
+        int creatureAttack = creature.attack(dice.rollDice());
+        int playerAttack = player.attack(dice.rollDice());
+        int damage = Math.abs(creatureAttack - playerAttack);
+        boolean hasPlayerHit = false;
 
-        // TODO: 14.09.16 Debug output for fights
-        System.out.printf("\n\nPlayer vs " + creature.getName() + "\n");
-        System.out.printf("Player %2d          Creature %2d\n",
-                player.getHP(), creature.getHP());
-
-        List<String> messages = new ArrayList<>();
-
-        messages.add("Du wurdest von " + creature.getName() + " angegriffen.");
-        messages.add(creature.getDescription());
-        messages.add("");
-
-        while (player.isAlive() && creature.isAlive()) {
-            int creatureAttack = creature.attack(dice.rollDice());
-            int playerAttack = player.attack(dice.rollDice());
-            int damage = Math.abs(creatureAttack - playerAttack);
-
-//            if (playerAttack == creatureAttack) {
-//                System.out.println("A draw ...");
-//                continue;
-//            }
-
-            if (playerAttack < creatureAttack) {
-                player.defend(damage);
-            } else {
-                creature.defend(damage);
-            }
-            System.out.printf("Player %2d : %2d     Creature %2d : %2d      %2d\n",
-                    player.getHP(), playerAttack, creature.getHP(), creatureAttack,  damage);
-        }
-
-        messages.add("");
-        if (player.isAlive()) {
-            player.killedCreature();
-            flagKilledCreature = true;
-            messages.add("Du hast überlebt und steigst einen Level auf!");
+        if (playerAttack < creatureAttack) {
+            player.defend(damage);
         } else {
-            messages.add("Du wurdest getötet!");
+            creature.defend(damage);
+            hasPlayerHit = true;
         }
+        System.out.printf("Player %2d : %2d     Creature %2d : %2d      %2d\n",
+                player.getHP(), playerAttack, creature.getHP(), creatureAttack,  damage);
 
-        return messages;
+
+        if (!player.isAlive()) {
+            messenger.gameLost(creature.getName(), creature.getWeapon().getName());
+        } else if (!creature.isAlive()) {
+            messenger.creatureDied(creature.getName(), player.getWeapon().getName(), player.getHP(), damage);
+            flagKilledCreature = true;
+            player.killedCreature();
+        } else {
+            messenger.playerAttacked(player.getWeapon().getName(), creature.getWeapon().getName(), creature.getName(),
+                    hasPlayerHit, player.getHP(), creature.getHP(), damage);
+        }
     }
+
+//    /**
+//     * Room will fight vs the player using the given dice
+//     * @param player the player who will handle the fight
+//     * @param dice a dice the player and creature have to use
+//     * @return list of messages to be shown to the player
+//     */
+//    public List<String> fightPlayer(Player player, Dice dice) {
+//
+//        // TODO: 14.09.16 Debug output for fights
+//        System.out.printf("\n\nPlayer vs " + creature.getName() + "\n");
+//        System.out.printf("Player %2d          Creature %2d\n",
+//                player.getHP(), creature.getHP());
+//
+//        List<String> messages = new ArrayList<>();
+//
+//        messages.add("Du wurdest von " + creature.getName() + " angegriffen.");
+//        messages.add(creature.getDescription());
+//        messages.add("");
+//
+//        while (player.isAlive() && creature.isAlive()) {
+//            int creatureAttack = creature.attack(dice.rollDice());
+//            int playerAttack = player.attack(dice.rollDice());
+//            int damage = Math.abs(creatureAttack - playerAttack);
+//
+////            if (playerAttack == creatureAttack) {
+////                System.out.println("A draw ...");
+////                continue;
+////            }
+//
+//            if (playerAttack < creatureAttack) {
+//                player.defend(damage);
+//            } else {
+//                creature.defend(damage);
+//            }
+//            System.out.printf("Player %2d : %2d     Creature %2d : %2d      %2d\n",
+//                    player.getHP(), playerAttack, creature.getHP(), creatureAttack,  damage);
+//        }
+//
+//        messages.add("");
+//        if (player.isAlive()) {
+//            player.killedCreature();
+//            flagKilledCreature = true;
+//            messages.add("Du hast überlebt und steigst einen Level auf!");
+//        } else {
+//            messages.add("Du wurdest getötet!");
+//        }
+//
+//        return messages;
+//    }
 
     /**
      * Find name of a valid image file
@@ -169,10 +198,11 @@ public class Room {
      * @return name of the weapon in the room
      */
     public String getWeaponName() {
+        // TODO: 18.09.16 caller should test!
         if (hasWeapon()) {
             return weapon.getName();
         } else {
-            return new String();
+            return new String("");
         }
     }
 

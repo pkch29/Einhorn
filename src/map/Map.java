@@ -66,17 +66,17 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public List<String> fight() {
-        messages.clear();
-        fightCreature();
+        room.attackCreature(messenger, player, dice);
         return messages;
+//        fightCreature();
     };
 
     /**
      * Fight the creature in the room
      */
-    private void fightCreature() {
-        messages.addAll(room.fightPlayer(player, dice));
-    }
+//    private void fightCreature() {
+//        messages.addAll(room.fightPlayer(player, dice));
+//    }
 
     @Override
     public String getHelp() {
@@ -185,16 +185,6 @@ public class Map implements gui.GuiConnect {
      */
     public boolean isPlayerAlive() {
         return player.isAlive();
-    }
-
-    /**
-     * Player can loot the weapon in the room.
-     * @deprecated
-     */
-    private void lootWeapon() {
-        if (room.hasStrongerWeapon(player.getWeapon())) {
-            messages.addAll(room.giveWeaponToPlayer(player));
-        }
     }
 
     @Override
