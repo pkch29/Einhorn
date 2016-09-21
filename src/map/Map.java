@@ -46,10 +46,22 @@ public class Map implements gui.GuiConnect {
         }
         this.room = room;
         this.room.resetFlags();
+        this.room.selectImageName(player.getStraightDirection());
         if (isVictoryConditionFulfilled()) {
             messenger.playerWon();
             flagGameIsWon = true;
             return;
+        }
+        if (room.hasWeapon()) {
+//            messenger.roomHasWeapon(room.getWeaponName(), room.getWeaponForce());
+            messages.add(room.getWeaponName());
+        }
+        if (room.hasCreature()) {
+            messages.add(room.getCreatureDescription());
+//            messenger.roomHasCreature(room.getCreatureName(), room.getCreatureDescription(), room.getCreatureWeaponName());
+        }
+        if (room.hasGold()) {
+//            messenger.roomHasTreasure();
         }
     }
 

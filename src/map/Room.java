@@ -59,6 +59,12 @@ public class Room {
         this.imageName = DEFAULT_IMAGE;
     }
 
+    /**
+     * Creature in the room will fight vs the player using the given dice
+     * @param messenger messenger that will generate texts for the GUI
+     * @param player the player who will handle the fight
+     * @param dice a dice the player and creature have to use
+     */
     public void attackCreature(Messenger messenger, Player player, Dice dice) {
         int creatureAttack = creature.attack(dice.rollDice());
         int playerAttack = player.attack(dice.rollDice());
@@ -74,7 +80,6 @@ public class Room {
         System.out.printf("Player %2d : %2d     Creature %2d : %2d      %2d\n",
                 player.getHP(), playerAttack, creature.getHP(), creatureAttack,  damage);
 
-
         if (!player.isAlive()) {
             messenger.gameLost(creature.getName(), creature.getWeapon().getName());
         } else if (!creature.isAlive()) {
@@ -87,70 +92,28 @@ public class Room {
         }
     }
 
-//    /**
-//     * Room will fight vs the player using the given dice
-//     * @param player the player who will handle the fight
-//     * @param dice a dice the player and creature have to use
-//     * @return list of messages to be shown to the player
-//     */
-//    public List<String> fightPlayer(Player player, Dice dice) {
-//
-//        // TODO: 14.09.16 Debug output for fights
-//        System.out.printf("\n\nPlayer vs " + creature.getName() + "\n");
-//        System.out.printf("Player %2d          Creature %2d\n",
-//                player.getHP(), creature.getHP());
-//
-//        List<String> messages = new ArrayList<>();
-//
-//        messages.add("Du wurdest von " + creature.getName() + " angegriffen.");
-//        messages.add(creature.getDescription());
-//        messages.add("");
-//
-//        while (player.isAlive() && creature.isAlive()) {
-//            int creatureAttack = creature.attack(dice.rollDice());
-//            int playerAttack = player.attack(dice.rollDice());
-//            int damage = Math.abs(creatureAttack - playerAttack);
-//
-////            if (playerAttack == creatureAttack) {
-////                System.out.println("A draw ...");
-////                continue;
-////            }
-//
-//            if (playerAttack < creatureAttack) {
-//                player.defend(damage);
-//            } else {
-//                creature.defend(damage);
-//            }
-//            System.out.printf("Player %2d : %2d     Creature %2d : %2d      %2d\n",
-//                    player.getHP(), playerAttack, creature.getHP(), creatureAttack,  damage);
-//        }
-//
-//        messages.add("");
-//        if (player.isAlive()) {
-//            player.killedCreature();
-//            flagKilledCreature = true;
-//            messages.add("Du hast überlebt und steigst einen Level auf!");
-//        } else {
-//            messages.add("Du wurdest getötet!");
-//        }
-//
-//        return messages;
-//    }
+    /**
+     * Gets the description of the creature.
+     * @return description of the creature
+     */
+    public String getCreatureDescription() {
+        return creature.getDescription();
+    }
 
     /**
-     * Find name of a valid image file
-     * @return name of a valid image file
+     * Gets the name of the creature.
+     * @return name of the creature
      */
-    private String getImageFilename() {
-        String fileName;
-        if (hasCreature()) {
-            // TODO: 13.09.16 brauchen noch die echten Bilder hierfür.
-//            fileName = creature.getName() + ".jpg";
-            fileName = DEFAULT_IMAGE;
-        } else {
-            fileName = DEFAULT_IMAGE;
-        }
-        return fileName;
+    public String getCreatureName() {
+        return creature.getName();
+    }
+
+    /**
+     * Gets the name of the creature's weapon.
+     * @return name of the creature's weapon
+     */
+    public String getCreatureWeaponName() {
+        return creature.getWeapon().getName();
     }
 
     /**
@@ -193,8 +156,17 @@ public class Room {
     }
 
     /**
+     * Gets the force of the weapon in the room.
+     * Caller has to make sure that weapon exists, i.e. call hasWeapon()
+     * @return force of the weapon in the room
+     */
+    public int getWeaponForce() {
+        return weapon.getForce();
+    }
+
+    /**
      * Gets the name of the weapon in the room
-     * has to be called after hasWeapon();
+     * Caller has to make sure that weapon exists, i.e. call hasWeapon()
      * @return name of the weapon in the room
      */
     public String getWeaponName() {
@@ -209,18 +181,13 @@ public class Room {
     /**
      * Gives the weapon (the current item in the room) to the player.
      * @param player the player that will receive the weapon.
-     * @return list of messages to be shown to the player
      */
-    public List<String> giveWeaponToPlayer(Player player) {
-        List<String> messages = new ArrayList<>();
-        messages.add("Du hast eine bessere Waffe gefunden: " + weapon.getName() + " (" + weapon.getForce() + ")");
-        messages.add(weapon.getDescription());
+    public void giveWeaponToPlayer(Player player) {
         player.setWeapon(this.takeWeapon());
-        return messages;
     }
 
     /**
-     * Checks if the room has a creature in it.
+     * Checks if the room has a creature that is alive in it.
      * @return whether the room has a creature in it
      */
     public boolean hasCreature() {
@@ -255,15 +222,6 @@ public class Room {
     }
 
     /**
-     * Test if the weapon in the room is stronger than player's weapon
-     * @param playerWeapon the weapon used by the player
-     * @return whether the weapon in the room is stronger
-     */
-    public boolean hasStrongerWeapon(Weapon playerWeapon) {
-        return (weapon.getForce() > playerWeapon.getForce());
-    }
-
-    /**
      * Test if creature was recently killed
      * @return whether creature was recently killed
      */
@@ -292,7 +250,7 @@ public class Room {
      * @return whether gold was recently taken
      */
     public boolean isGoldTaken() {
-        return false;
+        return flagTookGold;
     }
 
 
@@ -306,6 +264,23 @@ public class Room {
     }
 
     /**
+     * Select a image file depending on players viewing direction and room content.
+     * Has to be called when player enters the room.
+     * @param straightDirection player's straight direction or negative value if direction is not important
+     */
+    public void selectImageName(int straightDirection) {
+        String fileName;
+        if (hasCreature()) {
+            // TODO: 13.09.16 brauchen noch die echten Bilder hierfür.
+//            fileName = creature.getName() + ".jpg";
+            fileName = DEFAULT_IMAGE;
+        } else {
+            fileName = DEFAULT_IMAGE;
+        }
+        imageName = fileName;
+    }
+
+    /**
      * Spawns a given creature in the room.
      * The room image will show this creature.
      * This will replace a currently existing creature,
@@ -313,8 +288,8 @@ public class Room {
      */
     public void spawnCreature(Creature creature) {
         this.creature = creature;
-        this.imageName = getImageFilename();
         this.weapon = null;
+        selectImageName(-1);
     }
 
     /**
@@ -324,8 +299,8 @@ public class Room {
      */
     public void storeWeapon(Weapon weapon) {
         this.creature = null;
-        this.imageName = getImageFilename();
         this.weapon = weapon;
+        selectImageName(-2);
     }
 
     /**

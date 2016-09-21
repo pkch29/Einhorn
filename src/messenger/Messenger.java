@@ -52,4 +52,29 @@ public interface Messenger {
                         int hpPlayer, int hpCreature, int damage);
 
 
+    /**
+     * Message about a creature inside a room
+     * @param name name of the creature
+     * @param description a sentence with detailed description
+     * @param species name of the species
+     * @param weaponName name of the weapon type
+     */
+//    void roomHasCreature(String name, String description, String species, String weaponName);
+
+    /**
+     * Message about a weapon inside a room
+     * @param name name of the weapon
+     * @param description a sentence with detailed description
+     * @param force force of the weapon
+     */
+//    void roomHasWeapon(String name, String description, int force);
+
+
+    /**
+     * Message about a treasure inside a room
+     * @param name name of the treasure
+     * @param description a sentence with detailed description
+     */
+//    void roomHasTreasure(String name, String description);
+
 }
