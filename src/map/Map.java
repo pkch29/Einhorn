@@ -7,7 +7,6 @@ import messenger.Messenger;
 import storage.Storage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,13 +54,16 @@ public class Map implements gui.GuiConnect {
     }
 
     @Override
+//    public void fight() {
     public List<String> fight() {
-        // TODO: 9/21/16 GUIController should change the method logic similar to the other methods and get the messages from showAnfWait as well.
         room.attackCreature(messenger, player, dice);
+        // TODO: 9/21/16 GUIController should change the method logic similar to the other methods and get the messages from showAnfWait as well.
         return messages;
     };
     
     @Override
+    // TODO: 9/21/16 should return a void and generate messages. Probably needs other name.
+//    public void getHelp(){}
     public String getHelp() {
         messenger.help();
         // TODO: 9/21/16 GUIController should get the messages as usual.
