@@ -36,50 +36,35 @@ public class Map implements gui.GuiConnect {
     }
 
     /**
-     * Enters a room and handles action (loot, attack).
+     * Enters a room.
      * This is the main method which is called after a direction was choosen.
+     * If player leaves a room with a creature, the player will not heal.
      * @param room the room the player is going to enter.
      */
     private void enterRoom(Room room) {
-        room.resetFlags();
+        if (! this.room.hasCreature()) {
+            player.healing();
+        }
         this.room = room;
-        player.healing();
-        if (room.isEntry() && player.hasTreasure()) {
+        this.room.resetFlags();
+        if (isVictoryConditionFulfilled()) {
             messenger.playerWon();
-
             flagGameIsWon = true;
             return;
         }
-//        if (room.hasWeapon()) {
-//            lootWeapon();
-//        } else if (room.hasCreature()) {
-//            fightCreature();
-//            if (! isPlayerAlive()) {
-//                messages.add("GAME OVER - Du hast verloren!");
-//                messages.add("");
-//                messages.add("Versuch es nochmal.");
-//                messages.add("Du befindest Dich wieder frisch und munter am Eingang.");
-//                newGame();
-//            }
-//        }
     }
 
     @Override
     public List<String> fight() {
+        // TODO: 9/21/16 GUIController should change the method logic similar to the other methods and get the messages from showAnfWait as well.
         room.attackCreature(messenger, player, dice);
         return messages;
-//        fightCreature();
     };
-
-    /**
-     * Fight the creature in the room
-     */
-//    private void fightCreature() {
-//        messages.addAll(room.fightPlayer(player, dice));
-//    }
-
+    
     @Override
     public String getHelp() {
+        messenger.help();
+        // TODO: 9/21/16 GUIController should get the messages as usual.
         return "Finde das Schwert und töte Gothofiedus,\ntöte dann Grodagrim und hole die Lanze.\n"
                 + "Jetzt suche den Schatz ...\nund verlasse das Verlies.";
     }
@@ -174,6 +159,14 @@ public class Map implements gui.GuiConnect {
         return room.isGoldTaken();
     }
 
+    /**
+     * Test is victory condition is fullfilled
+     * @return whether victory condition is fullfilled
+     */
+    private boolean isVictoryConditionFulfilled() {
+        return room.isEntry() && player.hasTreasure();
+    }
+
     @Override
     public boolean isWeaponTaken() {
         return room.isWeaponTaken();
@@ -189,7 +182,7 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public void newGame() {
-        flagGameIsWon = false;
+        resetGameFlags();
         dice = new Dice();
         try {
             storage = new Storage();
@@ -205,6 +198,13 @@ public class Map implements gui.GuiConnect {
         room = storage.getRoom(Room.ENTRY);
     }
 
+    /**
+     * Reset all game flags.
+     */
+    private void resetGameFlags() {
+        flagGameIsWon = false;
+    }
+
     @Override
     public void setPlayerName(String name) {
         player.setName(name);
@@ -213,7 +213,7 @@ public class Map implements gui.GuiConnect {
     @Override
     public List<String> showAndWait()
     {
-        return messages;
+        return messenger.getMessages();
     }
 
     @Override
