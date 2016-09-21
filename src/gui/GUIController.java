@@ -102,7 +102,8 @@ public class GUIController implements Initializable {
     }
 
     public void fightPressed(){
-        showMessage(map.fight());
+        map.fight();
+        showMessage(map.showAndWait());
     }
 
     public void takePressed(){
