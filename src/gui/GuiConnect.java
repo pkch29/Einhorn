@@ -58,7 +58,7 @@ public interface GuiConnect {
     boolean hasWeapon();
 
     /**
-     * Test if room has a creature
+     * Test if room has a creature that is alive
      * @return whether room has a creature
      */
     boolean hasCreature();
