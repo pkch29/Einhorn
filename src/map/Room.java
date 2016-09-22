@@ -94,6 +94,7 @@ public class Room {
 
     /**
      * Gets the description of the creature.
+     * Caller has to make sure that creature exists, i.e. call hasCreature()
      * @return description of the creature
      */
     public String getCreatureDescription() {
@@ -102,6 +103,7 @@ public class Room {
 
     /**
      * Gets the name of the creature.
+     * Caller has to make sure that creature exists, i.e. call hasCreature()
      * @return name of the creature
      */
     public String getCreatureName() {
@@ -109,7 +111,18 @@ public class Room {
     }
 
     /**
+     * Gets the species of the creature.
+     * Caller has to make sure that creature exists, i.e. call hasCreature()
+     * @return species of the creature
+     */
+    public String getCreatureSpecies() {
+        return creature.getSpecies();
+    }
+
+
+    /**
      * Gets the name of the creature's weapon.
+     * Caller has to make sure that creature exists, i.e. call hasCreature()
      * @return name of the creature's weapon
      */
     public String getCreatureWeaponName() {
@@ -153,6 +166,15 @@ public class Room {
             case 2: return roomNameSouth;
             default: return roomNameWest;
         }
+    }
+
+    /**
+     * Gets the description of the weapon in the room.
+     * Caller has to make sure that weapon exists, i.e. call hasWeapon()
+     * @return description of the weapon
+     */
+    public String getWeaponDescription() {
+        return weapon.getDescription();
     }
 
     /**
