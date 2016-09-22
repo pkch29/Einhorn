@@ -88,7 +88,7 @@ public class Room {
             player.killedCreature();
         } else {
             messenger.playerAttacked(player.getWeapon().getName(), creature.getWeapon().getName(), creature.getName(),
-                    hasPlayerHit, player.getHP(), creature.getHP(), damage);
+                    player.getName(), hasPlayerHit, player.getHP(), creature.getHP(), damage);
         }
     }
 
@@ -196,7 +196,7 @@ public class Room {
         if (hasWeapon()) {
             return weapon.getName();
         } else {
-            return new String("");
+            return "";
         }
     }
 
@@ -291,15 +291,32 @@ public class Room {
      * @param straightDirection player's straight direction or negative value if direction is not important
      */
     public void selectImageName(int straightDirection) {
-        String fileName;
         if (hasCreature()) {
-            // TODO: 13.09.16 brauchen noch die echten Bilder hierfür.
-//            fileName = creature.getName() + ".jpg";
-            fileName = DEFAULT_IMAGE;
-        } else {
-            fileName = DEFAULT_IMAGE;
+            imageName = DEFAULT_IMAGE;
+            return;
+        } else if (hasWeapon()) {
+            imageName = DEFAULT_IMAGE;
+            return;
+        } else if (straightDirection < 0 || straightDirection > 3) {
+            System.out.println("Room::selectImageName: straight direction " + straightDirection + " is not valid!");
+            imageName = DEFAULT_IMAGE;
+            return;
         }
-        imageName = fileName;
+//
+//        if (straightDirection >= 0) {
+//
+//        } else {
+//        }
+//
+//        String fileName;
+//        if (hasCreature()) {
+//            // TODO: 13.09.16 brauchen noch die echten Bilder hierfür.
+////            fileName = creature.getName() + ".jpg";
+//            fileName = DEFAULT_IMAGE;
+//        } else {
+//            fileName = DEFAULT_IMAGE;
+//        }
+        imageName = DEFAULT_IMAGE;
     }
 
     /**
