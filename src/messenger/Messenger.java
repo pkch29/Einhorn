@@ -51,7 +51,6 @@ public interface Messenger {
     void playerAttacked(String weaponNamePlayer, String weaponNameCreature, String creatureName, String playerName,
                         boolean hasPlayerWon, int hpPlayer, int hpCreature, int damage);
 
-
     /**
      * Message about a creature inside a room
      * @param name name of the creature
@@ -59,7 +58,7 @@ public interface Messenger {
      * @param species name of the species
      * @param weaponName name of the weapon type
      */
-     void roomHasCreature(String name, String description, String species, String weaponName);
+    void roomHasCreature(String name, String description, String species, String weaponName);
 
     /**
      * Message about a weapon inside a room
@@ -67,14 +66,18 @@ public interface Messenger {
      * @param description a sentence with detailed description
      * @param force force of the weapon
      */
-     void roomHasWeapon(String name, String description, int force);
-
+    void roomHasWeapon(String name, String description, int force);
 
     /**
      * Message about a treasure inside a room
      * @param name name of the treasure
      * @param description a sentence with detailed description
      */
-     void roomHasTreasure(String name, String description);
+    void roomHasTreasure(String name, String description);
+
+    /**
+     * Mesage that there is nothing special in the room.
+     */
+    void roomIsEmpty();
 
 }

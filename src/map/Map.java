@@ -52,14 +52,14 @@ public class Map implements gui.GuiConnect {
         }
         if (room.hasWeapon()) {
             messenger.roomHasWeapon(room.getWeaponName(), room.getWeaponDescription(), room.getWeaponForce());
-        }
-        if (room.hasCreature()) {
+        } else if (room.hasCreature()) {
             messenger.roomHasCreature(room.getCreatureName(), room.getCreatureDescription(),
                     room.getCreatureSpecies(), room.getCreatureWeaponName());
-        }
-        if (room.hasGold()) {
+        } else if (room.hasGold()) {
             // TODO: 9/22/16 Treasure still missing
             messenger.roomHasTreasure("Treasure", "Treasure description");
+        } else {
+            messenger.roomIsEmpty();
         }
     }
 
