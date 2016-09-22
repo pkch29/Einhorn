@@ -53,15 +53,15 @@ public class Map implements gui.GuiConnect {
             return;
         }
         if (room.hasWeapon()) {
-//            messenger.roomHasWeapon(room.getWeaponName(), room.getWeaponForce());
-            messages.add(room.getWeaponName());
+            messenger.roomHasWeapon(room.getWeaponName(), room.getWeaponDescription(), room.getWeaponForce());
         }
         if (room.hasCreature()) {
-            messages.add(room.getCreatureDescription());
-//            messenger.roomHasCreature(room.getCreatureName(), room.getCreatureDescription(), room.getCreatureWeaponName());
+            messenger.roomHasCreature(room.getCreatureName(), room.getCreatureDescription(),
+                    room.getCreatureSpecies(), room.getCreatureWeaponName());
         }
         if (room.hasGold()) {
-//            messenger.roomHasTreasure();
+            // TODO: 9/22/16 Treasure still missing
+            messenger.roomHasTreasure("Treasure", "Treasure description");
         }
     }
 
