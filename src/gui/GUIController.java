@@ -227,7 +227,7 @@ public class GUIController implements Initializable {
                 .map(i-> i.toString())
                 .collect(Collectors.joining("\n"));
         alert.setContentText(s);
-
+        alert.getDialogPane().setPrefWidth(600);
         alert.showAndWait();
     }
 
