@@ -150,6 +150,12 @@ public class GermanMessenger implements Messenger {
     }
 
     @Override
+    public void roomIsEmpty() {
+        messages.clear();
+        messages.add("Hier gibt's nichts... nur Staub.");
+    }
+
+    @Override
     public List<String> getMessages() {
         return messages;
     }
