@@ -23,34 +23,36 @@ public class GermanMessenger implements Messenger {
     @Override
     public void help(){
         messages.clear();
-        messages.add("Finde das Schwert und töte Gothofiedus,\ntöte dann Grodagrim und hole die Lanze.\n"
-                + "Jetzt suche den Schatz ...\nund verlasse das Verlies.");
+        messages.add("Finde das Schwert und töte Gothofiedus,");
+        messages.add("töte dann Grodagrim und hole die Lanze.");
+        messages.add("Jetzt suche den Schatz ...");
+        messages.add("und verlasse das Verlies.");
     }
 
     @Override
     public void gameLost(String creatureName, String weaponNameCreature){
         messages.clear();
-        if (weaponNameCreature == "Teeth") {
-            messages.add("laut quietschend greift "+creatureName+" Dich an...\n" +
-                    "und bohrt seine großen, scharfen Zähne tief in Deinen Hals!\n" +
-                    "Du taumelst... gehst ein paar Schritte rückwärts... und\n"+
-                    "spürst wie Dein warmes Blut an Deinem Hals entlang läuft.\n"+
-                    "Dir wird schwarz vor Augen...\n" +
-                    "Du bist tot......... ");
+        if (weaponNameCreature.equals("Teeth")) {
+            messages.add("laut quietschend greift "+creatureName+" Dich an...");
+            messages.add("und bohrt seine großen, scharfen Zähne tief in Deinen Hals!");
+            messages.add("Du taumelst... gehst ein paar Schritte rückwärts... und");
+            messages.add("spürst wie Dein warmes Blut an Deinem Hals entlang läuft.");
+            messages.add("Dir wird schwarz vor Augen...");
+            messages.add("Du bist tot......... ");
         }
-        if (weaponNameCreature == "Axe"){
-            messages.add("plötzlich... \n" +
-                    "rennt "+creatureName+" auf dich zu und schwingt seine riesige Axt.\n" +
-                    "Du hüpfst zur Seite... und stolperst...\n" +
-                    "die Axt erwischt Deinen Brustkorb und versenkt sich immer tiefer in Deiner Brust!\n" +
-                    "Ein höllischer Schmerz erschüttert Deinen Körper!\n" +
-                    "Du fällst zu Boden......... ");
+        if (weaponNameCreature.equals("Axe")){
+            messages.add("plötzlich...");
+            messages.add("rennt "+creatureName+" auf dich zu und schwingt seine riesige Axt.");
+            messages.add("Du hüpfst zur Seite... und stolperst...");
+            messages.add("die Axt erwischt Deinen Brustkorb und versenkt sich immer tiefer in Deiner Brust!");
+            messages.add("Ein höllischer Schmerz erschüttert Deinen Körper!");
+            messages.add("Du fällst zu Boden......... ");
         }
-        if (weaponNameCreature == "Fire"){
-            messages.add("Nun ist "+creatureName+" richtig wütend!\n" +
-                    "Zornig steht er da, seine Nüstern beben...\n" +
-                    "Er öffnet sein Maul und ein heißer Feuerschwall schießt in Deine Richtung.\n" +
-                    "Du wurdest knusprig, schwarz gegrillt... und zerfällst zu Staub.");
+        if (weaponNameCreature.equals("Fire")){
+            messages.add("Nun ist "+creatureName+" richtig wütend!");
+            messages.add("Zornig steht er da, seine Nüstern beben...");
+            messages.add("Er öffnet sein Maul und ein heißer Feuerschwall schießt in Deine Richtung.");
+            messages.add("Du wurdest knusprig, schwarz gegrillt... und zerfällst zu Staub.");
         }
         messages.add("GAME OVER! - Du hast verloren!");
         messages.add("");
