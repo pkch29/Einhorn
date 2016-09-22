@@ -68,9 +68,10 @@ public class GermanMessenger implements Messenger {
 
     @Override
     public void playerAttacked(String weaponNamePlayer, String weaponNameCreature, String creatureName,
-                               boolean hasPlayerWon, int hpPlayer, int hpCreature, int damage){
+                               String playerName, boolean hasPlayerWon, int hpPlayer, int hpCreature, int damage){
         messages.clear();
-        messages.add("player vs monster");
+        messages.add("++++++++++++++++fight++++++++++++");
+        messages.add(playerName+ " vs " +creatureName);
     }
 
     @Override
