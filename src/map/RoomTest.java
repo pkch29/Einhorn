@@ -8,6 +8,9 @@ import item.Weapon;
 import messenger.GermanMessenger;
 import messenger.Messenger;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -62,6 +65,15 @@ public class RoomTest {
     @org.junit.After
     public void tearDown() throws Exception {
 
+    }
+
+    @Test
+    public void staticMethods() throws Exception {
+        int[] num = {-5,-4,-3,-2,-1,0,1,2,3,4,5};
+        int[] mod = {3,0,1,2,3,0,1,2,3,0,1};
+        for (int i=0; i<11; i++) {
+            assertEquals(room.normalizeDirection(num[i]),mod[i]);
+        }
     }
 
     @Test

@@ -6,10 +6,6 @@ import dice.Dice;
 import item.Weapon;
 import messenger.Messenger;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A room in the dangeon.
  * The room can house a creature, contain an item to be looted or hold some gold.
@@ -302,21 +298,37 @@ public class Room {
             imageName = DEFAULT_IMAGE;
             return;
         }
-//
-//        if (straightDirection >= 0) {
-//
-//        } else {
-//        }
-//
-//        String fileName;
-//        if (hasCreature()) {
-//            // TODO: 13.09.16 brauchen noch die echten Bilder hierfür.
-////            fileName = creature.getName() + ".jpg";
-//            fileName = DEFAULT_IMAGE;
-//        } else {
-//            fileName = DEFAULT_IMAGE;
-//        }
-        imageName = DEFAULT_IMAGE;
+
+        boolean hasLeft = hasRoomInDirection(normalizeDirection(straightDirection-1));
+        boolean hasStraight = hasRoomInDirection(normalizeDirection(straightDirection));
+        boolean hasRight = hasRoomInDirection(normalizeDirection(straightDirection+1));
+
+        if (hasLeft) {
+            if (hasStraight) {
+                if (hasRight) {
+                    imageName = DEFAULT_IMAGE; // left, straight, right
+                    return;
+                }
+                imageName = DEFAULT_IMAGE; // left, straight
+                return;
+            } else if (hasRight) {
+                imageName = DEFAULT_IMAGE; // left, right
+                return;
+            }
+            imageName = DEFAULT_IMAGE; // left
+            return;
+        } else if (hasStraight) {
+            if (hasRight) {
+                imageName = DEFAULT_IMAGE; // straight, right
+                return;
+            }
+            imageName = DEFAULT_IMAGE; // straight
+            return;
+        } else if (hasRight) {
+            imageName = DEFAULT_IMAGE; // right
+            return;
+        }
+        imageName = DEFAULT_IMAGE; // none
     }
 
     /**
@@ -351,6 +363,16 @@ public class Room {
         this.weapon = null;
         flagTookWeapon = true;
         return weapon;
+    }
+
+    /**
+     * normalize the given direction to the set {0,1,2,3}
+     * @param direction given direction
+     * @return the normalized direction
+     */
+    public static int normalizeDirection(int direction) {
+        int d = direction % 4;
+        return d < 0 ? d+4 : d;
     }
 
 }

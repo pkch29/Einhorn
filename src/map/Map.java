@@ -17,7 +17,6 @@ import java.util.List;
 public class Map implements gui.GuiConnect {
 
     private Dice dice = null;
-    private List<String> messages = null;
     private Player player = null;
     private Room room = null;
     private Storage storage = null;
@@ -31,7 +30,6 @@ public class Map implements gui.GuiConnect {
      */
     public Map() {
         messenger = new GermanMessenger();
-        messages = messenger.getMessages();
     }
 
     /**
@@ -70,7 +68,7 @@ public class Map implements gui.GuiConnect {
     public List<String> fight() {
         room.attackCreature(messenger, player, dice);
         // TODO: 9/21/16 GUIController should change the method logic similar to the other methods and get the messages from showAnfWait as well.
-        return messages;
+        return messenger.getMessages();
     };
     
     @Override
