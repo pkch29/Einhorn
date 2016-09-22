@@ -48,8 +48,8 @@ public interface Messenger {
      * @param hpCreature
      * @param damage
      */
-    void playerAttacked(String weaponNamePlayer, String weaponNameCreature, String creatureName, boolean hasPlayerWon,
-                        int hpPlayer, int hpCreature, int damage);
+    void playerAttacked(String weaponNamePlayer, String weaponNameCreature, String creatureName, String playerName,
+                        boolean hasPlayerWon, int hpPlayer, int hpCreature, int damage);
 
 
     /**
