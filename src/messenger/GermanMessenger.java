@@ -54,6 +54,7 @@ public class GermanMessenger implements Messenger {
             messages.add("Er öffnet sein Maul und ein heißer Feuerschwall schießt in Deine Richtung.");
             messages.add("Du wurdest knusprig, schwarz gegrillt... und zerfällst zu Staub.");
         }
+        messages.add("");
         messages.add("GAME OVER! - Du hast verloren!");
         messages.add("");
         messages.add("Du kannst es gleich nochmal versuchen.");
@@ -63,15 +64,51 @@ public class GermanMessenger implements Messenger {
     @Override
     public void creatureDied(String creatureName, String weaponNamePlayer, int hpPlayer, int damage){
         messages.clear();
-        messages.add("das monster ist tot!");
+        if (weaponNamePlayer.equals("Hand")){
+            messages.add("Du nimmst Deinen ganzen Mut zusammen.. schreitest zu "+creatureName);
+            messages.add("und wendest die Fünf-Punkte-Pressur-Herzexplosions-Technik an.");
+            messages.add(creatureName+" läuft 5 Schritte auf dich zu... und...");
+            messages.add("fällt tot um!");
+        }
+        if (weaponNamePlayer.equals("Knife")){
+            messages.add("Du rennst auf "+creatureName+" zu... gleitest flink an ihm vorbei...");
+            messages.add("stehst plötzlich hinter ihm...");
+            messages.add("und schneidest ihm die Kehle durch...");
+            messages.add(creatureName+" röchelt... fällt hin... und stirbt...");
+        }
+        if (weaponNamePlayer.equals("Sword")){
+            messages.add("plötzlich rennt "+creatureName+" auf Dich zu...");
+            messages.add("Du holst mit Deinem Schwert aus... und...");
+            messages.add("enthauptest Deinen Gegner!");
+        }
+        if (weaponNamePlayer.equals("Lance")){
+            messages.add("Du nimmst Deine ganze Kraft zusammen... ATTACKE!");
+            messages.add("Du bohrst Deine Lanze "+creatureName+" mitten ins Herz!");
+            messages.add("Er schreit auf... und fällt in sich zusammen.");
+        }
+        messages.add("");
+        messages.add("Du hast den Kampf gewonnen.");
+        messages.add("Was willst Du als nächstes tun?");
     }
 
     @Override
     public void playerAttacked(String weaponNamePlayer, String weaponNameCreature, String creatureName,
                                String playerName, boolean hasPlayerWon, int hpPlayer, int hpCreature, int damage){
         messages.clear();
-        messages.add("++++++++++++++++fight++++++++++++");
-        messages.add(playerName+ " vs " +creatureName);
+        messages.add("+++++++++++++++++++fight+++++++++++++++++");
+        messages.add(playerName+ "      vs       " +creatureName);
+        messages.add("");
+        messages.add("weapon: "+weaponNamePlayer+"                       "+weaponNameCreature);
+        if (hasPlayerWon){
+            messages.add("Du hast Deinem Gegner "+damage+" Schadenspunkte zugefügt.");
+        }
+        if (hasPlayerWon == false){
+            messages.add("Dein Gegner hat Dir "+damage+" Schadenspunkte zugefügt.");
+        }
+        messages.add("HP:     "+hpPlayer+"                               "+hpCreature);
+        messages.add("");
+        messages.add("Willst Du einen weiteren Zweikampf riskieren?");
+        messages.add("Oder flüchtest Du lieber wie ein Feigling?");
     }
 
     @Override
