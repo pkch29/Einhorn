@@ -95,7 +95,7 @@ public class GermanMessenger implements Messenger {
     public void playerAttacked(String weaponNamePlayer, String weaponNameCreature, String creatureName,
                                String playerName, boolean hasPlayerWon, int hpPlayer, int hpCreature, int damage){
         messages.clear();
-        messages.add("+++++++++++++++++++fight+++++++++++++++++");
+        messages.add("++++++++++++++fight++++++++++++");
         messages.add(playerName+ "      vs       " +creatureName);
         messages.add("");
         messages.add("weapon: "+weaponNamePlayer+"                       "+weaponNameCreature);
@@ -105,7 +105,7 @@ public class GermanMessenger implements Messenger {
         if (hasPlayerWon == false){
             messages.add("Dein Gegner hat Dir "+damage+" Schadenspunkte zugefügt.");
         }
-        messages.add("HP:     "+hpPlayer+"                               "+hpCreature);
+        messages.add("HP:         "+hpPlayer+"                               "+hpCreature);
         messages.add("");
         messages.add("Willst Du einen weiteren Zweikampf riskieren?");
         messages.add("Oder flüchtest Du lieber wie ein Feigling?");
@@ -114,19 +114,39 @@ public class GermanMessenger implements Messenger {
     @Override
     public void roomHasCreature(String name, String description, String species, String weaponName){
         messages.clear();
+        messages.add("Boahhhh! Muuuarrrrr!");
+        messages.add("Vor Dir steht "+description);
         messages.add("");
+        messages.add("***Monster***");
+        messages.add("Name: "+name);
+        messages.add("Gestalt: "+species);
+        messages.add("Waffe: "+weaponName);
+        messages.add("");
+        messages.add("Willst Du den Kampf mit ihm aufnehmen?");
     }
 
     @Override
     public void roomHasWeapon(String name, String description, int force){
         messages.clear();
+        messages.add("Du betrittst den Raum und siehst Dich um...");
+        messages.add("in der hinteren Ecke siehst Du was aufblitzen...");
+        messages.add("Du trittst näher heran...");
+        if (name.equals("Knife")){
+            messages.add("und siehst, dass ein "+description+" auf dem Boden liegt.");
+        }
+        if (name.equals("Lance")){
+            messages.add("und siehst eine "+description);
+        }
+        if (name.equals("Sword")){
+        messages.add("und siehst ein "+description);}
         messages.add("");
+        messages.add("Willst Du es mitnehmen?");
     }
 
     @Override
     public void roomHasTreasure(String name, String description){
         messages.clear();
-        messages.add("");
+        messages.add("In diesem Raum... gibt es nichts außergewöhnliches... nur Gold");
     }
 
     @Override
