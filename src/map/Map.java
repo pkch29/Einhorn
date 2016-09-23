@@ -49,6 +49,7 @@ public class Map implements gui.GuiConnect {
         if (isVictoryConditionFulfilled()) {
             messenger.playerWon();
             flagGameIsWon = true;
+            newGame();
             return;
         }
         if (room.hasWeapon()) {
