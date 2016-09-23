@@ -310,6 +310,9 @@ public class Room {
         } else if (hasWeapon()) {
             imageName = DEFAULT_IMAGE;
             return;
+        } else if (hasGold()) {
+            imageName = DEFAULT_IMAGE;
+            return;
         } else if (straightDirection < 0 || straightDirection > 3) {
             System.out.println("Room::selectImageName: straight direction " + straightDirection + " is not valid!");
             imageName = DEFAULT_IMAGE;
