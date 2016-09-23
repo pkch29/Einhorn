@@ -2,6 +2,7 @@ package map;
 
 import creature.Player;
 import dice.Dice;
+import item.Weapon;
 import messenger.GermanMessenger;
 import messenger.Messenger;
 import storage.Storage;
@@ -227,7 +228,11 @@ public class Map implements gui.GuiConnect {
 
     @Override
     public void takeWeapon() {
+        Weapon weapon = player.getWeapon();
         room.giveWeaponToPlayer(player);
+        if (weapon != null) {
+            room.storeWeapon(weapon);
+        }
     }
 
 }
