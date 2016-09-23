@@ -66,7 +66,7 @@ public class Storage {
         int counter = 1;
         String name = "";
         String description = "";
-        String amount = "";
+        int amount = 0;
         for (String val : items) {
             switch (counter) {
                 case 1:
@@ -76,7 +76,7 @@ public class Storage {
                     description = val;
                     break;
                 case 3:
-                    amount = val;
+                    amount = Integer.parseInt(val);
                     break;
             }
 

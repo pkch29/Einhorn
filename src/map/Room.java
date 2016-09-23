@@ -167,6 +167,14 @@ public class Room {
     }
 
     /**
+     * Gets the amount of gold in the treasure.
+     * @return the amount of gold in the treasure
+     */
+    public int getTreasureGoldAmount() {
+        return gold.getAmount();
+    }
+
+    /**
      * Gets the description of the weapon in the room.
      * Caller has to make sure that weapon exists, i.e. call hasWeapon()
      * @return description of the weapon
@@ -198,6 +206,15 @@ public class Room {
         }
     }
 
+
+    /**
+     * Gives the gold to the player.
+     * @param player the player that will receive the gold.
+     */
+    public void giveGoldToPlayer(Player player) {
+        player.collectGold(takeGold());
+    }
+
     /**
      * Gives the weapon (the current item in the room) to the player.
      * @param player the player that will receive the weapon.
@@ -214,14 +231,12 @@ public class Room {
         return (creature != null) && creature.isAlive();
     }
 
-
     /**
      * Test if the room has gold in it
      * @return whether the room has gold in it
      */
     public boolean hasGold() {
-        // TODO: 14.09.16 not yet implemented!
-        return false;
+        return gold != null;
     }
 
     /**
@@ -375,10 +390,23 @@ public class Room {
      * @return the item that was in the room
      */
     public Weapon takeWeapon() {
+        // TODO: 9/23/16 shoudl be private!
         Weapon weapon = this.weapon;
         this.weapon = null;
         flagTookWeapon = true;
         return weapon;
+    }
+
+    /**
+     * Take the gold from the room
+     * @return the amount of gold that was in the room
+     */
+    private int takeGold() {
+        // TODO: 9/23/16 shoudl be private!
+        Gold gold = this.gold;
+        this.gold = null;
+        flagTookGold = true;
+        return gold.getAmount();
     }
 
     /**

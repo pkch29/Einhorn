@@ -48,6 +48,8 @@ public class GUIController implements Initializable {
     private Text level;
     @FXML
     private Text weapon;
+    @FXML
+    private Text gold;
 
     @FXML
     private Text itemInfo;
@@ -132,6 +134,7 @@ public class GUIController implements Initializable {
         health.setText("KP: "+stats[1]);
         level.setText("Level: "+stats[2]);
         weapon.setText("Waffe: "+stats[3]);
+        gold.setText("Gold: "+stats[4]);
 
     }
     public void checkDirections(){

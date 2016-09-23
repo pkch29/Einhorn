@@ -11,10 +11,9 @@ public class Player implements Creatures {
     int level;
     String name;
     Weapon weapon;
+    int gold;
     int dir;
     int maxHP;
-
-    private boolean flagHasTreasure = false;
 
     // 0-Norden, 1-Osten, 2-Süden, 3-Westen
     int direction;
@@ -28,7 +27,16 @@ public class Player implements Creatures {
         this.maxHP = creature.getHP();
         this.level = creature.getLevel();
         this.weapon = creature.getWeapon();
+        this.gold = 0;
         this.dir = 0;
+    }
+
+    /**
+     * Collect a given amount of gold
+     * @param amount amount of gold that was collected
+     */
+    public void collectGold(int amount) {
+        gold += amount;
     }
 
     /**
@@ -170,6 +178,12 @@ public class Player implements Creatures {
         return "You are called:  "+ name ;
     }
 
+    /**
+     * Gets collected amount of gold.
+     * @return collected amount of gold
+     */
+    public int getGold() { return gold; }
+
     @Override
     public int getHP() {
         return HP;
@@ -207,12 +221,8 @@ public class Player implements Creatures {
 //        HP = maxHP;
     }
 
-    public void setTreasure (){
-        flagHasTreasure = true;
-    }
-
     public boolean hasTreasure(){
-        return flagHasTreasure;
+        return gold > 0;
     }
 
     public void healing(){
@@ -249,11 +259,12 @@ public class Player implements Creatures {
     }
 
     public String[] getStats() {
-        String[] stats = new String[4];
+        String[] stats = new String[5];
         stats[0] = getName();
         stats[1] = Integer.toString(getHP());
         stats[2] = Integer.toString(getLevel());
         stats[3] = getWeapon().getName();
+        stats[4] = Integer.toString(getGold());
         return stats;
     }
 }

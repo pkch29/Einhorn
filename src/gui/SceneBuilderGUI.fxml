@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="508.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUIController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="508.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUIController">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -34,7 +34,12 @@
                   </Text>
                   <Text fx:id="weapon" strokeType="OUTSIDE" strokeWidth="0.0" text="Waffe:">
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="gold" strokeType="OUTSIDE" strokeWidth="0.0" text="Gold:">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
                      </VBox.margin>
                   </Text>
                </children>

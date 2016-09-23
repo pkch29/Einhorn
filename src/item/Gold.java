@@ -5,9 +5,9 @@ public class Gold implements Item{
 
     private String name;
     private String description;
-    private String amount;
+    private int amount;
 
-    public Gold(String name, String description, String amount) {
+    public Gold(String name, String description, int amount) {
         this.name = name;
         this.description = description;
         this.amount = amount;
@@ -39,9 +39,9 @@ public class Gold implements Item{
     }
 
     /**
-     * gibt die Höhe des Goldschatzes wieder
-     * @return die Höhe des Goldschatzes
+     * gibt die HÃ¶he des Goldschatzes wieder
+     * @return die HÃ¶he des Goldschatzes
      */
-    public String getAmount() { return amount; }
+    public int getAmount() { return amount; }
 
 }
