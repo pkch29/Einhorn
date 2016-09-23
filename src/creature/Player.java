@@ -32,16 +32,16 @@ public class Player implements Creatures {
     }
 
     /**
-     *
-     * @param dir
+     * sets the direction (integer values - 0 north, 1 east, 2 south, 3 west
+     * @param dir - set dir as direction
      */
     public void setDirection(int dir){
        direction=dir;
     }
 
     /**
-     *
-     * @return
+     * go left and returns the actual direction
+     * @return direction
      */
     public int goLeft(){
         direction --;
@@ -54,8 +54,8 @@ public class Player implements Creatures {
     }
 
     /**
-     *
-     * @return
+     * go right and returns the actual direction
+     * @return direction
      */
     public int goRight(){
         direction ++;
@@ -66,8 +66,8 @@ public class Player implements Creatures {
     }
 
     /**
-     *
-     * @return
+     * go back and returns the actual direction
+     * @return direction
      */
     public int goBack(){
         direction -= 2;
@@ -84,8 +84,8 @@ public class Player implements Creatures {
     }
 
     /**
-     *
-     * @return
+     * go straight and return actual direction
+     * @return direction
      */
     public int goStraight(){
         return direction;
@@ -93,8 +93,8 @@ public class Player implements Creatures {
 
 
     /**
-     *
-     * @return
+     * gets the left direction
+     * @return direction
      */
     public int getLeftDirection(){
 
@@ -107,8 +107,8 @@ public class Player implements Creatures {
     }
 
     /**
-     *
-     * @return
+     * gets the back direction
+     * @return direction
      */
     public int getBackDirection(){
 
@@ -124,8 +124,8 @@ public class Player implements Creatures {
     }
 
     /**
-     *
-     * @return
+     * gets the right direction
+     * @return direction
      */
     public int getRightDirection(){
 
@@ -140,8 +140,8 @@ public class Player implements Creatures {
     }
 
     /**
-     *
-     * @return
+     * get the straight direction
+     * @return direction
      */
     public int getStraightDirection(){
         return direction;
