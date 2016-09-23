@@ -8,6 +8,7 @@ import storage.Storage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Map class that implements the GuiConnect to communicate with the fx components.
@@ -67,9 +68,12 @@ public class Map implements gui.GuiConnect {
 //    public void fight() {
     public List<String> fight() {
         room.attackCreature(messenger, player, dice);
+        if (!player.isAlive()) {
+            newGame();
+        }
         // TODO: 9/21/16 GUIController should change the method logic similar to the other methods and get the messages from showAnfWait as well.
         return messenger.getMessages();
-    };
+    }
     
     @Override
     // TODO: 9/21/16 should return a void and generate messages. Probably needs other name.
@@ -77,8 +81,7 @@ public class Map implements gui.GuiConnect {
     public String getHelp() {
         messenger.help();
         // TODO: 9/21/16 GUIController should get the messages as usual.
-        return "Finde das Schwert und töte Gothofiedus,\ntöte dann Grodagrim und hole die Lanze.\n"
-                + "Jetzt suche den Schatz ...\nund verlasse das Verlies.";
+        return messenger.getMessages().stream().collect(Collectors.joining("\n"));
     }
 
     @Override
@@ -183,15 +186,7 @@ public class Map implements gui.GuiConnect {
     public boolean isWeaponTaken() {
         return room.isWeaponTaken();
     }
-
-    /**
-     * Checks if player is still alive
-     * @return if player is alive
-     */
-    public boolean isPlayerAlive() {
-        return player.isAlive();
-    }
-
+    
     @Override
     public void newGame() {
         resetGameFlags();
