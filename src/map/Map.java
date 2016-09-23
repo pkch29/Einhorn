@@ -175,8 +175,8 @@ public class Map implements gui.GuiConnect {
     }
 
     /**
-     * Test is victory condition is fullfilled
-     * @return whether victory condition is fullfilled
+     * Test is victory condition is fulfilled
+     * @return whether victory condition is fulfilled
      */
     private boolean isVictoryConditionFulfilled() {
         return room.isEntry() && player.hasTreasure();
@@ -186,7 +186,7 @@ public class Map implements gui.GuiConnect {
     public boolean isWeaponTaken() {
         return room.isWeaponTaken();
     }
-    
+
     @Override
     public void newGame() {
         resetGameFlags();

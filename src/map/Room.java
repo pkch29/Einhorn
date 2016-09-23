@@ -3,6 +3,7 @@ package map;
 import creature.Creature;
 import creature.Player;
 import dice.Dice;
+import item.Gold;
 import item.Weapon;
 import messenger.Messenger;
 
@@ -29,6 +30,7 @@ public class Room {
 
     private Creature creature = null;
     private Weapon weapon = null;
+    private Gold gold = null;
 	private String imageName;
 
     private boolean flagKilledCreature;
@@ -340,7 +342,20 @@ public class Room {
     public void spawnCreature(Creature creature) {
         this.creature = creature;
         this.weapon = null;
+        this.gold = null;
         selectImageName(-1);
+    }
+
+    /**
+     * Stores a given gold in the room.
+     * This will replace a currently stored item.
+     * @param gold the gold to store in the room
+     */
+    public void storeGold(Gold gold) {
+        this.creature = null;
+        this.weapon = null;
+        this.gold = gold;
+        selectImageName(-3);
     }
 
     /**
@@ -351,6 +366,7 @@ public class Room {
     public void storeWeapon(Weapon weapon) {
         this.creature = null;
         this.weapon = weapon;
+        this.gold = null;
         selectImageName(-2);
     }
 
