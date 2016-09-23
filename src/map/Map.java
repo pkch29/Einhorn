@@ -208,8 +208,7 @@ public class Map implements gui.GuiConnect {
         if (prevPlayer != null) {
             player.setName(prevPlayer.getName());
         }
-//        room = storage.getRoom(Room.ENTRY);
-        room = storage.getRoom("4-6");
+        room = storage.getRoom(Room.ENTRY);
     }
 
     /**
