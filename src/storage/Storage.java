@@ -1,6 +1,7 @@
 package storage;
 
 import creature.Creature;
+import item.Gold;
 import item.Item;
 import item.Weapon;
 import map.Room;
@@ -17,6 +18,7 @@ import java.util.Map;
 public class Storage {
 
     private Map<String, Creature> creature_Map = new HashMap<>();
+    private Map<String, Gold> gold_Map = new HashMap<>();
     private Map<String, Weapon> weapon_Map = new HashMap<>();
     private Map<String, Room> room_Map = new HashMap<>();
 
@@ -49,6 +51,34 @@ public class Storage {
             if (counter == 3) {
                 Weapon w = new Weapon(name, description, force);
                 weapon_Map.put(name, w);
+                counter = 0;
+            }
+            counter++;
+
+        }
+
+
+    }
+
+    private void fill_gold_map() throws IOException {
+
+        List<String> items = Reader.read("gold.txt");
+        int counter = 1;
+        String name = "";
+        String description = "";
+        for (String val : items) {
+            switch (counter) {
+                case 1:
+                    name = val;
+                    break;
+                case 2:
+                    description = val;
+                    break;
+            }
+
+            if (counter == 2) {
+                Gold g = new Gold(name, description);
+                gold_Map.put(name, g);
                 counter = 0;
             }
             counter++;
@@ -107,6 +137,7 @@ public class Storage {
         final int numRecords = data.size() / recordSize;
         Weapon weapon;
         Creature creature;
+        Gold gold;
         if (data.size() != numRecords * recordSize) {
             throw new IOException("rooms.text has wrong number of entries.");
         }
@@ -129,6 +160,8 @@ public class Storage {
                     room.storeWeapon(weapon);
                 } else if ((creature = creature_Map.get(content)) != null) {
                     room.spawnCreature(creature);
+                } else if ((gold = gold_Map.get(content)) != null) {
+                    room.storeGold(gold);
                 } else {
                     // TODO: 11.09.16 room 5-6 gives error, because "Treasure" is not yet available.
 //                    throw new IOException("Room " + name + " has undefined content.");
