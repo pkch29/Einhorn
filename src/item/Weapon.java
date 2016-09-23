@@ -4,6 +4,7 @@ package item;
 
 public class Weapon implements Item{
 
+        public static final String HAND = "Hand";  // the name of the "weapon" hand of the player
 
         private String name;
         private String description;
