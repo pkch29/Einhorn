@@ -62,8 +62,8 @@ public class Map implements gui.GuiConnect {
             messenger.roomHasCreature(room.getCreatureName(), room.getCreatureDescription(),
                     room.getCreatureSpecies(), room.getCreatureWeaponName());
         } else if (room.hasGold()) {
-//            int gold = room.getTreasureGoldAmount();
-            messenger.roomHasTreasure("Treasure", "Treasure description");
+            int gold = room.getTreasureGoldAmount();
+            messenger.roomHasTreasure("Treasure", "Treasure description", gold);
             room.giveGoldToPlayer(player);
         } else {
             messenger.roomIsEmpty();
