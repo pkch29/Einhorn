@@ -4,7 +4,7 @@ Description: Großes Zweihandschwert, mit einer Länge von 120cm und einem Gewic
 
 Name: Knife
 Force: 2
-Description: Kleiner Dolch.
+Description: Kleiner Dolch
 
 Name: Lance
 Force: 10

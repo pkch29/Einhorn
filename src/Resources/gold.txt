@@ -1,4 +1,4 @@
 Name: Treasure
-Description: Der legendäre Schatz des Einhorns.
+Description: Der legendäre Schatz des Einhorns
 Amount: 10000
 
