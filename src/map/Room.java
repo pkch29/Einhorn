@@ -144,6 +144,19 @@ public class Room {
     }
 
     /**
+     * Gets the name of the item in the room, if any.
+     * @return name of item in the room
+     */
+    public String getItemName() {
+        if (hasGold()) {
+            return gold.getName();
+        } else if (hasWeapon()) {
+            return weapon.getName();
+        }
+        return "";
+    }
+
+    /**
      * Gets the name of the room.
      * @return the name of the room
      */
@@ -167,11 +180,20 @@ public class Room {
     }
 
     /**
-     * Gets the amount of gold in the treasure.
-     * @return the amount of gold in the treasure
+     * Gets the description of of the treasure
+     * @return the description of of the treasure
      */
-    public int getTreasureGoldAmount() {
-        return gold.getAmount();
+    public String getTreasureDescription() {
+        return gold.getDescription();
+    }
+
+
+    /**
+     * Gets the name of of the treasure
+     * @return the name of of the treasure
+     */
+    public String getTreasureName() {
+        return gold.getName();
     }
 
     /**
@@ -181,15 +203,6 @@ public class Room {
      */
     public String getWeaponDescription() {
         return weapon.getDescription();
-    }
-
-    /**
-     * Gets the force of the weapon in the room.
-     * Caller has to make sure that weapon exists, i.e. call hasWeapon()
-     * @return force of the weapon in the room
-     */
-    public int getWeaponForce() {
-        return weapon.getForce();
     }
 
     /**
@@ -206,12 +219,12 @@ public class Room {
         }
     }
 
-
     /**
      * Gives the gold to the player.
      * @param player the player that will receive the gold.
      */
-    public void giveGoldToPlayer(Player player) {
+    public void giveGoldToPlayer(Messenger messenger, Player player) {
+        messenger.treasureIsTaken(gold.getName(), gold.getDescription(), gold.getAmount());
         player.collectGold(takeGold());
     }
 
@@ -219,7 +232,8 @@ public class Room {
      * Gives the weapon (the current item in the room) to the player.
      * @param player the player that will receive the weapon.
      */
-    public void giveWeaponToPlayer(Player player) {
+    public void giveWeaponToPlayer(Messenger messenger, Player player) {
+        messenger.weaponIsTaken(weapon.getName(), weapon.getDescription(), weapon.getForce());
         player.setWeapon(this.takeWeapon());
     }
 

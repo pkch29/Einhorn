@@ -135,12 +135,12 @@ public interface GuiConnect {
      * Tells the GUI which weapon is in the room, also possible to show if treasure is there
      * @return Name and force of weapon <NameOfWeapon(Force)>
      */
-    String getWeaponName();
+    String getItemName();
 
     /**
      * Tells the map to take the item into the inventory of the player.
      */
-    void takeWeapon();
+    void takeItem();
 
     /**
      * Tells the gui if the player finished the game.

@@ -104,7 +104,7 @@ public class RoomTest {
         room.takeWeapon();
         assertEquals(room.hasWeapon(), false);
         room.storeWeapon(strongWeapon);
-        room.giveWeaponToPlayer(player);
+        room.giveWeaponToPlayer(messenger, player);
         assertEquals(room.hasWeapon(), false);
         assertEquals(player.getWeapon(), strongWeapon);
     }
@@ -120,7 +120,7 @@ public class RoomTest {
     @Test
     public void fighting() throws Exception {
         room.storeWeapon(strongWeapon);
-        room.giveWeaponToPlayer(player);
+        room.giveWeaponToPlayer(messenger, player);
         room.spawnCreature(creature);
         creature.setHp(1);
         player.setHp(Integer.MAX_VALUE);
@@ -131,7 +131,7 @@ public class RoomTest {
         assertEquals(creature.isAlive(), false);
 
         room.storeWeapon(weapon);
-        room.giveWeaponToPlayer(player);
+        room.giveWeaponToPlayer(messenger, player);
         room.spawnCreature(beast);
         beast.setHp(Integer.MAX_VALUE);
         player.setHp(1);

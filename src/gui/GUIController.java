@@ -109,7 +109,8 @@ public class GUIController implements Initializable {
     }
 
     public void takePressed(){
-        map.takeWeapon();
+        map.takeItem();
+        showMessage(map.showAndWait());
     }
 
     public void straightPressed(){
@@ -148,7 +149,7 @@ public class GUIController implements Initializable {
         }
         else {
             fightButton.setDisable(true);
-            if(map.hasWeapon()){
+            if(map.hasWeapon() || map.hasGold()) {
                 takeButton.setDisable(false);
             }
             else {
@@ -190,7 +191,7 @@ public class GUIController implements Initializable {
         image.setPreserveRatio(true);
         image.setImage(roomPic);
         text.setText(map.getRoomDescription());
-        String item = map.getWeaponName();
+        String item = map.getItemName();
         if (item.length() == 0){
             item = "-";
         }

@@ -62,9 +62,7 @@ public class Map implements gui.GuiConnect {
             messenger.roomHasCreature(room.getCreatureName(), room.getCreatureDescription(),
                     room.getCreatureSpecies(), room.getCreatureWeaponName());
         } else if (room.hasGold()) {
-            int gold = room.getTreasureGoldAmount();
-            messenger.roomHasTreasure("Treasure", "Treasure description");
-            room.giveGoldToPlayer(player);
+            messenger.roomHasTreasure(room.getTreasureName(), room.getTreasureDescription());
         } else {
             messenger.roomIsEmpty();
         }
@@ -127,8 +125,8 @@ public class Map implements gui.GuiConnect {
     }
 
     @Override
-    public String getWeaponName() {
-        return room.getWeaponName();
+    public String getItemName() {
+        return room.getItemName();
     }
 
     @Override
@@ -210,7 +208,8 @@ public class Map implements gui.GuiConnect {
         if (prevPlayer != null) {
             player.setName(prevPlayer.getName());
         }
-        room = storage.getRoom(Room.ENTRY);
+//        room = storage.getRoom(Room.ENTRY);
+        room = storage.getRoom("4-6");
     }
 
     /**
@@ -231,10 +230,28 @@ public class Map implements gui.GuiConnect {
         return messenger.getMessages();
     }
 
+    /**
+     * Take the gold from the room
+     */
+    private void takeGold() {
+        room.giveGoldToPlayer(messenger, player);
+    }
+
     @Override
-    public void takeWeapon() {
+    public void takeItem() {
+        if (room.hasGold()) {
+            takeGold();
+        } else if (room.hasWeapon()) {
+            takeWeapon();
+        }
+    }
+
+    /**
+     * take the weapon from the room
+     */
+    private void takeWeapon() {
         Weapon weapon = player.getWeapon();
-        room.giveWeaponToPlayer(player);
+        room.giveWeaponToPlayer(messenger, player);
         if (weapon != null && ! weapon.getName().contentEquals(weapon.HAND)) {
             room.storeWeapon(weapon);
         }
