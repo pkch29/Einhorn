@@ -73,7 +73,7 @@ public interface Messenger {
      * @param name name of the treasure
      * @param description a sentence with detailed description
      */
-    void roomHasTreasure(String name, String description);
+    void roomHasTreasure(String name, String description, int amount);
 
     /**
      * Mesage that there is nothing special in the room.
