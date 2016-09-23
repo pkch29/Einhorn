@@ -144,7 +144,7 @@ public class GermanMessenger implements Messenger {
     }
 
     @Override
-    public void roomHasTreasure(String name, String description){
+    public void roomHasTreasure(String name, String description, int amount){
         messages.clear();
         messages.add("In diesem Raum... gibt es nichts außergewöhnliches... nur Gold");
     }
