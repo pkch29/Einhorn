@@ -66,6 +66,7 @@ public class Storage {
         int counter = 1;
         String name = "";
         String description = "";
+        String amount = "";
         for (String val : items) {
             switch (counter) {
                 case 1:
@@ -74,10 +75,13 @@ public class Storage {
                 case 2:
                     description = val;
                     break;
+                case 3:
+                    amount = val;
+                    break;
             }
 
-            if (counter == 2) {
-                Gold g = new Gold(name, description);
+            if (counter == 3) {
+                Gold g = new Gold(name, description, amount);
                 gold_Map.put(name, g);
                 counter = 0;
             }

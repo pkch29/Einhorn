@@ -5,10 +5,12 @@ public class Gold implements Item{
 
     private String name;
     private String description;
+    private String amount;
 
-    public Gold(String name, String description) {
+    public Gold(String name, String description, String amount) {
         this.name = name;
         this.description = description;
+        this.amount = amount;
     }
 
     @Override
@@ -35,4 +37,11 @@ public class Gold implements Item{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    /**
+     * gibt die Höhe des Goldschatzes wieder
+     * @return die Höhe des Goldschatzes
+     */
+    public String getAmount() { return amount; }
+
 }
