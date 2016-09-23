@@ -25,6 +25,7 @@ public class Storage {
     public Storage() throws IOException {
         fill_weapon_map();
         fill_creature_map();
+        fill_gold_map();
         fill_room_map();
     }
 
