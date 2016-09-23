@@ -64,16 +64,31 @@ public interface Messenger {
      * Message about a weapon inside a room
      * @param name name of the weapon
      * @param description a sentence with detailed description
-     * @param force force of the weapon
      */
-    void roomHasWeapon(String name, String description, int force);
+    void roomHasWeapon(String name, String description);
 
     /**
      * Message about a treasure inside a room
      * @param name name of the treasure
      * @param description a sentence with detailed description
      */
-    void roomHasTreasure(String name, String description, int amount);
+    void roomHasTreasure(String name, String description);
+
+    /**
+     * Message about the treasure that is taken
+     * @param name name of treasure
+     * @param description a sentence with detailed description
+     * @param amount
+     */
+    void treasureIsTaken(String name, String description, int amount);
+
+    /**
+     * Message about the weapon that is taken
+     * @param name name of weapon
+     * @param description a sentence with detailed description
+     * @param force force of the weapon
+     */
+    void weaponIsTaken(String name, String description, int force);
 
     /**
      * Mesage that there is nothing special in the room.

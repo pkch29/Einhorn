@@ -98,7 +98,7 @@ public class GermanMessenger implements Messenger {
         messages.add("++++++++++++++fight++++++++++++");
         messages.add(playerName+ "      vs       " +creatureName);
         messages.add("");
-        messages.add("weapon: "+weaponNamePlayer+"                       "+weaponNameCreature);
+        messages.add("Waffe: "+weaponNamePlayer+"                       "+weaponNameCreature);
         if (hasPlayerWon){
             messages.add("Du hast Deinem Gegner "+damage+" Schadenspunkte zugefügt.");
         }
@@ -126,7 +126,7 @@ public class GermanMessenger implements Messenger {
     }
 
     @Override
-    public void roomHasWeapon(String name, String description, int force){
+    public void roomHasWeapon(String name, String description){
         messages.clear();
         messages.add("Du betrittst den Raum und siehst Dich um...");
         messages.add("in der hinteren Ecke siehst Du was aufblitzen...");
@@ -144,9 +144,30 @@ public class GermanMessenger implements Messenger {
     }
 
     @Override
-    public void roomHasTreasure(String name, String description, int amount){
+    public void roomHasTreasure(String name, String description){
         messages.clear();
-        messages.add("In diesem Raum... gibt es nichts außergewöhnliches... nur Gold");
+        messages.add("Du gelangst in eine schummrige Kammer...");
+        messages.add("in der Mitte des Raumes zeichnet sich ein dunkler Schatten auf dem Boden ab.");
+        messages.add("Du erkundest vorsichtig die Umgebung... und entdeckst...");
+        messages.add("eine Holztruhe!");
+        messages.add("");
+        messages.add("Das muss "+description+" sein!");
+        messages.add("");
+        messages.add("Willst Du ihn mitnehmen?");
+    }
+
+    @Override
+    public void treasureIsTaken(String name, String description, int amount){
+        messages.add("*****"+description+"*****");
+        messages.add("Inhalt: "+amount+" Goldstücke!");
+
+    }
+
+    @Override
+    public void weaponIsTaken(String name, String description, int force){
+        messages.add("*****"+description+"*****");
+        messages.add("Schlagkraft: "+force);
+
     }
 
     @Override
