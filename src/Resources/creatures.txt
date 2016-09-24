@@ -7,7 +7,7 @@ Weapon: Hand
 
 Name: Dandelion 
 Species: Unicorn
-Description: Ein verschlafenes Einhorn, 3 m groß mit einem langen Horn auf der Stirn. Wenn du es störtst, nimm dich vor seinem Feueratem in Acht!
+Description: Ein verschlafenes Einhorn, 3 m groß mit einem langen Horn auf der Stirn. Wenn du es störst, nimm dich vor seinem Feueratem in Acht!
 Experience: 3
 HealthStatus: 25 
 Weapon: Fire
