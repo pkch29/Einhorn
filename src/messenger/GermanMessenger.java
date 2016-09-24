@@ -40,11 +40,11 @@ public class GermanMessenger implements Messenger {
             messages.add("Dir wird schwarz vor Augen...");
             messages.add("Du bist tot......... ");
         }
-        if (weaponNameCreature.equals("Axe")){
+        if (weaponNameCreature.equals("Sword")){
             messages.add("plötzlich...");
-            messages.add("rennt "+creatureName+" auf dich zu und schwingt seine riesige Axt.");
+            messages.add("rennt "+creatureName+" auf dich zu und schwingt sein riesiges Schwert.");
             messages.add("Du hüpfst zur Seite... und stolperst...");
-            messages.add("die Axt erwischt Deinen Brustkorb und versenkt sich immer tiefer in Deiner Brust!");
+            messages.add("das Schwert trifft Deinen Brustkorb und versenkt sich immer tiefer in Deiner Brust!");
             messages.add("Ein höllischer Schmerz erschüttert Deinen Körper!");
             messages.add("Du fällst zu Boden......... ");
         }

@@ -1,41 +1,41 @@
 Name: You 
 Species: Human
-Description: This is you.
+Description: Das bist du.
 Experience: 1
 HealthStatus: 25 
 Weapon: Hand
 
 Name: Dandelion 
 Species: Unicorn
-Description: Ein verschlafenes Einhorn, 3 m groß mit einem langen Horn auf der Stirn. Wenn du es störtst, nehm dich vor seinem Feueratem in Acht!
+Description: Ein verschlafenes Einhorn, 3 m groß mit einem langen Horn auf der Stirn. Wenn du es störtst, nimm dich vor seinem Feueratem in Acht!
 Experience: 3
 HealthStatus: 25 
 Weapon: Fire
 
 Name: Grodagrim 
 Species: Dwarf
-Description: Ein kleiner Zwerg mit einer großen Streitaxt.
+Description: Ein kleiner Zwerg mit einem großen Schwert.
 Experience: 2
 HealthStatus: 35 
-Weapon: Axe
+Weapon: Sword
 
 Name: Gothofiedus 
 Species: Rat
-Description: Eine 50 cm große Ratte, grau mit intelligenten Augen.
+Description: Eine 50 cm große Ratte, grau mit intelligenten grünen Augen.
 Experience: 1
 HealthStatus: 10 
 Weapon: Teeth
 
 Name: Lothofiedus 
 Species: Rat
-Description: Eine 50 cm große Ratte, grau mit intelligenten Augen.
+Description: Eine 50 cm große Ratte, grau mit intelligenten lila Augen.
 Experience: 5
 HealthStatus: 10 
 Weapon: Teeth
 
 Name: Rothofiedus 
 Species: Rat
-Description: Eine 50 cm große Ratte, grau mit intelligenten Augen.
+Description: Eine 50 cm große Ratte, grau mit intelligenten roten Augen.
 Experience: 10
 HealthStatus: 10 
 Weapon: Teeth
