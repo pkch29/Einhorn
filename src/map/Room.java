@@ -19,7 +19,7 @@ public class Room {
     public static final String ENTRY = "Entry";  // the name of the first room where the player starts
     public static final String NONE = "none";    // marker for connections that are dead ends
     // TODO: 13.09.16 default für leeren Gang
-    public static final String DEFAULT_IMAGE = "Lothofiedus.jpg"; // default background image
+    public static final String DEFAULT_IMAGE = "l_r.jpg"; // default background image
 
     private final String name;
     private final String description;
@@ -319,18 +319,18 @@ public class Room {
      */
     public void selectImageName(int straightDirection) {
         if (hasCreature()) {
-            imageName = DEFAULT_IMAGE;
+            imageName = creature.getName() + ".jpg";
             return;
-        } else if (hasWeapon()) {
-            imageName = DEFAULT_IMAGE;
-            return;
-        } else if (hasGold()) {
-            imageName = DEFAULT_IMAGE;
-            return;
-        } else if (straightDirection < 0 || straightDirection > 3) {
-            System.out.println("Room::selectImageName: straight direction " + straightDirection + " is not valid!");
-            imageName = DEFAULT_IMAGE;
-            return;
+//        } else if (hasWeapon()) {
+//            imageName = DEFAULT_IMAGE;
+//            return;
+//        } else if (hasGold()) {
+//            imageName = DEFAULT_IMAGE;
+//            return;
+//        } else if (straightDirection < 0 || straightDirection > 3) {
+//            System.out.println("Room::selectImageName: straight direction " + straightDirection + " is not valid!");
+//            imageName = DEFAULT_IMAGE;
+//            return;
         }
 
         boolean hasLeft = hasRoomInDirection(normalizeDirection(straightDirection-1));
@@ -340,29 +340,29 @@ public class Room {
         if (hasLeft) {
             if (hasStraight) {
                 if (hasRight) {
-                    imageName = DEFAULT_IMAGE; // left, straight, right
+                    imageName = "___.jpg"; // left, straight, right
                     return;
                 }
-                imageName = DEFAULT_IMAGE; // left, straight
+                imageName = "__r.jpg"; // left, straight
                 return;
             } else if (hasRight) {
-                imageName = DEFAULT_IMAGE; // left, right
+                imageName = "_m_.jpg"; // left, right
                 return;
             }
-            imageName = DEFAULT_IMAGE; // left
+            imageName = "_mr.jpg"; // left
             return;
         } else if (hasStraight) {
             if (hasRight) {
-                imageName = DEFAULT_IMAGE; // straight, right
+                imageName = "l__.jpg"; // straight, right
                 return;
             }
-            imageName = DEFAULT_IMAGE; // straight
+            imageName = "l_r.jpg"; // straight
             return;
         } else if (hasRight) {
-            imageName = DEFAULT_IMAGE; // right
+            imageName = "lm_.jpg"; // right
             return;
         }
-        imageName = DEFAULT_IMAGE; // none
+        imageName = "lmr.jpg"; // none
     }
 
     /**
