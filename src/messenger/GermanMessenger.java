@@ -157,6 +157,7 @@ public class GermanMessenger implements Messenger {
 
     @Override
     public void treasureIsTaken(String name, String description, int amount){
+        messages.clear();
         messages.add("*****"+description+"*****");
         messages.add("Inhalt: "+amount+" Goldstücke!");
 
@@ -164,6 +165,7 @@ public class GermanMessenger implements Messenger {
 
     @Override
     public void weaponIsTaken(String name, String description, int force){
+        messages.clear();
         messages.add("***** Neues Item *****");
         messages.add(description);
         messages.add("Schlagkraft: "+force);
