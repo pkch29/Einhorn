@@ -24,29 +24,29 @@ public interface Messenger {
 
     /**
      * Player lost the fight and died
-     * @param creatureName
-     * @param weaponNameCreature
+     * @param creatureName the name of the creature
+     * @param weaponNameCreature weapon that is used by creature
      */
     void gameLost(String creatureName, String weaponNameCreature);
 
     /**
      * Creature lost the fight and died
-     * @param creatureName
-     * @param weaponNamePlayer
-     * @param hpPlayer
-     * @param damage
+     * @param creatureName the name of the creature
+     * @param weaponNamePlayer weapon that is used by player
+     * @param hpPlayer health points of player
+     * @param damage damage taken by an attack
      */
     void creatureDied(String creatureName, String weaponNamePlayer, int hpPlayer, int damage);
 
     /**
      * Message after fight, both are still alive
-     * @param weaponNamePlayer
-     * @param weaponNameCreature
-     * @param creatureName
-     * @param hasPlayerWon
-     * @param hpPlayer
-     * @param hpCreature
-     * @param damage
+     * @param weaponNamePlayer weapon that is used by player
+     * @param weaponNameCreature weapon that is used by creature
+     * @param creatureName the name of the creature
+     * @param hasPlayerWon whether the player has won or not
+     * @param hpPlayer health points of player
+     * @param hpCreature health points of creature
+     * @param damage damage taken by an attack
      */
     void playerAttacked(String weaponNamePlayer, String weaponNameCreature, String creatureName, String playerName,
                         boolean hasPlayerWon, int hpPlayer, int hpCreature, int damage);
@@ -78,7 +78,7 @@ public interface Messenger {
      * Message about the treasure that is taken
      * @param name name of treasure
      * @param description a sentence with detailed description
-     * @param amount
+     * @param amount amount of gold
      */
     void treasureIsTaken(String name, String description, int amount);
 

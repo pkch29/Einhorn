@@ -20,7 +20,7 @@ public class Player implements Creatures {
 
     /**
      * Create a player from a given creature
-     * @param creature
+     * @param creature the object creature
      */
     public Player(Creature creature) {
         this.HP = creature.getHP();
@@ -215,16 +215,26 @@ public class Player implements Creatures {
         return damage;
     }
 
+    /**
+     * Adds 1 to the player level
+     */
     public void killedCreature(){
         level += 1;
         // TODO: 14.09.16 healing() when leaving room or maxHP after kill. 
 //        HP = maxHP;
     }
 
+    /**
+     * Checks if player has collected the treasure
+     * @return whether gold was collected
+     */
     public boolean hasTreasure(){
         return gold > 0;
     }
 
+    /**
+     * Heals player health points
+     */
     public void healing(){
         HP += 5;
         if (HP > maxHP){
@@ -258,6 +268,10 @@ public class Player implements Creatures {
         this.level = level;
     }
 
+    /**
+     *
+     * @return stats
+     */
     public String[] getStats() {
         String[] stats = new String[5];
         stats[0] = getName();

@@ -14,7 +14,7 @@ public class GermanMessenger implements Messenger {
     @Override
     public void playerWon() {
         messages.clear();
-        messages.add("Gratulation! - Du hast gewonnen!");
+        messages.add("**GRATULATION! - Du hast gewonnen!**");
         messages.add("");
         messages.add("Du kannst es gleich nochmal versuchen.");
         messages.add("Du befindest Dich wieder am Eingang - aber ohne Schatz.");
