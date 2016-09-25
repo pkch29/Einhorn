@@ -88,7 +88,6 @@ public class GermanMessenger implements Messenger {
         }
         messages.add("");
         messages.add("Du hast den Kampf gewonnen.");
-        messages.add("Was willst Du als nächstes tun?");
     }
 
     @Override
@@ -165,7 +164,8 @@ public class GermanMessenger implements Messenger {
 
     @Override
     public void weaponIsTaken(String name, String description, int force){
-        messages.add("*****"+description+"*****");
+        messages.add("***** Neues Item *****");
+        messages.add(description);
         messages.add("Schlagkraft: "+force);
 
     }
