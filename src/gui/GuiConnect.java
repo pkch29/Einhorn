@@ -146,6 +146,12 @@ public interface GuiConnect {
      * Tells the gui if the player finished the game.
      */
     boolean isGameWon();
+
+    /**
+     * Tells the gui if the player died.
+     */
+    boolean isGameLost();
+
 }
 
 

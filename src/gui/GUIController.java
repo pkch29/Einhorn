@@ -199,11 +199,14 @@ public class GUIController implements Initializable {
     }
 
     public void showMessage(List<String> strings){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Neuer Raum");
+        Alert.AlertType type = Alert.AlertType.INFORMATION;
         String header = "Hmm... Wohin denn jetzt?";
         if(map.isGameWon()){
             header = "Juhu du hast gesiegt!";
+            type = Alert.AlertType.WARNING;
+        } else if (map.isGameLost()) {
+            header = "Ehm, das war ... nicht so gut ...";
+            type = Alert.AlertType.ERROR;
         }
         else {
             if (map.hasCreature()){
@@ -223,6 +226,8 @@ public class GUIController implements Initializable {
                 }
             }
         }
+        Alert alert = new Alert(type);
+        alert.setTitle("Neuer Raum");
         alert.setHeaderText(header);
         if (strings.size() == 0){
             strings.add("Hier gibt's nichts... nur Staub");

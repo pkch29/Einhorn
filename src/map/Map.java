@@ -24,6 +24,7 @@ public class Map implements gui.GuiConnect {
     private Storage storage = null;
     private Messenger messenger = null;
 
+    private boolean flagGameIsLost = false;
     private boolean flagGameIsWon = false;
     private int stepCount = 0;
 
@@ -73,6 +74,7 @@ public class Map implements gui.GuiConnect {
     public List<String> fight() {
         room.attackCreature(messenger, player, dice);
         if (!player.isAlive()) {
+            flagGameIsLost = true;
             System.out.println("You did " + stepCount + "steps.");
             newGame();
         }
@@ -167,6 +169,11 @@ public class Map implements gui.GuiConnect {
     @Override
     public boolean isCreatureKilled() {
         return room.isCreatureKilled();
+    }
+
+    @Override
+    public boolean isGameLost()  {
+        return flagGameIsLost;
     }
 
     @Override
