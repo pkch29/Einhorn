@@ -23,7 +23,7 @@ public class RoomTest {
     private final String roomSouth = Room.ENTRY;
     private final String roomWest = "3-4";
     private final String roomDescription = "roomDescription";
-    private final String roomDefaultImageFileName = "lmr.jpg";
+    private final String roomDefaultImageFileName = Room.DEFAULT_IMAGE;
 
     private final String weaponName = "weaponName";
     private final String weaponDescription = "weaponDescription";

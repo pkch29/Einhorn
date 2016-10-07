@@ -8,6 +8,7 @@ import org.junit.Test;
 public class DiceTest {
 
     private Dice dice;
+    private final int numRolls = 1000;
 
     @org.junit.Before
     public void setUp() throws Exception {
@@ -21,7 +22,8 @@ public class DiceTest {
     @Test
     public void distribution() throws Exception {
         int[] rolls = new int[21];
-        for (int i=0; i<10000; i++) {
+        System.out.println("Rolling " + numRolls + " dices D20 ...");
+        for (int i=0; i<numRolls; i++) {
             rolls[0]++;
             rolls[dice.rollDice()]++;
         }
@@ -31,10 +33,14 @@ public class DiceTest {
                 max = rolls[i];
             }
         }
-        System.out.printf("   %s\n", new String(new char[(int)(100*0.05*rolls[0]/max)]).replace("\0", "*"));
+
+        // mathematical expected number of rolls
+        int mean = (int)(0.05*rolls[0] * 100/max);
+        System.out.printf("   %s\n", new String(new char[mean]).replace("\0", "*"));
         for (int i=1; i<=20; i++) {
-            int part = rolls[i]*100/max;
-            System.out.printf("%2d %s\n", i, new String(new char[part]).replace("\0", "#"));
+            int part = rolls[i] *100/max;
+            System.out.printf("%2d %s%s    %+2d%%\n", i, new String(new char[part]).replace("\0", "#"),
+                    new String(new char[100-part]).replace("\0", " "), part-mean);
         }
     }
 }
