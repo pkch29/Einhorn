@@ -26,7 +26,6 @@ public class Map implements gui.GuiConnect {
 
     private boolean flagGameIsLost = false;
     private boolean flagGameIsWon = false;
-    private int stepCount = 0;
 
     /**
      * Constructor
@@ -43,7 +42,6 @@ public class Map implements gui.GuiConnect {
      * @param room the room the player is going to enter.
      */
     private void enterRoom(Room room) {
-        stepCount++;
         if (! this.room.hasCreature()) {
             player.healing();
         }
@@ -53,8 +51,6 @@ public class Map implements gui.GuiConnect {
         if (isVictoryConditionFulfilled()) {
             messenger.playerWon();
             flagGameIsWon = true;
-            System.out.println("You did " + stepCount + "steps.");
-            newGame();
             return;
         }
         if (room.hasWeapon()) {
@@ -75,8 +71,6 @@ public class Map implements gui.GuiConnect {
         room.attackCreature(messenger, player, dice);
         if (!player.isAlive()) {
             flagGameIsLost = true;
-            System.out.println("You did " + stepCount + "steps.");
-            newGame();
         }
         // TODO: 9/21/16 GUIController should change the method logic similar to the other methods and get the messages from showAnfWait as well.
         return messenger.getMessages();
@@ -202,7 +196,6 @@ public class Map implements gui.GuiConnect {
     @Override
     public void newGame() {
         resetGameFlags();
-        stepCount = 0;
         dice = new Dice();
         try {
             storage = new Storage();
@@ -223,6 +216,7 @@ public class Map implements gui.GuiConnect {
      */
     private void resetGameFlags() {
         flagGameIsWon = false;
+        flagGameIsLost = false;
     }
 
     @Override

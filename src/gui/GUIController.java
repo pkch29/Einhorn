@@ -139,7 +139,14 @@ public class GUIController implements Initializable {
 
     }
     public void checkDirections(){
-        if(map.hasCreature()){
+        if (map.isGameLost() || map.isGameWon()) {
+            fightButton.setDisable(true);
+            takeButton.setDisable(true);
+            back.setDisable(true);
+            left.setDisable(true);
+            right.setDisable(true);
+            straight.setDisable(true);
+        } else if(map.hasCreature()){
             fightButton.setDisable(false);
             takeButton.setDisable(true);
             back.setDisable(false);
