@@ -3,13 +3,11 @@ package map;
 import creature.Creature;
 import creature.Player;
 import dice.Dice;
-import item.Item;
+import item.Gold;
 import item.Weapon;
 import messenger.GermanMessenger;
 import messenger.Messenger;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -24,26 +22,27 @@ public class RoomTest {
     private final String roomEast = Room.NONE;
     private final String roomSouth = Room.ENTRY;
     private final String roomWest = "3-4";
-    private final String roomDescription = "description";
-    private final String roomDefaultImageFileName = "Lothofiedus.jpg";
+    private final String roomDescription = "roomDescription";
+    private final String roomDefaultImageFileName = "lmr.jpg";
 
-    private final String weaponName = "weapon";
-    private final String weaponDescription = "description";
+    private final String weaponName = "weaponName";
+    private final String weaponDescription = "weaponDescription";
     private final int    weaponForce = 10;
 
-    private final String creatureName = "name";
-    private final String creatureSpecies = "species";
-    private final String creatureDescription = "description";
+    private final String creatureName = "creatureName";
+    private final String creatureSpecies = "CreatureSpecies";
+    private final String creatureDescription = "creaturDescription";
     private final int    creatureHp = 20;
     private final int    creatureLevel = 3;
 
-    private final String playerName = "name";
-    private final int    playerLevel = 1;
-    private final int    playerHp = 10;
+    private final String goldName = "goldName";
+    private final String goldDescription = "goldDescription";
+    private final int    goldAmount = 100;
 
     private Room room;
     private Creature creature;
     private Creature beast;
+    private Gold gold;
     private Weapon weapon;
     private Weapon strongWeapon;
     private Player player;
@@ -59,6 +58,7 @@ public class RoomTest {
         room = new Room(roomName, roomNorth, roomEast, roomSouth, roomWest, roomDescription);
         player = new Player(creature);
         dice = new Dice();
+        gold = new Gold(goldName, goldDescription, goldAmount);
         messenger = new GermanMessenger();
     }
 
@@ -67,15 +67,24 @@ public class RoomTest {
 
     }
 
+    /**
+     * Test static methods
+     * normalizeDirection:
+     *   normalizes a direction to the interval [0, 3]
+     */
     @Test
     public void staticMethods() throws Exception {
         int[] num = {-5,-4,-3,-2,-1,0,1,2,3,4,5};
-        int[] mod = {3,0,1,2,3,0,1,2,3,0,1};
+        int[] direction = {3,0,1,2,3,0,1,2,3,0,1};
         for (int i=0; i<11; i++) {
-            assertEquals(room.normalizeDirection(num[i]),mod[i]);
+            assertEquals(Room.normalizeDirection(num[i]),direction[i]);
         }
     }
 
+    /**
+     * Test getters
+     *  all getters used for room, creature, weapon and gold
+     */
     @Test
     public void getters() throws Exception {
         assertEquals(room.getDescription(), roomDescription);
@@ -85,28 +94,51 @@ public class RoomTest {
         assertEquals(room.getRoomNameInDirection(1), roomEast);
         assertEquals(room.getRoomNameInDirection(2), roomSouth);
         assertEquals(room.getRoomNameInDirection(3), roomWest);
+        room.spawnCreature(creature);
+        assertEquals(room.getCreatureDescription(), creatureDescription);
+        assertEquals(room.getCreatureName(), creatureName);
+        assertEquals(room.getCreatureSpecies(), creatureSpecies);
+        assertEquals(room.getCreatureWeaponName(), weaponName);
+        room.storeWeapon(weapon);
+        assertEquals(room.getWeaponName(), weaponName);
+        assertEquals(room.getWeaponDescription(), weaponDescription);
+        assertEquals(room.getItemName(), weaponName);
+        room.storeGold(gold);
+        assertEquals(room.getTreasureName(), goldName);
+        assertEquals(room.getTreasureDescription(), goldDescription);
     }
 
+    /**
+     * Test spawning of creature
+     */
     @Test
     public void creature() throws Exception {
+        // remove creature by storing a wepaon
         room.storeWeapon(weapon);
         assertEquals(room.hasCreature(), false);
         room.spawnCreature(creature);
         assertEquals(room.hasCreature(), true);
     }
 
+    /**
+     * Test storing a weapon
+     * Stores a weapon and gives the weapon to the player
+     */
     @Test
     public void weapon() throws Exception {
+        // remove weapon by spawning a creature
         room.spawnCreature(creature);
         assertEquals(room.hasWeapon(), false);
         room.storeWeapon(weapon);
         assertEquals(room.hasWeapon(), true);
-        room.storeWeapon(strongWeapon);
         room.giveWeaponToPlayer(messenger, player);
         assertEquals(room.hasWeapon(), false);
-        assertEquals(player.getWeapon(), strongWeapon);
+        assertEquals(player.getWeapon(), weapon);
     }
 
+    /**
+     * Test if room knows neighbouring rooms
+     */
     @Test
     public void directions() throws Exception {
         assertEquals(room.hasRoomInDirection(0), true);
@@ -115,13 +147,17 @@ public class RoomTest {
         assertEquals(room.hasRoomInDirection(3), true);
     }
 
+    /**
+     * Test fighting.
+     * Simulates two (unfair) fights. First fight will be won
+     * by the player, second one by the creature.
+     */
     @Test
     public void fighting() throws Exception {
         room.storeWeapon(strongWeapon);
         room.giveWeaponToPlayer(messenger, player);
         room.spawnCreature(creature);
-        creature.setHp(1);
-        player.setHp(Integer.MAX_VALUE);
+        creature.defend(creature.getHP()-1);
         while(player.isAlive() && creature.isAlive()) {
             room.attackCreature(messenger, player, dice);
         }
@@ -131,8 +167,7 @@ public class RoomTest {
         room.storeWeapon(weapon);
         room.giveWeaponToPlayer(messenger, player);
         room.spawnCreature(beast);
-        beast.setHp(Integer.MAX_VALUE);
-        player.setHp(1);
+        player.defend(player.getHP()-1);
         while(player.isAlive() && beast.isAlive()) {
             room.attackCreature(messenger, player, dice);
         }

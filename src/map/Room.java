@@ -18,7 +18,7 @@ public class Room {
 
     public static final String ENTRY = "Entry";  // the name of the first room where the player starts
     public static final String NONE = "none";    // marker for connections that are dead ends
-    public static final String DEFAULT_IMAGE = "l_r.jpg"; // default background image
+    public static final String DEFAULT_IMAGE = "lmr.jpg"; // default background image
 
     private final String description;
     private final String name;
