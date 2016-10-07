@@ -33,8 +33,8 @@ public interface Creatures {
     int getHP();
 
     /**
-     * Gets the Item of the creature.
-     * @return the item of the creature
+     * Gets the weapon of the creature.
+     * @return the weapon of the creature
      */
     Weapon getWeapon();
 
@@ -56,23 +56,5 @@ public interface Creatures {
      * @return the creatures name.
      */
     String getName();
-
-    /**
-     * Sets the name of the creature.
-     * @param name of the creature
-     */
-    void setName(String name);
-
-    /**
-     * Sets the Health points of the creature.
-     * @param hp health points of the creature
-     */
-    void setHp(int hp);
-
-    /**
-     * Sets the creatures (new) Item.
-     * @param weapon of the creature
-     */
-    void setWeapon(Weapon weapon);
 
 }

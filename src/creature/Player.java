@@ -232,18 +232,18 @@ public class Player implements Creatures {
         return name;
     }
 
-    @Override
+    /**
+     * Sets the name of the player.
+     * @param name the name of the player
+     */
     public void setName(String name) {
-
         this.name = name;
     }
 
-    @Override
-    public void setHp(int hp) {
-        this.HP = hp;
-    }
-
-    @Override
+    /**
+     * Gives player a weapon.
+     * @param weapon the weapon to give to the player
+     */
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }

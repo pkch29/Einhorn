@@ -79,27 +79,12 @@ public class Creature implements Creatures {
         return weapon;
     }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
     /**
      * Sets the description of the creature
      * @param description of the creature
      */
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    @Override
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
     }
 
     @Override
