@@ -109,7 +109,7 @@
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="image" fitHeight="302.0" fitWidth="401.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier steht alles" />
+            <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier steht alles" textAlignment="CENTER" wrappingWidth="500.0" />
          </children>
       </VBox>
    </center>

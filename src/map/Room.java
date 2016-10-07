@@ -33,8 +33,6 @@ public class Room {
     private Weapon weapon = null;
 
     private boolean flagKilledCreature;
-    private boolean flagTookGold;
-    private boolean flagTookWeapon;
 
     /**
      * Constructor of a room.
@@ -208,12 +206,7 @@ public class Room {
      * @return name of the weapon in the room
      */
     public String getWeaponName() {
-        // TODO: 18.09.16 caller should test!
-        if (hasWeapon()) {
-            return weapon.getName();
-        } else {
-            return "";
-        }
+        return weapon.getName();
     }
 
     /**
@@ -284,29 +277,10 @@ public class Room {
     }
 
     /**
-     * Test if weapon was recently taken.
-     * @return whether weapon was recently taken
-     */
-    public boolean isWeaponTaken() {
-        return flagTookWeapon;
-    }
-
-    /**
-     * Test if gold was recently taken
-     * @return whether gold was recently taken
-     */
-    public boolean isGoldTaken() {
-        return flagTookGold;
-    }
-
-
-    /**
      * Reset the status flags
      */
     public void resetFlags() {
         flagKilledCreature = false;
-        flagTookGold = false;
-        flagTookWeapon = false;
     }
 
     /**
@@ -391,11 +365,9 @@ public class Room {
      * Take the weapon from the room
      * @return the item that was in the room
      */
-    public Weapon takeWeapon() {
-        // TODO: 9/23/16 shoudl be private!
+    private Weapon takeWeapon() {
         Weapon weapon = this.weapon;
         this.weapon = null;
-        flagTookWeapon = true;
         return weapon;
     }
 
@@ -404,10 +376,8 @@ public class Room {
      * @return the amount of gold that was in the room
      */
     private int takeGold() {
-        // TODO: 9/23/16 shoudl be private!
         Gold gold = this.gold;
         this.gold = null;
-        flagTookGold = true;
         return gold.getAmount();
     }
 

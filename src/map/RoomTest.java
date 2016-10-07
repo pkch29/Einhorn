@@ -101,8 +101,6 @@ public class RoomTest {
         assertEquals(room.hasWeapon(), false);
         room.storeWeapon(weapon);
         assertEquals(room.hasWeapon(), true);
-        room.takeWeapon();
-        assertEquals(room.hasWeapon(), false);
         room.storeWeapon(strongWeapon);
         room.giveWeaponToPlayer(messenger, player);
         assertEquals(room.hasWeapon(), false);
