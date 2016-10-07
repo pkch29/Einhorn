@@ -8,7 +8,7 @@ import item.Weapon;
 import messenger.Messenger;
 
 /**
- * A room in the dangeon.
+ * A room in the dungeon.
  * The room can house a creature, contain an item to be looted or hold some gold.
  * Connected rooms have to be called according to their coordinates "x-y". The first room the player enters,
  * has to be called "Entry". Use "none" if there is no room in this direction.
@@ -18,20 +18,19 @@ public class Room {
 
     public static final String ENTRY = "Entry";  // the name of the first room where the player starts
     public static final String NONE = "none";    // marker for connections that are dead ends
-    // TODO: 13.09.16 default für leeren Gang
     public static final String DEFAULT_IMAGE = "l_r.jpg"; // default background image
 
-    private final String name;
     private final String description;
+    private final String name;
     private final String roomNameNorth;
     private final String roomNameEast;
     private final String roomNameSouth;
     private final String roomNameWest;
 
     private Creature creature = null;
-    private Weapon weapon = null;
     private Gold gold = null;
-	private String imageName;
+    private String imageName;
+    private Weapon weapon = null;
 
     private boolean flagKilledCreature;
     private boolean flagTookGold;
@@ -75,8 +74,8 @@ public class Room {
             creature.defend(damage);
             hasPlayerHit = true;
         }
-        System.out.printf("Player %2d : %2d     Creature %2d : %2d      %2d\n",
-                player.getHP(), playerAttack, creature.getHP(), creatureAttack,  damage);
+//        System.out.printf("Player %2d : %2d     Creature %2d : %2d      %2d\n",
+//                player.getHP(), playerAttack, creature.getHP(), creatureAttack,  damage);
 
         if (!player.isAlive()) {
             messenger.gameLost(creature.getName(), creature.getWeapon().getName());
@@ -116,7 +115,6 @@ public class Room {
     public String getCreatureSpecies() {
         return creature.getSpecies();
     }
-
 
     /**
      * Gets the name of the creature's weapon.
@@ -186,7 +184,6 @@ public class Room {
     public String getTreasureDescription() {
         return gold.getDescription();
     }
-
 
     /**
      * Gets the name of of the treasure
@@ -321,16 +318,6 @@ public class Room {
         if (hasCreature()) {
             imageName = creature.getName() + ".jpg";
             return;
-//        } else if (hasWeapon()) {
-//            imageName = DEFAULT_IMAGE;
-//            return;
-//        } else if (hasGold()) {
-//            imageName = DEFAULT_IMAGE;
-//            return;
-//        } else if (straightDirection < 0 || straightDirection > 3) {
-//            System.out.println("Room::selectImageName: straight direction " + straightDirection + " is not valid!");
-//            imageName = DEFAULT_IMAGE;
-//            return;
         }
 
         boolean hasLeft = hasRoomInDirection(normalizeDirection(straightDirection-1));
@@ -387,7 +374,6 @@ public class Room {
         this.creature = null;
         this.weapon = null;
         this.gold = gold;
-        selectImageName(-3);
     }
 
     /**
@@ -399,7 +385,6 @@ public class Room {
         this.creature = null;
         this.weapon = weapon;
         this.gold = null;
-        selectImageName(-2);
     }
 
     /**
@@ -435,5 +420,4 @@ public class Room {
         int d = direction % 4;
         return d < 0 ? d+4 : d;
     }
-
 }

@@ -82,18 +82,6 @@ public interface GuiConnect {
     boolean isCreatureKilled();
 
     /**
-     * Test whether weapon was taken
-     * @return whether weapon was taken
-     */
-    boolean isWeaponTaken();
-
-    /**
-     * Test whether gold was taken
-     * @return whether gold was taken
-     */
-    boolean isGoldTaken();
-
-    /**
      * Start a new game
      */
     void newGame();
@@ -151,7 +139,6 @@ public interface GuiConnect {
      * Tells the gui if the player died.
      */
     boolean isGameLost();
-
 }
 
 

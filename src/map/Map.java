@@ -175,22 +175,12 @@ public class Map implements gui.GuiConnect {
         return flagGameIsWon;
     }
 
-    @Override
-    public boolean isGoldTaken() {
-        return room.isGoldTaken();
-    }
-
     /**
      * Test is victory condition is fulfilled
      * @return whether victory condition is fulfilled
      */
     private boolean isVictoryConditionFulfilled() {
         return room.isEntry() && player.hasTreasure();
-    }
-
-    @Override
-    public boolean isWeaponTaken() {
-        return room.isWeaponTaken();
     }
 
     @Override
