@@ -72,7 +72,7 @@ public class GUIController implements Initializable {
         dialog.setHeaderText(null);
         dialog.setContentText("Bitte gib deinen Namen ein:");
         Optional<String> result = dialog.showAndWait();
-        String name = "";
+        String name = "Held";
         if (result.isPresent()){
              name = result.get();
         }

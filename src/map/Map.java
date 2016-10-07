@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
  * Map class that implements the GuiConnect to communicate with the fx components.
  * It is responsible to coordinate Player, Storage and Rooms.
  */
-@SuppressWarnings("WeakerAccess")
 public class Map implements gui.GuiConnect {
 
     private Dice dice = null;
