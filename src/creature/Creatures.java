@@ -45,15 +45,6 @@ public interface Creatures {
     int getLevel();
 
     /**
-     * Gets the attack damage of the creature.
-     * @param damage needs the attackdamage of the weapon of the creature
-     * @param level is the actual level of the creature
-     * @param dice is a random number of a D20-dice
-     * @return the attackdamage of the creature.
-     */
-    int attack(int damage, int level, int dice);
-
-    /**
      * Gets the attack damage of the creature
      * @param dice is a random number of a D20-dice
      * @return the attackdamage of the creature
@@ -83,13 +74,5 @@ public interface Creatures {
      * @param weapon of the creature
      */
     void setWeapon(Weapon weapon);
-
-    /**
-     * Sets the level of the creature.
-     * @param level of the creature
-     */
-    void setLevel(int level);
-
-
 
 }
