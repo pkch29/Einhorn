@@ -19,10 +19,10 @@ import java.util.stream.Collectors;
 public class Map implements gui.GuiConnect {
 
     private Dice dice = null;
+    private Messenger messenger = null;
     private Player player = null;
     private Room room = null;
     private Storage storage = null;
-    private Messenger messenger = null;
 
     private boolean flagGameIsLost = false;
     private boolean flagGameIsWon = false;
@@ -66,22 +66,16 @@ public class Map implements gui.GuiConnect {
     }
 
     @Override
-//    public void fight() {
-    public List<String> fight() {
+    public void fight() {
         room.attackCreature(messenger, player, dice);
         if (!player.isAlive()) {
             flagGameIsLost = true;
         }
-        // TODO: 9/21/16 GUIController should change the method logic similar to the other methods and get the messages from showAnfWait as well.
-        return messenger.getMessages();
     }
     
     @Override
-    // TODO: 9/21/16 should return a void and generate messages. Probably needs other name.
-//    public void getHelp(){}
     public String getHelp() {
         messenger.help();
-        // TODO: 9/21/16 GUIController should get the messages as usual.
         return messenger.getMessages().stream().collect(Collectors.joining("\n"));
     }
 
@@ -190,7 +184,8 @@ public class Map implements gui.GuiConnect {
         try {
             storage = new Storage();
         } catch (IOException e) {
-            // @TODO: 10.09.16 tell gui to tell user that the config files are messed up.
+            // config files are messed up. There is nothing we can do about it.
+            System.err.println("Unable to handle some config files. You didnt rename or edit them, did you?");
             e.printStackTrace();
         }
         Player prevPlayer = player;
@@ -242,7 +237,7 @@ public class Map implements gui.GuiConnect {
     private void takeWeapon() {
         Weapon weapon = player.getWeapon();
         room.giveWeaponToPlayer(messenger, player);
-        if (weapon != null && ! weapon.getName().contentEquals(weapon.HAND)) {
+        if (weapon != null && ! weapon.getName().contentEquals(Weapon.HAND)) {
             room.storeWeapon(weapon);
         }
     }

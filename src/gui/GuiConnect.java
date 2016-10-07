@@ -65,9 +65,8 @@ public interface GuiConnect {
 
     /**
      * Player wants to fight the monster.
-     * @return Result of the fight is returned.
      */
-    List<String> fight();
+    void fight();
 
     /**
      * Test if room has gold
