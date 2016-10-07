@@ -42,6 +42,11 @@
                         <Insets bottom="10.0" left="5.0" />
                      </VBox.margin>
                   </Text>
+                  <Text fx:id="steps" strokeType="OUTSIDE" strokeWidth="0.0" text="Schritte:">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </Text>
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="280.0" HBox.hgrow="SOMETIMES">

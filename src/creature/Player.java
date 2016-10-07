@@ -14,6 +14,7 @@ public class Player implements Creatures {
     int gold;
     int dir;
     int maxHP;
+    int steps;
 
     // 0-Norden, 1-Osten, 2-Süden, 3-Westen
     int direction;
@@ -29,6 +30,7 @@ public class Player implements Creatures {
         this.weapon = creature.getWeapon();
         this.gold = 0;
         this.dir = 0;
+        this.steps = 0;
     }
 
     /**
@@ -52,6 +54,7 @@ public class Player implements Creatures {
      * @return direction
      */
     public int goLeft(){
+        steps++;
         direction --;
         if(direction>3){
             direction = direction%4;
@@ -66,6 +69,7 @@ public class Player implements Creatures {
      * @return direction
      */
     public int goRight(){
+        steps++;
         direction ++;
         if(direction>3){
             direction = direction%4;
@@ -78,6 +82,7 @@ public class Player implements Creatures {
      * @return direction
      */
     public int goBack(){
+        steps++;
         direction -= 2;
 
         if(direction>3){
@@ -96,6 +101,7 @@ public class Player implements Creatures {
      * @return direction
      */
     public int goStraight(){
+        steps++;
         return direction;
     }
 
@@ -273,12 +279,13 @@ public class Player implements Creatures {
      * @return stats
      */
     public String[] getStats() {
-        String[] stats = new String[5];
+        String[] stats = new String[6];
         stats[0] = getName();
         stats[1] = Integer.toString(getHP());
         stats[2] = Integer.toString(getLevel());
         stats[3] = getWeapon().getName();
         stats[4] = Integer.toString(getGold());
+        stats[5] = Integer.toString(steps);
         return stats;
     }
 }

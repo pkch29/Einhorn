@@ -50,6 +50,8 @@ public class GUIController implements Initializable {
     private Text weapon;
     @FXML
     private Text gold;
+    @FXML
+    private Text steps;
 
     @FXML
     private Text itemInfo;
@@ -136,6 +138,7 @@ public class GUIController implements Initializable {
         level.setText("Level: "+stats[2]);
         weapon.setText("Waffe: "+stats[3]);
         gold.setText("Gold: "+stats[4]);
+        steps.setText("Schritte: "+stats[5]);
 
     }
     public void checkDirections(){
@@ -153,8 +156,7 @@ public class GUIController implements Initializable {
             left.setDisable(true);
             right.setDisable(true);
             straight.setDisable(true);
-        }
-        else {
+        } else {
             fightButton.setDisable(true);
             if(map.hasWeapon() || map.hasGold()) {
                 takeButton.setDisable(false);
