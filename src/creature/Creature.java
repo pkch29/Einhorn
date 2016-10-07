@@ -61,14 +61,6 @@ public class Creature implements Creatures {
     }
 
     @Override
-    public int attack(int attackdamage, int level, int dice) {
-        int damage = (attackdamage*level)+ dice;
-        //Schlagstärke = Angriffskraft der Waffe * eigenes Level + Wurf eines D20 Würfels
-
-        return damage;
-    }
-
-    @Override
     public int attack(int dice) {
         int damage = (weapon.getForce()*level) + dice;
         return damage;
@@ -93,14 +85,6 @@ public class Creature implements Creatures {
     }
 
     /**
-     * Sets the name of the creature
-     * @param species name of the creature
-     */
-    public void setSpecies(String species) {
-        this.species = species;
-    }
-
-    /**
      * Sets the description of the creature
      * @param description of the creature
      */
@@ -114,12 +98,7 @@ public class Creature implements Creatures {
     }
 
     @Override
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    @Override
-    public void setWeapon(Weapon wepaon) {
+    public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 

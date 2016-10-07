@@ -42,14 +42,6 @@ public class Player implements Creatures {
     }
 
     /**
-     * sets the direction (integer values - 0 north, 1 east, 2 south, 3 west
-     * @param dir - set dir as direction
-     */
-    public void setDirection(int dir){
-       direction=dir;
-    }
-
-    /**
      * go left and returns the actual direction
      * @return direction
      */
@@ -104,7 +96,6 @@ public class Player implements Creatures {
         steps++;
         return direction;
     }
-
 
     /**
      * gets the left direction
@@ -206,16 +197,6 @@ public class Player implements Creatures {
     }
 
     @Override
-    public int attack(int attackdamage, int level, int dice) {
-        int damage;
-
-        damage = (attackdamage*level)+ dice;
-        //Schlagstärke = Angriffskraft der Waffe * eigenes Level + Wurf eines D20 Würfels
-
-        return damage;
-    }
-
-    @Override
     public int attack(int dice) {
         int damage = (weapon.getForce()*level) + dice;
         return damage;
@@ -226,8 +207,6 @@ public class Player implements Creatures {
      */
     public void killedCreature(){
         level += 1;
-        // TODO: 14.09.16 healing() when leaving room or maxHP after kill. 
-//        HP = maxHP;
     }
 
     /**
@@ -267,11 +246,6 @@ public class Player implements Creatures {
     @Override
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
-    }
-
-    @Override
-    public void setLevel(int level) {
-        this.level = level;
     }
 
     /**

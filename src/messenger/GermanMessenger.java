@@ -15,9 +15,6 @@ public class GermanMessenger implements Messenger {
     public void playerWon() {
         messages.clear();
         messages.add("**GRATULATION! - Du hast gewonnen!**");
-        messages.add("");
-        messages.add("Du kannst es gleich nochmal versuchen.");
-        messages.add("Du befindest Dich wieder am Eingang - aber ohne Schatz.");
     }
 
     @Override
@@ -56,9 +53,6 @@ public class GermanMessenger implements Messenger {
         }
         messages.add("");
         messages.add("GAME OVER! - Du hast verloren!");
-        messages.add("");
-        messages.add("Du kannst es gleich nochmal versuchen.");
-        messages.add("Du befindest Dich wieder am Eingang.");
     }
 
     @Override
