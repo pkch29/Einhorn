@@ -211,6 +211,7 @@ public class Room {
 
     /**
      * Gives the gold to the player.
+     * @param messenger messenger object to generate text messages.
      * @param player the player that will receive the gold.
      */
     public void giveGoldToPlayer(Messenger messenger, Player player) {
@@ -220,6 +221,7 @@ public class Room {
 
     /**
      * Gives the weapon (the current item in the room) to the player.
+     * @param messenger messenger object to generate text messages.
      * @param player the player that will receive the weapon.
      */
     public void giveWeaponToPlayer(Messenger messenger, Player player) {

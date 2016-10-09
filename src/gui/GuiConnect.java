@@ -33,21 +33,25 @@ public interface GuiConnect {
 
     /**
      * Test if player can move forward
+     * @return whether the player can move forward
      */
     boolean hasStraight();
 
     /**
      * Test if player can move left
+     * @return whether the player can move left
      */
     boolean hasLeft();
 
     /**
      * Test if player can move right
+     * @return whether the player can move right
      */
     boolean hasRight();
 
     /**
      * Test if player can move backwards
+     * @return whether the player can move backwards
      */
     boolean hasBack();
 
@@ -86,12 +90,21 @@ public interface GuiConnect {
     void newGame();
 
     /**
-     * Get player stats, String[] mit Name an 0, KP an 1, Level an 2 und Name von Weapon an 3
+     * Get player stats as array of String.
+     * The array has the following structure:
+     * 0: name of player
+     * 1: his current KP
+     * 2: his current level
+     * 3: name of the equipped weapon
+     * 4: collected amount of gold
+     * 5: number of gone steps
+     * @return String array of fixed length with 6 entries.
      */
     String[] getStats();
 
     /**
-     * Get help for current room
+     * Get help and instructions to play the game.
+     * @return help and instructions to play the game.
      */
     String getHelp();
 
@@ -115,12 +128,14 @@ public interface GuiConnect {
 
     /**
      * Set player name
+     * @param name the new name of the player
      */
     void setPlayerName(String name);
 
     /**
-     * Tells the GUI which weapon is in the room, also possible to show if treasure is there
-     * @return Name and force of weapon <NameOfWeapon(Force)>
+     * Tells the GUI name of the item in the current room.
+     * Item can be a weapon or a treasure.
+     * @return Name of the item stored in the current room.
      */
     String getItemName();
 
@@ -131,11 +146,13 @@ public interface GuiConnect {
 
     /**
      * Tells the gui if the player finished the game.
+     * @return whether game is won
      */
     boolean isGameWon();
 
     /**
      * Tells the gui if the player died.
+     * @return whether game is lost
      */
     boolean isGameLost();
 }

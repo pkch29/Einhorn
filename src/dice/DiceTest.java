@@ -26,7 +26,7 @@ public class DiceTest {
      * The low number (100 as default) is chosen to visualize unequal distribution.
      */
     @Test
-    public void distribution() throws Exception {
+    public void distribution() {
         int[] rolls = new int[21];
         System.out.println("Rolling " + numRolls + " dices D20 ...");
         for (int i=0; i<numRolls; i++) {

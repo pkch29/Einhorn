@@ -43,6 +43,7 @@ public interface Messenger {
      * @param weaponNamePlayer weapon that is used by player
      * @param weaponNameCreature weapon that is used by creature
      * @param creatureName the name of the creature
+     * @param playerName the name of the player
      * @param hasPlayerWon whether the player has won or not
      * @param hpPlayer health points of player
      * @param hpCreature health points of creature

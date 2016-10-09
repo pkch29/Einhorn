@@ -71,6 +71,7 @@ public class RoomTest {
      * Test static methods
      * normalizeDirection:
      *   normalizes a direction to the interval [0, 3]
+     * @throws Exception Default exception for Assert.*
      */
     @Test
     public void staticMethods() throws Exception {
@@ -84,6 +85,7 @@ public class RoomTest {
     /**
      * Test getters
      *  all getters used for room, creature, weapon and gold
+     * @throws Exception Default exception for Assert.*
      */
     @Test
     public void getters() throws Exception {
@@ -110,6 +112,7 @@ public class RoomTest {
 
     /**
      * Test spawning of creature
+     * @throws Exception Default exception for Assert.*
      */
     @Test
     public void creature() throws Exception {
@@ -123,6 +126,7 @@ public class RoomTest {
     /**
      * Test storing a weapon
      * Stores a weapon and gives the weapon to the player
+     * @throws Exception Default exception for Assert.*
      */
     @Test
     public void weapon() throws Exception {
@@ -138,6 +142,7 @@ public class RoomTest {
 
     /**
      * Test if room knows neighbouring rooms
+     * @throws Exception Default exception for Assert.*
      */
     @Test
     public void directions() throws Exception {
@@ -151,6 +156,7 @@ public class RoomTest {
      * Test fighting.
      * Simulates two (unfair) fights. First fight will be won
      * by the player, second one by the creature.
+     * @throws Exception Default exception for Assert.*
      */
     @Test
     public void fighting() throws Exception {
@@ -174,6 +180,5 @@ public class RoomTest {
         assertEquals(player.isAlive(), false);
         assertEquals(beast.isAlive(), true);
     }
-
 
 }
