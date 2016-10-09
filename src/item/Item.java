@@ -21,18 +21,6 @@ public interface Item {
      */
     String getDescription();
 
-    /**
-     * Sets name of the item
-     * @param name of item
-     */
-    void setName(String name);
-
-    /**
-     * Sets description of the item
-     * @param description of item
-     */
-    void setDescription(String description);
-
 }
 
 

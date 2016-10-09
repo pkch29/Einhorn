@@ -2,7 +2,6 @@ package storage;
 
 import creature.Creature;
 import item.Gold;
-import item.Item;
 import item.Weapon;
 import map.Room;
 import reader.Reader;
@@ -13,7 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Anna on 10.09.2016..
+ * A container class that holds all game objects.
+ * This class holds all game objects like creatures, rooms, weapons and gold.
+ * Each room and creature object can be retrieved by its name.
  */
 public class Storage {
 
@@ -22,6 +23,10 @@ public class Storage {
     private Map<String, Weapon> weapon_Map = new HashMap<>();
     private Map<String, Room> room_Map = new HashMap<>();
 
+    /**
+     * Default constructor, reads configuration files and creates game objects.
+     * @throws IOException Pass through of Exception received from Reader class.
+     */
     public Storage() throws IOException {
         fill_weapon_map();
         fill_creature_map();
@@ -29,6 +34,10 @@ public class Storage {
         fill_room_map();
     }
 
+    /**
+     * Reads weapons' configuration, creates objects and stores them in a Map.
+     * @throws IOException Pass through of Exception received from Reader class.
+     */
     private void fill_weapon_map() throws IOException {
 
         List<String> items = Reader.read("weapons.txt");
@@ -55,12 +64,13 @@ public class Storage {
                 counter = 0;
             }
             counter++;
-
         }
-
-
     }
 
+    /**
+     * Reads gold's configuration, creates objects and stores them in a Map.
+     * @throws IOException Pass through of Exception received from Reader class.
+     */
     private void fill_gold_map() throws IOException {
 
         List<String> items = Reader.read("gold.txt");
@@ -87,12 +97,13 @@ public class Storage {
                 counter = 0;
             }
             counter++;
-
         }
-
-
     }
 
+    /**
+     * Reads creatures' configuration, creates objects and stores them in a Map.
+     * @throws IOException Pass through of Exception received from Reader class.
+     */
     private void fill_creature_map() throws IOException {
 
         List<String> creatures = Reader.read("creatures.txt");
@@ -130,11 +141,13 @@ public class Storage {
                 counter =0;
             }
             counter++;
-
         }
-
     }
 
+    /**
+     * Reads room's configuration, creates objects and stores them in a Map.
+     * @throws IOException If anything went wrong while reading or parsing the text file.
+     */
     private void fill_room_map() throws IOException {
         List<String> data = Reader.read("rooms.txt");
 
@@ -168,11 +181,9 @@ public class Storage {
                 } else if ((gold = gold_Map.get(content)) != null) {
                     room.storeGold(gold);
                 } else {
-                    // TODO: 11.09.16 room 5-6 gives error, because "Treasure" is not yet available.
-//                    throw new IOException("Room " + name + " has undefined content.");
+                    throw new IOException("Room " + name + " has undefined content.");
                 }
             }
-
             room_Map.put(name, room);
         }
 
@@ -182,15 +193,20 @@ public class Storage {
         }
     }
 
-
+    /**
+     * Get the creature with the given name.
+     * @param name name of the creature
+     * @return the creature with the given name.
+     */
     public Creature getCreature(String name){
-
         return creature_Map.get(name);
     }
-    public Item getWeapon(String name){
 
-        return weapon_Map.get(name);
-    }
+    /**
+     * Get the room with the given name.
+     * @param name name of the room
+     * @return the room with the given name.
+     */
     public Room getRoom(String name) {
         return room_Map.get(name);
     }

@@ -92,7 +92,7 @@ public interface Messenger {
     void weaponIsTaken(String name, String description, int force);
 
     /**
-     * Mesage that there is nothing special in the room.
+     * Message that there is nothing special in the room.
      */
     void roomIsEmpty();
 

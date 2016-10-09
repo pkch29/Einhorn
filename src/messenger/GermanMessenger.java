@@ -95,7 +95,7 @@ public class GermanMessenger implements Messenger {
         if (hasPlayerWon){
             messages.add("Du hast Deinem Gegner "+damage+" Schadenspunkte zugefügt.");
         }
-        if (hasPlayerWon == false){
+        if (!hasPlayerWon){
             messages.add("Dein Gegner hat Dir "+damage+" Schadenspunkte zugefügt.");
         }
         messages.add("HP:         "+hpPlayer+"                               "+hpCreature);

@@ -1,8 +1,9 @@
 package item;
 
-
-
-public class Weapon implements Item{
+/**
+ * Weapon class for any weapon in the game.
+ */
+public class Weapon implements Item {
 
         public static final String HAND = "Hand";  // the name of the "weapon" hand of the player
 
@@ -10,6 +11,12 @@ public class Weapon implements Item{
         private String description;
         private int force;
 
+    /**
+     * Default constructor for a weapon
+     * @param name name of the weapon
+     * @param description description of the wepaon
+     * @param force strength of the weapon
+     */
         public Weapon(String name, String description, int force) {
             this.name = name;
             this.description = description;
@@ -37,24 +44,6 @@ public class Weapon implements Item{
          */
         public int getForce() {
             return force;
-        }
-
-        @Override
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        /**
-         * Sets the force points
-         * @param force points
-         */
-        public void setForce(int force) {
-            this.force = force;
         }
 
 }

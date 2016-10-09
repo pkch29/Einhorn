@@ -1,6 +1,8 @@
 package item;
 
-
+/**
+ * Gold class for any treasure in the game.
+ */
 public class Gold implements Item{
 
     private String name;
@@ -30,23 +32,13 @@ public class Gold implements Item{
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
     public String getDescription() {
         return description;
     }
 
-    @Override
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     /**
-     * gibt die Höhe des Goldschatzes wieder
-     * @return die Höhe des Goldschatzes
+     * Get the amount of gold in the treasure.
+     * @return the amount of gold in the treasure.
      */
     public int getAmount() { return amount; }
 
