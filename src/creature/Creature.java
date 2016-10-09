@@ -1,13 +1,10 @@
 package creature;
 
-import item.Item;
 import item.Weapon;
 
 /**
- * Creates a creature with the attributes that have been set
- *
+ * Creates a creature with defined attributes
  */
-
 public class Creature implements Creatures {
 
     private String name;
@@ -17,6 +14,15 @@ public class Creature implements Creatures {
     private int level;
     private Weapon weapon;
 
+    /**
+     * Default constructor
+     * @param name name of the creature
+     * @param species species of the creature
+     * @param description description of the creature
+     * @param level starting level
+     * @param hp maximum HP of the creature
+     * @param weapon weapon carried by the creature
+     */
     public Creature(String name, String species, String description, int level, int hp, Weapon weapon) {
         this.name = name;
         this.species = species;
@@ -62,8 +68,7 @@ public class Creature implements Creatures {
 
     @Override
     public int attack(int dice) {
-        int damage = (weapon.getForce()*level) + dice;
-        return damage;
+        return (weapon.getForce()*level) + dice;
     }
 
     @Override
@@ -79,18 +84,9 @@ public class Creature implements Creatures {
         return weapon;
     }
 
-    /**
-     * Sets the description of the creature
-     * @param description of the creature
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @Override
     public boolean isAlive(){
         return hp > 0;
     }
-
     
 }

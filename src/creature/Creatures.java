@@ -2,7 +2,9 @@ package creature;
 
 import item.Weapon;
 
-
+/**
+ * Interface for all creatures in the game, including the player.
+ */
 public interface Creatures {
 
     /**
@@ -45,7 +47,7 @@ public interface Creatures {
     /**
      * Gets the attack damage of the creature
      * @param dice is a random number of a D20-dice
-     * @return the attackdamage of the creature
+     * @return the attack damage of the creature
      */
     int attack(int dice);
 

@@ -1,6 +1,8 @@
 package item;
 
-
+/**
+ * Interface for Items, declares basic methods needed for items that can be stored in a room.
+ */
 public interface Item {
 
     /**
