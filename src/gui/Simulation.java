@@ -8,10 +8,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * This simulation is based on the popular game dungeons&dragons. You can guiding your hero
+ * This simulation is based on the popular game dungeons&dragons. You can guide your hero
  * through a text-based quest for treasure and battle with deadly creatures.
  */
-
 public class Simulation extends Application {
 
     @Override
@@ -23,7 +22,10 @@ public class Simulation extends Application {
         primaryStage.show();
     }
 
-
+    /**
+     * Main method of the program, launches the Application.
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

@@ -19,17 +19,15 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-
+/**
+ * Controller class for the GUI, handles all gui interactions.
+ */
 public class GUIController implements Initializable {
-    GuiConnect map = new Map();
+    private GuiConnect map = new Map();
     @FXML
     private Button fightButton;
     @FXML
     private Button takeButton;
-    @FXML
-    private Button newButton;
-    @FXML
-    private Button helpButton;
     @FXML
     private Button straight;
     @FXML
@@ -50,7 +48,6 @@ public class GUIController implements Initializable {
     private Text gold;
     @FXML
     private Text steps;
-
     @FXML
     private Text itemInfo;
     @FXML
@@ -61,9 +58,11 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         newGame();
-
     }
 
+    /**
+     * Ask user for a player name and sets the name accordingly
+     */
     public void getName(){
         TextInputDialog dialog = new TextInputDialog("Pink Fluffy Unicorn");
         dialog.setTitle("Wie lautet dein Name?");
@@ -77,7 +76,10 @@ public class GUIController implements Initializable {
         map.setPlayerName(name);
     }
 
-    public void newGame(){
+    /**
+     * Starts a new game
+     */
+    private void newGame(){
         map.newGame();
         getName();
         Timeline timeline = new Timeline();
@@ -89,47 +91,76 @@ public class GUIController implements Initializable {
         timeline.play();
     }
 
+    /**
+     * Handle pressed event for new game button
+     */
     public void newPressed(){
         newGame();
     }
 
+    /**
+     * Handle pressed event for help button
+     */
     public void helpPressed(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Hilfe");
         alert.setHeaderText(null);
         alert.setContentText(map.getHelp());
-
         alert.showAndWait();
-
     }
 
+    /**
+     * Handle pressed event for fight/attack button
+     */
     public void fightPressed(){
         map.fight();
         showMessage(map.showAndWait());
     }
 
+    /**
+     * Handle pressed event for take button
+     */
     public void takePressed(){
         map.takeItem();
         showMessage(map.showAndWait());
     }
 
+    /**
+     * Handle pressed event for move forward/straight button
+     */
     public void straightPressed(){
         map.goStraight();
         showMessage(map.showAndWait());
     }
+
+    /**
+     * Handle pressed event for move backwards button
+     */
     public void backPressed(){
         map.goBack();
         showMessage(map.showAndWait());
     }
+
+    /**
+     * Handle pressed event for move left button
+     */
     public void leftPressed(){
         map.goLeft();
         showMessage(map.showAndWait());
     }
+
+    /**
+     * Handle pressed event for move right button
+     */
     public void rightPressed(){
         map.goRight();
         showMessage(map.showAndWait());
     }
-    public void showStats(){
+
+    /**
+     * Request stats for player and shows the values in the GUI
+     */
+    private void showStats(){
         String[] stats = map.getStats();
         name.setText("Name: "+stats[0]);
         health.setText("KP: "+stats[1]);
@@ -139,7 +170,11 @@ public class GUIController implements Initializable {
         steps.setText("Schritte: "+stats[5]);
 
     }
-    public void checkDirections(){
+
+    /**
+     * Enable/Disable direction buttons depending on the room.
+     */
+    private void checkDirections(){
         if (map.isGameLost() || map.isGameWon()) {
             fightButton.setDisable(true);
             takeButton.setDisable(true);
@@ -187,11 +222,12 @@ public class GUIController implements Initializable {
                 back.setDisable(false);
             }
         }
-
-
     }
 
-    public void showRoom(){
+    /**
+     * Present picture of the current room and its information to the user
+     */
+    private void showRoom(){
         String file = map.getRoomImageFileName();
         Image roomPic = new Image(GUIController.class.getResourceAsStream("/Resources/"+file));
         image.setFitWidth(300);
@@ -205,7 +241,11 @@ public class GUIController implements Initializable {
         itemInfo.setText(item);
     }
 
-    public void showMessage(List<String> strings){
+    /**
+     * Request room status and present messages accordingly to the user.
+     * @param strings Messages that are presented to the user.
+     */
+    private void showMessage(List<String> strings){
         Alert.AlertType type = Alert.AlertType.INFORMATION;
         String header = "Hmm... Wohin denn jetzt?";
         if(map.isGameWon()){
@@ -240,11 +280,9 @@ public class GUIController implements Initializable {
             strings.add("Hier gibt's nichts... nur Staub");
         }
         String s = strings.stream()
-                .map(i-> i.toString())
                 .collect(Collectors.joining("\n"));
         alert.setContentText(s);
         alert.getDialogPane().setPrefWidth(600);
         alert.showAndWait();
     }
-
 }
