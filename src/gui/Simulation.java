@@ -7,7 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-
+/**
+ * This simulation is based on the popular game dungeons&dragons. You can guiding your hero
+ * through a text-based quest for treasure and battle with deadly creatures.
+ */
 
 public class Simulation extends Application {
 
