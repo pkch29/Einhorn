@@ -5,14 +5,14 @@ import item.Weapon;
 
 public class Player implements Creatures {
 
-    int HP;
-    int level;
-    String name;
-    Weapon weapon;
-    int gold;
-    int dir;
-    int maxHP;
-    int steps;
+    private int HP;
+    private int level;
+    private String name;
+    private Weapon weapon;
+    private int gold;
+    private int dir;
+    private int maxHP;
+    private int steps;
 
     // 0-Norden, 1-Osten, 2-Süden, 3-Westen
     int direction;
@@ -247,8 +247,15 @@ public class Player implements Creatures {
     }
 
     /**
-     *
-     * @return stats
+     * Get player stats as array of String.
+     * The array has the following structure:
+     * 0: name of player
+     * 1: his current HP
+     * 2: his current level
+     * 3: name of the equipped weapon
+     * 4: collected amount of gold
+     * 5: number of gone steps
+     * @return String array of fixed length with 6 entries.
      */
     public String[] getStats() {
         String[] stats = new String[6];
