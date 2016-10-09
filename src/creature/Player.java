@@ -2,7 +2,9 @@ package creature;
 
 import item.Weapon;
 
-
+/**
+ * The representation of the user in the game.
+ */
 public class Player implements Creatures {
 
     private int HP;
@@ -14,8 +16,8 @@ public class Player implements Creatures {
     private int maxHP;
     private int steps;
 
-    // 0-Norden, 1-Osten, 2-Süden, 3-Westen
-    int direction;
+    // 0-north, 1-east, 2-south, 3-west
+    private int direction;
 
     /**
      * Create a player from a given creature
@@ -152,11 +154,7 @@ public class Player implements Creatures {
 
     @Override
     public boolean isAlive() {
-        if(HP>0){
-            return true;
-        } else {
-            return false;
-        }
+        return (HP > 0);
     }
 
     @Override
@@ -196,8 +194,7 @@ public class Player implements Creatures {
 
     @Override
     public int attack(int dice) {
-        int damage = (weapon.getForce()*level) + dice;
-        return damage;
+        return (weapon.getForce()*level) + dice;
     }
 
     /**
