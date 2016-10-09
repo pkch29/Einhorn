@@ -8,7 +8,6 @@ import java.util.Random;
  */
 public class Dice {
 
-    private int number;
     private Random rand = new Random();
 
     /**
@@ -16,7 +15,6 @@ public class Dice {
      * @return number
      */
     public int rollDice (){
-        number = (rand.nextInt(20)+1);
-        return number;
+        return (rand.nextInt(20)+1);
     }
 }
