@@ -19,9 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-/**
- * Created by Lisa on 06.07.2016.
- */
+
 public class GUIController implements Initializable {
     GuiConnect map = new Map();
     @FXML

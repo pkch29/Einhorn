@@ -2,9 +2,7 @@ package creature;
 
 import item.Weapon;
 
-/**
- * Created by Anna on 11.07.2016.
- */
+
 public class Player implements Creatures {
 
     int HP;
