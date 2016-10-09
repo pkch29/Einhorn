@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * This simulation is based on the popular game dungeons&dragons. You can guiding your hero
+ * This simulation is based on the popular game dungeons&dragons. You can guide your hero
  * through a text-based quest for treasure and battle with deadly creatures.
  */
 
