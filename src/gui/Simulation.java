@@ -24,7 +24,7 @@ public class Simulation extends Application {
 
     /**
      * Main method of the program, launches the Application.
-     * @param args
+     * @param args The arguments given at the command line
      */
     public static void main(String[] args) {
         launch(args);
